@@ -92,14 +92,7 @@ WSGI_APPLICATION = 'config.wsgi.application'
 # https://docs.djangoproject.com/en/1.10/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'eduya',
-        'USER': 'eduyatest',
-        'PASSWORD': 'eduyawedoboth',
-        'HOST': 'localhost',
-        'POST': '',
-    }
+    'default': dj_database_url.parse(config('DATABASE_URL')),
 }
 
 
