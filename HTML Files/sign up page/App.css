@@ -1,0 +1,41 @@
+.App {
+  text-align: center;
+}
+
+
+
+.App-header {
+  background-color: #222;
+  height: 100px;
+  padding: 10px;
+  color: white;
+  font-family: 'Raleway', sans-serif;
+}
+
+.App-intro {
+  font-size: large;
+}
+
+
+#submit {
+  font-size: 20px;
+  padding: 5px;
+}
+input {
+  font-size: 17px;
+  padding: 2px;
+  text-align: center;
+  position: relative;
+  top: 5px;
+  font-family: 'Raleway', sans-serif;
+}
+
+h2 {
+  position: relative; 
+  top: 15px;
+}
+
+form {
+  font-family: 'Raleway', sans-serif;
+}
+
