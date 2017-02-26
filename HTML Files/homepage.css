@@ -28,6 +28,11 @@ h1 {
 	/*font-size: 144px;*/
 }
 
+h2 {
+	color: rgba(20, 26, 91, .8);
+	font-family: 'Raleway', sans-serif;
+}
+
 p {
 	font-family: 'Raleway', sans-serif;
 }
@@ -53,6 +58,40 @@ nav {
 	text-transform: uppercase;
 }
 
+#pane {
+  position: fixed; /* could be absolute */
+  top: 0; left: 0; bottom: 0; right: 0;
+  margin: auto;
+  width: 30%;
+  height: 45%;
+  background-color: #fff;
+  opacity: .8;
+  text-align: center;
+  padding: 5px 10px 0 10px;
+  box-shadow: 10px 10px 50px #303030;
+}
+
+#pane p {
+	font-family: 'Raleway', sans-serif;
+	color: 	#505050;	
+}
+
+input[type=text] {
+	width: 80%;
+	padding: 10px;
+	border: solid 2px #808080;
+	transition: border 0.3s;
+	background: none;
+}
+
+input[type=submit] {
+	border: solid 2px #808080;
+	margin-top: 20px;
+	padding: 5px 10px 5px 10px;
+	background: none;
+	color: #303030;
+}
+
 #banner {
         -moz-align-items: center;
         -webkit-align-items: center;
@@ -63,14 +102,8 @@ nav {
         display: -ms-flex;
         display: flex;
         padding: 0em 0 0em 3em ;
-        /*background-attachment: fixed;
-        background-position: center;
-        background-repeat: no-repeat;
-        background-size: cover;*/
-        /*border-bottom: 0 !important;*/
         cursor: default;
         height: 100vh;
-        /*margin-bottom: -3.25em;*/
         max-height: 32em;
         min-height: 22em;
         position: relative;
