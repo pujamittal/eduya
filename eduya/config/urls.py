@@ -15,7 +15,9 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
+from django.contrib.auth.views import password_reset, password_reset_done
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
+    url(r'^reset-password/$', password_reset, name='reset_password')
 ]
