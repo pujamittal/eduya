@@ -1,0 +1,112 @@
+body {
+background: linear-gradient(rgba(20, 26, 91, 0.6), rgba(20, 26, 91, 0.6)),
+			rgba(20, 26, 91, 0.6) url("pattern.png") no-repeat center;
+/*background: url("pattern.png");*/
+background-attachment: fixed;
+background-size: cover;
+color: #fff;
+text-rendering: optimizeLegibility;
+margin: 0;
+padding: 15px 10px 15px;
+height: 100%;
+}
+
+
+
+h1 {
+/**padding-top: 25px*/
+font-family: 'Julius Sans One', sans-serif;
+/*font-size: 144px;*/
+}
+
+h2 {
+padding-top: 15px;
+color: rgba(20, 26, 91, .8);
+font-family: 'Raleway', sans-serif;
+}
+
+h3 {
+color: rgba(20, 26, 91, .8);
+font-family: 'Raleway', sans-serif;
+margin-top: 2.5px;
+}
+
+h4 {
+color: rgba(20, 26, 91, .8);
+font-family: 'Raleway', sans-serif;
+margin-top: 5px;
+}
+
+#pane {
+position: fixed; /* could be absolute */
+top: 0; left: 0; bottom: 0; right: 0;
+margin: auto;
+width: 30%;
+height: 35%;
+background-color: #fff;
+opacity: .8;
+text-align: center;
+padding: 5px 10px 10px 10px;
+box-shadow: 10px 10px 50px #303030;
+}
+
+#pane p {
+font-family: 'Raleway', sans-serif;
+color: 	#505050;	
+}
+
+input[type=text] {
+width: 80%;
+margin-bottom: 15px;
+padding: 10px;
+border: solid 2px #808080;
+transition: border 0.3s;
+background: none;
+}
+
+input[type=email] {
+width: 80%;
+margin-bottom: 15px;
+padding: 10px;
+border: solid 2px #808080;
+transition: border 0.3s;
+background: none;
+}
+
+input[type=password] {
+width: 80%;
+margin-bottom: 15px;
+padding: 10px;
+border: solid 2px #808080;
+transition: border 0.3s;
+background: none;
+}
+
+input[type=submit] {
+border: solid 2px #808080;
+margin-top: 5px;
+padding: 5px 20px 5px 20px;
+background: none;
+color: #303030;
+}
+
+a:link {
+    color: rgba(20, 26, 91, .8);
+    background-color: transparent;
+    text-decoration: none;
+}
+
+a:hover {
+    color: rgba(20, 26, 91, 1.0);
+	background-color: transparent;
+	font-weight: bold;
+}
+
+a:visited {
+    color: rgba(20, 26, 91, .4);
+    background-color: transparent;
+    text-decoration: none;
+}
+
+
+
