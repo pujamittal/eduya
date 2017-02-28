@@ -58,17 +58,23 @@ nav {
 	text-transform: uppercase;
 }
 
+.vert-center {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    height: 100vh;
+}
+
 #pane {
-  position: fixed; /* could be absolute */
-  top: 0; left: 0; bottom: 0; right: 0;
+  padding: 2% 5%;
   margin: auto;
   width: 30%;
-  height: 45%;
+  overflow: hidden;
   background-color: #fff;
   opacity: .8;
   text-align: center;
-  padding: 5px 10px 0 10px;
   box-shadow: 10px 10px 50px #303030;
+  overflow:visible;
 }
 
 #pane p {
