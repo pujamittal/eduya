@@ -27,7 +27,8 @@ SECRET_KEY = '6*@uvc6oq%0t$st&i_n@)na1u(-h_w9)!as6%!rwgcv44%(3dy'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+C9_HOST_STRING = str(os.environ.get("C9_PROJECT")) + "-" + str(os.environ.get("C9_USER")) + ".c9users.io"
+ALLOWED_HOSTS = [C9_HOST_STRING]
 
 
 # Application definition
