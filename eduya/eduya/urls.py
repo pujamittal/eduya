@@ -30,5 +30,6 @@ urlpatterns = [
     url(r'^account/reset/done/$', password_reset_complete, name='password_reset_complete'),
     url(r'^register/$', views.register, {'sign_up': '/templates/sign_up.html'}, name='register'),
     url(r'^login/$', views.login,  {'log_in': '/templates/log_in.html'}, name='login'),
-    url(r'^reset/$', view.reset,  {'pw_reset': '/templates/pw_reset.html'}, name='reset'),
+    url(r'^reset/$', views.reset,  {'pw_reset': '/templates/pw_reset.html'}, name='reset'),
+    url(r'^students/', include('students.urls'))
 ]
