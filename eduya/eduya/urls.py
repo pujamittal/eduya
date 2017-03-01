@@ -15,6 +15,7 @@ Including another URLconf
 """
 from django.conf.urls import include, url
 from django.contrib import admin
+from . import views
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
@@ -26,4 +27,8 @@ urlpatterns = [
         'django.contrib.auth.views.password_reset_confirm',
         name='password_reset_confirm'),
     url(r'^account/reset/done/$', 'django.contrib.auth.views.password_reset_complete', name='password_reset_complete'),
+    url(r'^register/$', views.register, {'sign_up': '/templates/sign_up.html'}, name='register'),
+	url(r'^login/$', views.login, name='login'),
+	url(r'^reset/$', view.reset, name='reset'),
 ]
+

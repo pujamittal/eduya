@@ -6,7 +6,14 @@
 
 from django.conf import settings
 from django.core.mail import send_mail
+from django.shortcuts import render
+from .models import Student 
 
+
+# Create your views here.
+def register(request):
+    
+    
 #sendmail(subject, message, from_email, to_list, fail_silently=True)
 def conf(request):
     
@@ -25,3 +32,4 @@ def conf(request):
         messages.success(request, 'Thank you for registering, please check your email for a confirmation link.')
         return HttpResponseRedirect('/Thank-you/')
     return render("thankyou.html", locals(), context_instance=RequestContext(request))
+	
