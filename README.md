@@ -8,6 +8,8 @@ Activating the python virtualenv: `source venv/bin/activate`
 Installing the necessary libraries: `venv/bin/pip install -r requirements.txt`
 If new dependencies are added, make note of them by updating requirements.txt: `pip freeze > requirements.txt`
 
+Installing the requirements: `sudo pip3 install -r requirements.txt`
+
 Setting up the database:
 Within the postgresql shell:
 ```
