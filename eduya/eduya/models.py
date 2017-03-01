@@ -24,12 +24,23 @@ class StudentManager(BaseUserManager):
         return self._create_user(email, password, **extra_fields)
 
 # Create your models here.
-"""
-class Student(AbstractBaseUser):
-    email = models.EmailField(max_length=255, unique=True)
-    first_name = models.CharField(blank=False)    
+class Student(AbstractBaseUser, PermissionsMixin):
+    email = models.EmailField(unique=True, blank=False)
+    password = models.CharField(blank=False)
+    first_name = models.CharField(blank=False)
     last_name = models.CharField(blank=False)
-    password = models.CharField
-    tutor = models.BooleanField(default=False)
+    is_tutor = models.BooleanField(default=False)
+    
+    objects = StudentManager()
+    
+    REQUIRED_FIELDS = ['first_name', 'last_name', 'is_tutor']
     USERNAME_FIELD = 'email'
-"""
+    
+    def get_short_name(self):
+        return self.first_name
+    
+    def get_long_name(self):
+        return str(self.first_name + self.last_name)
+    
+    def __str__(self):
+        return '<Student %s>' % self.email 
