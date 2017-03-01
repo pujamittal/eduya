@@ -33,6 +33,12 @@ h2 {
 	font-family: 'Raleway', sans-serif;
 }
 
+h3 {
+color: rgba(20, 26, 91, .8);
+font-family: 'Raleway', sans-serif;
+margin-top: 2.5px;
+}
+
 p {
 	font-family: 'Raleway', sans-serif;
 }
@@ -45,6 +51,24 @@ a {
 a:visited {
 	text-decoration: none;
 	color: #fff;	
+}
+
+#forg_pw a:link {
+    color: rgba(20, 26, 91, .8);
+    background-color: transparent;
+    text-decoration: none;
+}
+
+#forg_pw a:hover {
+    color: rgba(20, 26, 91, 1.0);
+    background-color: transparent;
+    font-weight: bold;
+}
+
+#forg_pw a:visited {
+    color: rgba(20, 26, 91, .4);
+    background-color: transparent;
+    text-decoration: none;
 }
 
 nav {
@@ -65,7 +89,7 @@ nav {
     height: 100vh;
 }
 
-#pane {
+.pane {
   padding: 2% 5%;
   margin: auto;
   width: 30%;
@@ -77,12 +101,12 @@ nav {
   overflow:visible;
 }
 
-#pane p {
+.pane p {
 	font-family: 'Raleway', sans-serif;
 	color: 	#505050;	
 }
 
-input[type=text] {
+/*input[type=text] {
 	width: 80%;
 	padding: 10px;
 	border: solid 2px #808080;
@@ -96,9 +120,44 @@ input[type=submit] {
 	padding: 5px 10px 5px 10px;
 	background: none;
 	color: #303030;
+}*/
+
+input[type=text] {
+width: 80%;
+margin-bottom: 15px;
+padding: 10px;
+border: solid 2px #808080;
+transition: border 0.3s;
+background: none;
 }
 
-#banner {
+input[type=email] {
+width: 80%;
+margin-bottom: 15px;
+padding: 10px;
+border: solid 2px #808080;
+transition: border 0.3s;
+background: none;
+}
+
+input[type=password] {
+width: 80%;
+margin-bottom: 15px;
+padding: 10px;
+border: solid 2px #808080;
+transition: border 0.3s;
+background: none;
+}
+
+input[type=submit] {
+border: solid 2px #808080;
+margin-top: 7.5px;
+padding: 5px 20px 5px 20px;
+background: none;
+color: #303030;
+}
+
+.banner {
         -moz-align-items: center;
         -webkit-align-items: center;
         -ms-align-items: center;
@@ -116,28 +175,28 @@ input[type=submit] {
         top: -3.25em;
     }
 
-        #banner h1 {
+        .banner h1 {
             font-size: 5.25em;
             margin-bottom: -5px;
         }
 
-            #banner > .inner .image {
+            .banner > .inner .image {
                 display: none;
             }
 
-            #banner > .inner header {
+            .banner > .inner header {
                 width: auto;
             }
 
-                #banner > .inner header > :first-child {
+                .banner > .inner header > :first-child {
                     width: auto;
                 }
 
-                    #banner > .inner header > :first-child:after {
+                    .banner > .inner header > :first-child:after {
                         max-width: 100%;
                     }
 
-            #banner > .inner .content {
+            .banner > .inner .content {
                 display: -moz-flex;
                 display: -webkit-flex;
                 display: -ms-flex;
@@ -149,37 +208,37 @@ input[type=submit] {
                 margin: 0 0 2em 0;
             }
 
-                #banner > .inner .content > * {
+                .banner > .inner .content > * {
                     margin-left: 1.5em;
                     margin-bottom: 0;
                 }
 
-                #banner > .inner .content > :first-child {
+                .banner > .inner .content > :first-child {
                     margin-left: 0;
                 }
 
-                #banner > .inner .content p {
+                .banner > .inner .content p {
                     font-size: 0.8em;
                     font-weight: 600;
                     letter-spacing: 0.25em;
                     text-transform: uppercase;
                 }
 
-        #banner.major {
+        .banner.major {
             height: 75vh;
             min-height: 30em;
             max-height: 50em;
         }
 
-            #banner.major.alt {
+            .banner.major.alt {
                 opacity: 0.75;
             }
 
-        body.is-loading #banner:after {
+        body.is-loading .banner:after {
             opacity: 1.0;
         }
 
-        body.is-loading #banner > .inner {
+        body.is-loading .banner > .inner {
             -moz-filter: blur(0.125em);
             -webkit-filter: blur(0.125em);
             -ms-filter: blur(0.125em);
@@ -193,7 +252,7 @@ input[type=submit] {
 
         @media screen and (max-width: 1280px) {
 
-            #banner {
+            .banner {
                 background-attachment: scroll;
             }
 
@@ -201,7 +260,7 @@ input[type=submit] {
 
         @media screen and (max-width: 736px) {
 
-            #banner {
+            .banner {
                 padding: 5em 0 1em 0 ;
                 height: auto;
                 margin-bottom: -2.75em;
@@ -210,20 +269,20 @@ input[type=submit] {
                 top: -2.75em;
             }
 
-                #banner h1 {
+                .banner h1 {
                     font-size: 2em;
                 }
 
-                #banner > .inner .content {
+                .banner > .inner .content {
                     display: block;
                 }
 
-                    #banner > .inner .content > * {
+                    .banner > .inner .content > * {
                         margin-left: 0;
                         margin-bottom: 2em;
                     }
 
-                #banner.major {
+                .banner.major {
                     height: auto;
                     min-height: 0;
                     max-height: none;
@@ -233,15 +292,15 @@ input[type=submit] {
 
         @media screen and (max-width: 480px) {
 
-            #banner {
+            .banner {
                 padding: 6em 0 2em 0 ;
             }
 
-                #banner > .inner .content p br {
+                .banner > .inner .content p br {
                     display: none;
                 }
 
-                #banner.major {
+                .banner.major {
                     padding: 8em 0 4em 0 ;
                 }
 
