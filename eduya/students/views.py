@@ -3,10 +3,10 @@ from django.http import HttpResponse
 
 # Create your views here.
 def register(request):
-    pass
+    return HttpResponse('Register Page')
 
 def login(request):
-    pass
+    return HttpResponse('Login Page')
 
 def reset(request):
-    pass
+    return HttpResponse('Reset Page')
