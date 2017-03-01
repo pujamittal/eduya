@@ -25,7 +25,7 @@ return true;
           <p>Please fill out the fields below to create an account</p>
           <input type="email" name="email" placeholder="Your Email" required/>
           <input type="text" name="username" placeholder="Username" pattern="[a-zA-Z0-9]+" oninvalid="this.setCustomValidity('Please enter a username containing only numbers and lowercase/uppercase letters')" oninput="setCustomValidity('')"required/>
-          <input type="password" name="password" placeholder="Password" pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" oninvalid="this.setCustomValidity('Please enter an 8+ character password containing an uppercase, lowercase and number/special character')"
+          <input type="password" name="password" placeholder="Password" pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" oninvalid="this.setCustomValidity('Please enter an 8+ character password containing an uppercase, lowercase and number or special character')"
 			oninput="setCustomValidity('')" required/>
 		  <input type="password" name="confirmpassword" placeholder="Confirm Password"  oninvalid="this.setCustomValidity('Passwords do not match.')"
 			oninput="setCustomValidity('')" required/>
