@@ -1,0 +1,158 @@
+body {
+	
+    background: url("pattern.png");
+    background-attachment: fixed;
+    background-size: cover;
+    color: #fff;
+    text-rendering: optimizeLegibility;
+    margin: 0;
+    padding: 15px 10px 15px;
+  	height: 100%;
+}
+
+hr {
+        border: 2;
+        border-bottom: solid 1px rgba(212, 212, 255, 1);
+        /*margin: 2em 0;*/
+        width: 260%
+}
+
+        hr.major {
+            margin: 3em 0;
+        }
+
+h1 {
+	/*padding-top: 50px;*/
+	font-family: 'Julius Sans One', sans-serif;
+	/*font-size: 144px;*/
+}
+
+h2 {
+	color: rgba(20, 26, 91, .8);
+	font-family: 'Raleway', sans-serif;
+}
+
+h3 {
+color: rgba(20, 26, 91, .8);
+font-family: 'Raleway', sans-serif;
+margin-top: 2.5px;
+}
+
+p {
+	font-family: 'Raleway', sans-serif;
+}
+
+a {
+	text-decoration: none;
+	color: #fff;
+}
+
+a:visited {
+	text-decoration: none;
+	color: #fff;	
+}
+
+#forg_pw a:link {
+    color: rgba(20, 26, 91, .8);
+    background-color: transparent;
+    text-decoration: none;
+}
+
+#forg_pw a:hover {
+    color: rgba(20, 26, 91, 1.0);
+    background-color: transparent;
+    font-weight: bold;
+}
+
+#forg_pw a:visited {
+    color: rgba(20, 26, 91, .4);
+    background-color: transparent;
+    text-decoration: none;
+}
+
+nav {
+	font-family: 'Raleway', sans-serif;
+	text-transform: uppercase;
+	float: right;
+	padding: 5px 10px 0 0;
+	font-size: 0.8em;
+	font-weight: 600;
+	letter-spacing: 0.25em;
+	text-transform: uppercase;
+}
+
+.vert-center {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    height: 100vh;
+}
+
+.pane {
+  padding: 2% 5%;
+  margin: auto;
+  width: 50%;
+  overflow: hidden;
+  background-color: #fff;
+  opacity: .8;
+  text-align: center;
+  box-shadow: 10px 10px 50px #303030;
+  overflow:visible;
+}
+
+.pane p {
+	font-family: 'Raleway', sans-serif;
+	color: 	#505050;	
+}
+
+/*input[type=text] {
+	width: 80%;
+	padding: 10px;
+	border: solid 2px #808080;
+	transition: border 0.3s;
+	background: none;
+}
+
+input[type=submit] {
+	border: solid 2px #808080;
+	margin-top: 20px;
+	padding: 5px 10px 5px 10px;
+	background: none;
+	color: #303030;
+}*/
+
+input[type=text] {
+width: 80%;
+margin-bottom: 15px;
+padding: 10px;
+border: solid 2px #808080;
+transition: border 0.3s;
+background: none;
+}
+
+input[type=email] {
+width: 80%;
+margin-bottom: 15px;
+padding: 10px;
+border: solid 2px #808080;
+transition: border 0.3s;
+background: none;
+}
+
+input[type=password] {
+width: 80%;
+margin-bottom: 15px;
+padding: 10px;
+border: solid 2px #808080;
+transition: border 0.3s;
+background: none;
+}
+
+input[type=submit] {
+border: solid 2px #808080;
+margin-top: 7.5px;
+padding: 5px 20px 5px 20px;
+background: none;
+color: #303030;
+}
+
