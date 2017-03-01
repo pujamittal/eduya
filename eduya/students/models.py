@@ -58,9 +58,9 @@ class StudentManager(BaseUserManager):
 # Custom Student model, an extension of AbstractBaseUser
 class Student(AbstractBaseUser, PermissionsMixin):
     email = models.EmailField(unique=True, null=True, blank=False)
-    password = models.CharField(blank=False)
-    first_name = models.CharField(blank=False)
-    last_name = models.CharField(blank=False)
+    password = models.CharField(blank=False, max_length=256)
+    first_name = models.CharField(blank=False, max_length=30)
+    last_name = models.CharField(blank=False, max_length=30)
     is_tutor = models.BooleanField(default=False)
     
     objects = StudentManager()
