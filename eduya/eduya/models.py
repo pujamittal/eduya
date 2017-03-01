@@ -47,21 +47,21 @@ class StudentManager(BaseUserManager):
 class Student(AbstractBaseUser, PermissionsMixin):
     email = models.EmailField(unique=True, blank=False)
     password = models.CharField(blank=False)
-    first_name = models.CharField(blank=False)
-    last_name = models.CharField(blank=False)
+    fname = models.CharField(blank=False)
+    lname = models.CharField(blank=False)
     is_tutor = models.BooleanField(default=False)
     is_superuser = models.BooleanField(default=False)
     
     objects = StudentManager()
     
-    REQUIRED_FIELDS = ['first_name', 'last_name', 'is_tutor', "is_superuser"]
+    REQUIRED_FIELDS = ['fname', 'lname', 'is_tutor', "is_superuser"]
     USERNAME_FIELD = 'email'
     
     def get_short_name(self):
-        return self.first_name
+        return self.fname
     
     def get_long_name(self):
-        return str(self.first_name + self.last_name)
+        return str(self.fname + self.lname)
     
     def __str__(self):
         return '<Student %s>' % self.email 
