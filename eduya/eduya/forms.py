@@ -5,8 +5,8 @@ from .models import Student
 class registerForm(forms.Form):
 	# Setting char fields
 	email = forms.CharField(label='email', widget=forms.EmailInput, required=True)
-	password = forms.CharField(label='fname', widget=forms.TextInput, required=True)
-	password = forms.CharField(label='lname', widget=forms.TextInput, required=True)
+	fname = forms.CharField(label='fname', widget=forms.TextInput, required=True)
+	lname = forms.CharField(label='lname', widget=forms.TextInput, required=True)
 	password = forms.CharField(label='password', widget=forms.PasswordInput, required=True)
 	confirmpassword = forms.CharField(label='confirmpassword', widget=forms.PasswordInput, required=True)
 	tutor = forms.CharField(label='tutor', widget=forms.CheckboxInput, required=False)
