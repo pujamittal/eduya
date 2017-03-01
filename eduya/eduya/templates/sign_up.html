@@ -1,0 +1,37 @@
+<!DOCTYPE HTML>
+<head>
+<title>eduya</title>
+<script type="text/javascript">
+function val() {
+if(frm.confirmpassword.value != frm.password.value)
+{
+	frm.confirmpassword.setCustomValidity('Passwords do not match.');
+	return false;
+}
+frm.confirmpassword.setCustomValidity('');
+return true;
+}
+</script>
+
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="static/main.css" />
+    <link href="https://fonts.googleapis.com/css?family=Julius+Sans+One|Raleway|Montserrat|Work Sans" rel="stylesheet">
+</head>
+<body>
+	<div class="vert-center">
+		<div class="pane">
+		<h2>Sign Up</h2>
+		<form name="frm">
+          <p>Please fill out the fields below to create an account</p>
+          <input type="email" name="email" placeholder="Your Email" required/>
+          <input type="text" name="username" placeholder="Username" pattern="[a-zA-Z0-9]+" oninvalid="this.setCustomValidity('Please enter a username containing only numbers and lowercase/uppercase letters')" oninput="setCustomValidity('')"required/>
+          <input type="password" name="password" placeholder="Password" pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" oninvalid="this.setCustomValidity('Please enter an 8+ character password containing an uppercase, lowercase and number or special character')"
+			oninput="setCustomValidity('')" required/>
+		  <input type="password" name="confirmpassword" placeholder="Confirm Password"  oninvalid="this.setCustomValidity('Passwords do not match.')"
+			oninput="setCustomValidity('')" required/>
+          <h3>I want to sign up to be a tutor! <input type="checkbox" name="email"/> </h3>
+          <input type="submit" value="Submit" id="submit" onclick="val();"/>
+        </form>
+		</div>
+	</div>
+</body>
