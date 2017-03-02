@@ -6,7 +6,7 @@ from models import Post
 def index(request):
     posts = Post.objects.all()
     context = {'posts': posts}
-    return render(request, 'posts/index.html', context)
+    return render(request, 'index.html', context)
         
 def post(request, post_id):
     try:
@@ -14,4 +14,4 @@ def post(request, post_id):
         context = {'post': post}
     except Post.DoesNotExist:
         raise Http404("Post does not exist")
-    return render(request, 'posts/detail.html', context)
+    return render(request, 'detail.html', context)
