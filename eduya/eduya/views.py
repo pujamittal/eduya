@@ -7,6 +7,7 @@
 from django.conf import settings
 from django.core.mail import send_mail
 from django.shortcuts import render
+<<<<<<< HEAD
 from .models import Student 
 
 
@@ -33,3 +34,10 @@ def conf(request):
         return HttpResponseRedirect('/Thank-you/')
     return render("thankyou.html", locals(), context_instance=RequestContext(request))
 	
+=======
+from django.http import HttpResponse
+
+def index(request):
+    # TODO: Link this to index.html/homepage route
+    return HttpResponse('Index')
+>>>>>>> c576ab931976ad0304130c12a26f08c82102bf4c

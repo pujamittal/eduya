@@ -11,8 +11,6 @@ https://docs.djangoproject.com/en/1.10/ref/settings/
 """
 
 import os
-from .email_info import *
-
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -27,7 +25,8 @@ SECRET_KEY = '6*@uvc6oq%0t$st&i_n@)na1u(-h_w9)!as6%!rwgcv44%(3dy'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+C9_HOST_STRING = str(os.environ.get("C9_PROJECT")) + "-" + str(os.environ.get("C9_USER")) + ".c9users.io"
+ALLOWED_HOSTS = [C9_HOST_STRING]
 
 
 # Application definition
@@ -129,9 +128,17 @@ STATIC_URL = '/static/'
 # Custom User Model (Student)
 AUTH_USER_MODEL = 'students.Student'
 
+<<<<<<< HEAD
 EMAIL_BACKEND = EMAIL_BACKEND
 EMAIL_USE_TLS = EMAIL_USE_TLS
 EMAIL_HOST = EMAIL_HOST
 EMAIL_HOST_USER = EMAIL_HOST_USER
 EMAIL_HOST_PASSWORD = EMAIL_HOST_PASSWORD
 EMAIL_PORT = EMAIL_PORT
+=======
+# EMAIL_USE_TLS = EMAIL_USE_TLS
+# EMAIL_HOST = EMAIL_HOST
+# EMAIL_HOST_USER = EMAIL_HOST_USER
+# EMAIL_HOST_PASSWORD = EMAIL_HOST_PASSWORD
+# EMAIL_PORT = EMAIL_PORT
+>>>>>>> c576ab931976ad0304130c12a26f08c82102bf4c
