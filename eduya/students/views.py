@@ -3,8 +3,9 @@ from django.http import HttpResponse
 
 # Create your views here.
 def register(request):
-    if request.user.is_authenticated(): #idk what this does
-        return HttpResponseRedirect("/")
+    """
+    if request.user.is_authenticated(): 
+        return HttpResponseRedirect("/index.html") #idk if this works
     
     form = RegisterForm(request.POST or None)
     
@@ -18,15 +19,42 @@ def register(request):
         new_user.save()         
         login(request, new_user);   
         messages.success(request, 'Success! Your account was created.')
-        return render(request, 'index.html')
+        return render(request, 'login.html')
     
     #if form isn't valid?
+    
     context = { #todo, needs to be fleshed out
     }
-    return render(request, 'put_index_here', context)
+    return render(request, 'register.html', context)
+    """
+    return render(request, 'register.html')
 
 def login(request):
+    """
+    form = LoginForm(request.POST or None)
+    next_url = request.GET.get('next')
+    if next_url is None:
+        next_url = "/"
+    if form.is_valid():
+        email = form.cleaned_data['email']
+        password = form.cleaned_data['password']
+        user = authenticate(email=email, password=password)
+        if user is not None:
+            messages.success(request, 'Success! Welcome, '+(user.first_name or ""))
+            login(request, user)
+            return HttpResponseRedirect(next_url)
+        else:
+            messages.warning(request, 'Invalid username or password.')
+    context = {
+        "form": form,
+        "page_name" : "Login",
+        "button_value" : "Login",
+        "links" : ["register"],
+    }
+    return render(request, 'auth_form.html', context)
+    """
     return render(request, 'login.html')
+
 
 def reset(request):
     return render(request, 'reset.html')
