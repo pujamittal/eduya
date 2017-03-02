@@ -1,8 +1,11 @@
 {% for post in posts %}
+    <a href="/posts/{{ post.pk }}">Link</a> 
+    {{ post.student }}
     {{ post.subject }}
     {{ post.course }}
     {{ post.price }}
     {{ post.location }}
     {{ post.datetime }}
     {{ post.notes }}
+    <br><hr>
 {% endfor %}
