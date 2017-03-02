@@ -32,6 +32,7 @@ ALLOWED_HOSTS = [C9_HOST_STRING]
 # Application definition
 
 INSTALLED_APPS = [
+    'posts.apps.PostsConfig',
     'students.apps.StudentsConfig',
     'django.contrib.admin',
     'django.contrib.auth',
