@@ -26,7 +26,7 @@ def registerUser(request):
         newStudent.save()    
         # Used to send email
         subject = 'Thank you for registering with eduya'
-        message = 'Welcome to eduya! Please confirm your email address at the following link.'
+        message = 'Welcome to eduya! Your account is now active.'
         from_email = settings.EMAIL_HOST_USER
         to_list = [newStudent.email, settings.EMAIL_HOST_USER]
         send_mail(subject, message, from_email, to_list, fail_silently=True)
@@ -92,3 +92,38 @@ def individual_tutor(request, tutor_id):
         return HttpResponseNotFound('<h1>Tutor not found</h1>')
         
     return render(request, 'students/tutor_profile.html', context)
+    
+def update_profile(request):
+    if request.user.is_authenticated():
+        """
+        user_id = request.user.id
+        #int(request.GET.get('id'))
+        user = Student.objects.filter(id=user_id)[0]
+        
+        form = updateForm(request.POST or None, instance=request.user)
+        
+        if form.is_valid():
+            user.email = form.cleaned_data['email']
+            user.first_name = form.cleaned_data['first_name']
+            user.last_name = form.cleaned_data['last_name']
+            user.password = form.cleaned_data['password']
+            user.save()
+            form.save()
+            return HttpResponseRedirect('/profile')
+        else:
+            return render(request, 'students/edit_user.html')
+        """
+        if request.method == 'POST':
+            p = request.user
+            #p.email=str(request.POST.get('email'))
+            p.first_name=str(request.POST.get('first_name'))
+            p.last_name=str(request.POST.get('last_name'))
+            p.save()
+            if p.pk is not None:
+                return HttpResponseRedirect('/profile/')
+            else:
+                return render(request, 'students/edit_user.html')
+        else:
+            return render(request, 'students/edit_user.html')
+    else:
+        return HttpResponseRedirect('/login')

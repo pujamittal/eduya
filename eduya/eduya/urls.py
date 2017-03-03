@@ -34,5 +34,6 @@ urlpatterns = [
     url(r'^posts/', include('posts.urls')),
     url(r'^tutors/$', student_views.all_tutors, name='all_tutors'),
     url(r'^tutors/(?P<tutor_id>[0-9]+)/$', student_views.individual_tutor, name='individual_tutor'),
+    url(r'^profile/edit/$', student_views.update_profile, name='update_profile'),
     url(r'^profile/$', student_views.my_profile, name='my_profile')
 ]
