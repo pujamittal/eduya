@@ -1,5 +1,4 @@
 from django import forms
-from django.contrib.auth.forms import UserCreationForm
 from .models import Student
 
 class registerForm(forms.Form):
@@ -11,12 +10,7 @@ class registerForm(forms.Form):
     password = forms.CharField(label='password', widget=forms.PasswordInput, required=True)
     confirmpassword = forms.CharField(label='confirmpassword', widget=forms.PasswordInput, required=True)
     is_tutor = forms.BooleanField(label='is_tutor', widget=forms.CheckboxInput, required=False)	
-    # checks that passwords match/cleans them
-    """
-    class Meta:
-        model = Student
-        fields = {'email', 'first_name', 'last_name', 'is_tutor', 'confirmpassword'}
-    """
+    
     
     def clean_password(self): 
         password = self.cleaned_data.get("password")

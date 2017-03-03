@@ -11,7 +11,7 @@ def registerUser(request):
     
     if request.user.is_authenticated(): 
         #return HttpResponseRedirect("/user/" + request.user.id) #TODO: Change to fit profile url format
-        return HttpResponseRedirect('http://www.google.com/')
+        return HttpResponseRedirect('/logout')
     form = registerForm(request.POST or None)
     if form.is_valid(): #probably needs some work
         newStudent = Student.objects.create_user(email=form.cleaned_data['email'], 
@@ -28,14 +28,9 @@ def registerUser(request):
     #else:
         #return HttpResponse('Fuck')
     #TODO: Figure out this context shit
-    """
-    context = { #todo, needs to be fleshed out
-    }
-    return render(request, 'register.html', context)
-    """
 
     messages.error(request, 'Error: invalid form.')
-    return render(request, 'register.html', {'form': form})
+    return render(request, 'register.html')
     
 
 def loginUser(request):
