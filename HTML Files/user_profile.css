@@ -1,5 +1,5 @@
 body {
-	/*background: linear-gradient(rgba(20, 26, 91, 0.6), rgba(20, 26, 91, 0.6)),
+  /*background: linear-gradient(rgba(20, 26, 91, 0.6), rgba(20, 26, 91, 0.6)),
                 rgba(20, 26, 91, 0.6) url("pattern.png") no-repeat center;*/
     background: url("pattern.png");
     background-attachment: fixed;
@@ -8,15 +8,15 @@ body {
     text-rendering: optimizeLegibility;
     margin: 0;
     padding: 15px 10px 15px;
-  	height: 100%;
+    height: 100%;
     font-family: 'Raleway', sans-serif;
 }
 
 
 
 h2 {
-	color: rgba(20, 26, 91, .8);
-	font-family: 'Raleway', sans-serif;
+  color: rgba(20, 26, 91, .8);
+  font-family: 'Raleway', sans-serif;
 }
 
 h3 {
@@ -26,18 +26,18 @@ margin-top: 2.5px;
 }
 
 p {
-	font-family: 'Raleway', sans-serif;
+  font-family: 'Raleway', sans-serif;
 }
 
 nav {
-	font-family: 'Raleway', sans-serif;
-	text-transform: uppercase;
-	float: right;
-	padding: 5px 10px 0 0;
-	font-size: 0.8em;
-	font-weight: 600;
-	letter-spacing: 0.25em;
-	text-transform: uppercase;
+  font-family: 'Raleway', sans-serif;
+  text-transform: uppercase;
+  float: right;
+  padding: 5px 10px 0 0;
+  font-size: 0.8em;
+  font-weight: 600;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
 }
 
 .vert-center {
@@ -73,8 +73,8 @@ nav {
 }
 
 .pane p {
-	font-family: 'Raleway', sans-serif;
-	color: 	#505050;	
+  font-family: 'Raleway', sans-serif;
+  color:  #505050;  
 }
 
 
@@ -114,6 +114,16 @@ background: none;
 color: #303030;
 }
 
+input[type=button] {
+border: solid 2px #808080;
+margin-top: 7.5px;
+padding: 5px 20px 5px 20px;
+background: rgba(20, 26, 91, .1);
+transition: border 0.3s;
+color: #303030;
+width: 100%;
+}*/
+
 #datetime {
     width: 80%;
 margin-bottom: 15px;
@@ -131,13 +141,14 @@ background: none;
   border-color: rgba(20, 26, 91, .8);
   font-family: 'Raleway', sans-serif;
   font-weight: bold;
+  vertical-align: center;
 }
 
 .right-column {
   float:right;
   width: 50%;
   padding: 5px;
-  text-align: left;
+  text-align: center;
   border-color: rgba(20, 26, 91, .8);
   font-family: 'Raleway', sans-serif;
   font-weight: bold;
@@ -150,7 +161,7 @@ background: none;
     position: relative;
     overflow: hidden;
     border-radius: 50%;
-    flex-shrink: 1;
+    flex-shrink: 0;
 }
 
 img {
