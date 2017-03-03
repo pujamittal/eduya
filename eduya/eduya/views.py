@@ -3,16 +3,15 @@
 # Your apps
 # Local apps
 
-
 from django.conf import settings
 from django.core.mail import send_mail
 from django.shortcuts import render
 from students.models import Student 
 from django.http import HttpResponse
 
+
 # Create your views here.
-def register(request):
-    pass
+
 
 def confirm_email(request):
     subject = 'Thank you for registering with eduya'
@@ -24,6 +23,8 @@ def confirm_email(request):
     #return HttpResponseRedirect('/homepage/')
     #return render("homepage.html", locals(), context_instance=RequestContext(request))
 	
+
 def index(request):
     # TODO: Link this to index.html/homepage route
-    return HttpResponse('Index')
+    return render(request, "index.html")
+

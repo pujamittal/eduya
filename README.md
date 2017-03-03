@@ -24,3 +24,23 @@ To insert test data into database (for demo purposes):
 python manage.py shell
 import create_test_data
 ```
+
+URL endpoints:
+```
+/
+/admin/
+/reset-password/
+/reset-password/done/
+/reset-password/confirm/
+/reset-password-complete/
+/register/
+/login/
+/logout/
+/reset/
+/posts/
+/posts/new/
+/posts/<post_id>/
+/tutors/
+/tutors/<tutor_id>/
+/profile/
+```

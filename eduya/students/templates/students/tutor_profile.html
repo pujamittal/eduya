@@ -1,0 +1,37 @@
+<!DOCTYPE HTML>
+<head>
+<title>eduya</title>
+    <meta charset="utf-8" />
+
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'tutor_profile.css' %}" />
+
+    <link href="https://fonts.googleapis.com/css?family=Julius+Sans+One|Raleway|Montserrat|Work Sans" rel="stylesheet">
+	 <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-material-design/4.0.2/bootstrap-material-design.css" rel="stylesheet">
+</head>
+<body>
+  <div class="vert-center">
+		<div class="pane">
+      <div>
+            <div id="banner">
+              <div id="shift-right">
+              <div class="image-cropper">
+          <img src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcRTy1GtPiIUg6rC2orWkc9B8O2Ho7SV0lejlHNZ8sWNvWQUWRax" class="rounded" />
+            </div>
+            </div>
+			<h2>{{ tutor.first_name }} {{ tutor.last_name }}</h2>
+      </div>
+      <div id="info">
+        <p> Rating: <div><span class="star">&starf;</span> <span class="star">&starf;</span> <span class="star">&starf;</span> <span class="star">&starf;</span> <span class="star">&starf;</span></div></p>
+        <p> Price: <div>$</div></p>
+        <p> Location: <div>NERV Headquarters</div></p>
+      </div>
+      <div id="reviews">
+        <h4 align="center">Reviews</h4>
+        <p>"They won't get in the EVA."</p>
+
+      </div>
+		  </div>
+    </div>
+  </div>
+</body>

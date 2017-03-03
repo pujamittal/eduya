@@ -32,6 +32,7 @@ ALLOWED_HOSTS = [C9_HOST_STRING, 'localhost']
 # Application definition
 
 INSTALLED_APPS = [
+    'home.apps.HomeConfig',
     'posts.apps.PostsConfig',
     'students.apps.StudentsConfig',
     'django.contrib.admin',
@@ -41,7 +42,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 ]
-
+SESSION_COOKIE_SECURE = True
+SESSION_EXPIRE_AT_BROWSER_CLOSE = True
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -129,10 +131,16 @@ STATIC_URL = '/static/'
 # Custom User Model (Student)
 AUTH_USER_MODEL = 'students.Student'
 
+# For offline uncomment next three lines and run python -m smtpd -n -c DebuggingServer localhost:1025
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-EMAIL_USE_TLS = True
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_HOST_USER = 'eduya307@gmail.com'
-EMAIL_HOST_PASSWORD = 'eduyaproject'
-EMAIL_PORT = 587
+# EMAIL_HOST = 'localhost'
+# EMAIL_PORT = 1025
+# EMAIL_FILE_PATH = '/email-messages/'
+
+# For online uncomment next 5 lines
+# EMAIL_PORT = 587
+# EMAIL_USE_TLS = True
+# EMAIL_HOST = 'smtp.gmail.com'
+# EMAIL_HOST_USER = 'eduya307@gmail.com'
+# EMAIL_HOST_PASSWORD = 'eduyaproject'
 

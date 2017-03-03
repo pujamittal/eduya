@@ -1,0 +1,6 @@
+To test that you’ve set up email properly, open up the Django shell and try:
+>>> from django.core.mail import EmailMessage
+>>> email = EmailMessage('Subject', 'Message', to=['example@example.com'])
+>>> email.send()
+1
+If the command returns 1, you’re good to go.

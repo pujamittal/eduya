@@ -12,10 +12,15 @@
   <div class="vert-center">
 		<div class="pane">
 		<h2>Login</h2>
-		<form name="frm">
+		<form name="frm"  action="/login/" method="POST">
+		      {% csrf_token %}
+		      {{ form.errors }}
+		      {{ form.non_field_errors }}
+		      {{ form.title.errors }}
+		      {{ form.title }}
           <p>Please fill out the fields below to create an account</p>
-          <input type="text" name="username" placeholder="Username" pattern="[a-zA-Z0-9]+" oninvalid="this.setCustomValidity('Please enter a valid username')" oninput="setCustomValidity('')"required/>
-          <input type="password" name="password" placeholder="Password" pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" oninvalid="this.setCustomValidity('Please enter your 8+ character password containing an uppercase, lowercase and number/special character')"
+          <input type="email" name="email" placeholder="Email" required/>
+          <input type="password" name="password" placeholder="Password" pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" oninvalid="this.setCustomValidity('Please enter your 8+ character password containing an uppercase, lowercase and number or special character')"
 			oninput="setCustomValidity('')" required/>
           <h3 id="forg_pw"><a href="pw_reset.html">Forgot password?</a></h3>
           <input type="submit" value="Submit" id="submit"/>
