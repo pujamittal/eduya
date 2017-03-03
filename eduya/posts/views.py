@@ -3,6 +3,7 @@ from django.http import HttpResponse, Http404
 from models import Post
 
 # Create your views here.
+"""
 def index(request):
     posts = Post.objects.all()
     context = {'posts': posts}
@@ -14,8 +15,8 @@ def index(request):
         pass
     else:
         pass
-    return render(request, 'index.html', context)
-        
+    return render(request, 'post_index.html', context)
+"""
 def post(request, post_id):
     try:
         post = Post.objects.get(pk=post_id)

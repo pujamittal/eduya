@@ -27,8 +27,9 @@ urlpatterns = [
     url(r'^password-reset/done/$', password_reset_done, name='password_reset_done'),
     url(r'^reset-password/confirm/(?P<uid64>[0-9A-Za-z]+)-(?P<token>.+)/$', password_reset_confirm, name='password_reset_confirm'),
     url(r'^reset/done/$', password_reset_complete, name='password_reset_complete'),
-    url(r'^register/$', student_views.register, name='register'),
-    url(r'^login/$', student_views.login, name='login'),
+    url(r'^register/$', student_views.registerUser, name='register'),
+    url(r'^login/$', student_views.loginUser, name='login'),
+    url(r'^logout/$', student_views.logoutUser, name='logout'),
     url(r'^reset/$', student_views.reset, name='reset'),
-    url(r'^posts/', include('posts.urls'))
+    #url(r'^posts/', include('posts.urls'))
 ]

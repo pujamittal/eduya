@@ -1,50 +1,58 @@
+from django.contrib.auth import authenticate, login, logout
+from django.http import HttpResponseRedirect, HttpResponse
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.contrib import messages
+
+from .forms import loginForm, registerForm
+from .models import Student
 
 # Create your views here.
-def register(request):
-    """
+def registerUser(request):
+    
     if request.user.is_authenticated(): 
-        return HttpResponseRedirect("/index.html") #idk if this works
-    
-    form = RegisterForm(request.POST or None)
-    
+        #return HttpResponseRedirect("/user/" + request.user.id) #TODO: Change to fit profile url format
+        return HttpResponseRedirect('http://www.google.com/')
+    form = registerForm(request.POST or None)
     if form.is_valid(): #probably needs some work
-        new_student = MyUser.objects.create_user(email=form.cleaned_data['email'], 
+        newStudent = Student.objects.create_user(email=form.cleaned_data['email'], 
         password=form.cleaned_data['password'], 
-        fname=form.cleaned_data['fname'], 
-        last_name=form.cleaned_data['lname']),
-        new_user.is_tutor=form.is_tutor
-        new_user.is_admin = False
-        new_user.save()         
-        login(request, new_user);   
+        first_name=form.cleaned_data['first_name'], 
+        last_name=form.cleaned_data['last_name'],
+        is_tutor=form.cleaned_data['is_tutor'])
+        #newStudent.is_admin = False
+        newStudent.save()         
+        #login(request, newStudent);    
         messages.success(request, 'Success! Your account was created.')
-        return render(request, 'login.html')
-    
-    #if form isn't valid?
-    
+        #return render(request, 'login.html', {'form': form})
+        return HttpResponseRedirect('/')
+    #else:
+        #return HttpResponse('Fuck')
+    #TODO: Figure out this context shit
+    """
     context = { #todo, needs to be fleshed out
     }
     return render(request, 'register.html', context)
     """
-    return render(request, 'register.html')
 
-def login(request):
-    """
-    form = LoginForm(request.POST or None)
-    next_url = request.GET.get('next')
-    if next_url is None:
-        next_url = "/"
+    messages.error(request, 'Error: invalid form.')
+    return render(request, 'register.html', {'form': form})
+    
+
+def loginUser(request):
+    form = loginForm(request.POST or None)
     if form.is_valid():
         email = form.cleaned_data['email']
         password = form.cleaned_data['password']
         user = authenticate(email=email, password=password)
         if user is not None:
-            messages.success(request, 'Success! Welcome, '+(user.first_name or ""))
+            messages.success(request, 'Welcome '+ (user.first_name) + ' !')
             login(request, user)
-            return HttpResponseRedirect(next_url)
+            return HttpResponseRedirect('/index.html')
         else:
             messages.warning(request, 'Invalid username or password.')
+    
+    #TODO: Figure out this context shit
+    """
     context = {
         "form": form,
         "page_name" : "Login",
@@ -53,7 +61,14 @@ def login(request):
     }
     return render(request, 'auth_form.html', context)
     """
+    messages.error(request, 'Error: invalid form.')
     return render(request, 'login.html')
+    
+    
+def logoutUser(request):
+    logout(request)
+    messages.success(request, 'You are now logged out')
+    return HttpResponseRedirect('/')
 
 
 def reset(request):
