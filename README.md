@@ -19,3 +19,8 @@ grant all on database eduya to eduyadbadmin;
 \q
 ```
 
+To insert test data into database (for demo purposes):
+```
+python manage.py shell
+import create_test_data
+```
