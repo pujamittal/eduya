@@ -2,6 +2,8 @@ from django.contrib.auth import authenticate, login, logout
 from django.http import HttpResponseRedirect, HttpResponse
 from django.shortcuts import render
 from django.contrib import messages
+from django.conf import settings
+from django.core.mail import send_mail
 
 from .forms import loginForm, registerForm
 from .models import Student
@@ -21,7 +23,13 @@ def registerUser(request):
         first_name=form.cleaned_data['first_name'], 
         last_name=form.cleaned_data['last_name'],
         is_tutor=form.cleaned_data['is_tutor'])
-        newStudent.save()         
+        newStudent.save()    
+        # Used to send email
+        subject = 'Thank you for registering with eduya'
+        message = 'Welcome to eduya! Please confirm your email address at the following link.'
+        from_email = settings.EMAIL_HOST_USER
+        to_list = [newStudent.email, settings.EMAIL_HOST_USER]
+        send_mail(subject, message, from_email, to_list, fail_silently=True)
         #login(request, newStudent);    
         messages.success(request, 'Success! Your account was created.')
         return HttpResponseRedirect('http://www.google.com/')
