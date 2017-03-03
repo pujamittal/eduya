@@ -12,7 +12,7 @@ from .models import Student
 def registerUser(request):
     #If you're already logged in
     if request.user.is_authenticated(): 
-        return HttpResponseRedirect('http://www.google.com/')
+        return HttpResponseRedirect('/')
     
     form = registerForm(request.POST or None)
     
@@ -32,7 +32,7 @@ def registerUser(request):
         send_mail(subject, message, from_email, to_list, fail_silently=True)
         #login(request, newStudent);    
         messages.success(request, 'Success! Your account was created.')
-        return HttpResponseRedirect('http://www.google.com/')
+        return HttpResponseRedirect('/')
 
     #if the form is not valid or the email is taken
     messages.error(request, 'Error: invalid form.')
@@ -42,7 +42,7 @@ def registerUser(request):
 def loginUser(request):
     #If you're already logged in
     if request.user.is_authenticated(): 
-        return HttpResponseRedirect('http://www.google.com/')
+        return HttpResponseRedirect('/')
     
     form = loginForm(request.POST or None)
     
@@ -54,7 +54,7 @@ def loginUser(request):
         if user is not None:
             messages.success(request, 'Welcome '+ (user.first_name) + ' !')
             login(request, user)
-            return HttpResponseRedirect('http://www.google.com/') #change to user profile url
+            return HttpResponseRedirect('/') #change to user profile url
         else:
             messages.warning(request, 'Invalid username or password.')
     

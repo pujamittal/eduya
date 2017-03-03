@@ -1,6 +1,6 @@
 body {
-	/*background: linear-gradient(rgba(20, 26, 91, 0.6), rgba(20, 26, 91, 0.6)),
-                rgba(20, 26, 91, 0.6) url("pattern.png") no-repeat center;*/
+	/*background: linear-gradient(rgba(20, 26, 91, 0.6), rgba(20, 26, 91, 0.6)),*/
+ /*               rgba(20, 26, 91, 0.6) url("img/pattern.png") no-repeat center;*/
     background: url("pattern.png");
     background-attachment: fixed;
     background-size: cover;

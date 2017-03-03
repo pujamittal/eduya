@@ -2,7 +2,10 @@
 <head>
   <title>eduya</title>
   <meta charset="utf-8" />
-  <link rel="stylesheet" href="tutor_posting.css" />
+
+  {% load static %}
+  <link rel="stylesheet" type="text/css" href="{% static 'tutor_posting.css' %}" />
+
   <link href="https://fonts.googleapis.com/css?family=Julius+Sans+One|Raleway|Montserrat|Work Sans" rel="stylesheet">
   <!-- <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-material-design/4.0.2/bootstrap-material-design.css" rel="stylesheet"> -->
 </head>
@@ -10,7 +13,8 @@
   <div class="vert-center">
     <div class="pane">
       <h2>Looking for a Tutor?</h2>
-      <form class="form-group">
+      <form class="form-group" action="/posts/new/" method="post">
+        {% csrf_token %}
         <p>Please fill out the required fields to post for tutors to find you!</p>
         <input type="text" name="subject" placeholder="subject *" required="" />
         <input type="text" name="course" placeholder="course *" required="" />
