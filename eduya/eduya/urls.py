@@ -31,5 +31,8 @@ urlpatterns = [
     url(r'^login/$', student_views.loginUser, name='login'),
     url(r'^logout/$', student_views.logoutUser, name='logout'),
     url(r'^reset/$', student_views.reset, name='reset'),
-    url(r'^posts/', include('posts.urls'))
+    url(r'^posts/', include('posts.urls')),
+    url(r'^tutors/$', student_views.all_tutors, name='all_tutors'),
+    url(r'^tutors/(?P<tutor_id>[0-9]+)/$', student_views.individual_tutor, name='individual_tutor'),
+    url(r'^profile/$', student_views.my_profile, name='my_profile')
 ]

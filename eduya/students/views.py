@@ -68,6 +68,17 @@ def logoutUser(request):
     messages.success(request, 'You are now logged out')
     return HttpResponseRedirect('/')
 
-
 def reset(request):
     return render(request, 'students/reset.html')
+    
+def my_profile(request, student_id):
+    if not request.user.is_authenticated():
+        return HttpResponseRedirect('/login')
+        
+    return render(request, 'students/user_profile.html')
+    
+def all_tutors(request):
+    return HttpResponse('All tutors')
+    
+def individual_tutor(request, tutor_id):
+    return render(request, 'students/tutor_profile.html')
