@@ -11,8 +11,6 @@ from students.models import Student
 from django.http import HttpResponse
 
 # Create your views here.
-def register(request):
-    pass
 
 def confirm_email(request):
     subject = 'Thank you for registering with eduya'
@@ -26,4 +24,4 @@ def confirm_email(request):
 	
 def index(request):
     # TODO: Link this to index.html/homepage route
-    return HttpResponse('Index')
+    return render(request, "index.html")

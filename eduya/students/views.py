@@ -27,7 +27,7 @@ def register(request):
     }
     return render(request, 'register.html', context)
     """
-    return render(request, 'register.html')
+    return render(request, 'students/register.html')
 
 def login(request):
     """
@@ -53,8 +53,8 @@ def login(request):
     }
     return render(request, 'auth_form.html', context)
     """
-    return render(request, 'login.html')
+    return render(request, 'students/login.html')
 
 
 def reset(request):
-    return render(request, 'reset.html')
+    return render(request, 'students/reset.html')
