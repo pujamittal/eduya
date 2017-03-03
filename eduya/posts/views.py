@@ -15,13 +15,8 @@ def index(request):
         pass
     else:
         pass
-<<<<<<< HEAD
-    return render(request, 'post_index.html', context)
-"""
-=======
     return render(request, 'posts/index.html', context)
         
->>>>>>> e56a7d5f84fd0712831fac442a2a4b0879bd0803
 def post(request, post_id):
     try:
         post = Post.objects.get(pk=post_id)

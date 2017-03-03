@@ -11,8 +11,8 @@ class registerForm(forms.Form):
     confirmpassword = forms.CharField(label='confirmpassword', widget=forms.PasswordInput, required=True)
     is_tutor = forms.BooleanField(label='is_tutor', widget=forms.CheckboxInput, required=False)	
     
-    
-    def clean_password(self): 
+
+    def clean_password2(self): 
         password = self.cleaned_data.get("password")
         confirmpassword = self.cleaned_data.get("confirmpassword")
         if password and confirmpassword and password != confirmpassword:

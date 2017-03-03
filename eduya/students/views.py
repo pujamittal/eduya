@@ -8,33 +8,37 @@ from .models import Student
 
 # Create your views here.
 def registerUser(request):
-    
+    #If you're already logged in
     if request.user.is_authenticated(): 
-        #return HttpResponseRedirect("/user/" + request.user.id) #TODO: Change to fit profile url format
-        return HttpResponseRedirect('/logout')
+        return HttpResponseRedirect('http://www.google.com/')
+    
     form = registerForm(request.POST or None)
-    if form.is_valid(): #probably needs some work
+    
+    #If your submission is valid and email is not taken
+    if form.is_valid():
         newStudent = Student.objects.create_user(email=form.cleaned_data['email'], 
         password=form.cleaned_data['password'], 
         first_name=form.cleaned_data['first_name'], 
         last_name=form.cleaned_data['last_name'],
         is_tutor=form.cleaned_data['is_tutor'])
-        #newStudent.is_admin = False
         newStudent.save()         
         #login(request, newStudent);    
         messages.success(request, 'Success! Your account was created.')
-        #return render(request, 'login.html', {'form': form})
-        return HttpResponseRedirect('/')
-    #else:
-        #return HttpResponse('Fuck')
-    #TODO: Figure out this context shit
+        return HttpResponseRedirect('http://www.google.com/')
 
+    #if the form is not valid or the email is taken
     messages.error(request, 'Error: invalid form.')
-    return render(request, 'register.html')
+    return render(request, 'students/register.html')
     
 
 def loginUser(request):
+    #If you're already logged in
+    if request.user.is_authenticated(): 
+        return HttpResponseRedirect('http://www.google.com/')
+    
     form = loginForm(request.POST or None)
+    
+    #If your submission is valid
     if form.is_valid():
         email = form.cleaned_data['email']
         password = form.cleaned_data['password']
@@ -42,22 +46,13 @@ def loginUser(request):
         if user is not None:
             messages.success(request, 'Welcome '+ (user.first_name) + ' !')
             login(request, user)
-            return HttpResponseRedirect('/index.html')
+            return HttpResponseRedirect('http://www.google.com/') #change to user profile url
         else:
             messages.warning(request, 'Invalid username or password.')
     
-    #TODO: Figure out this context shit
-    """
-    context = {
-        "form": form,
-        "page_name" : "Login",
-        "button_value" : "Login",
-        "links" : ["register"],
-    }
-    return render(request, 'auth_form.html', context)
-    """
+    #if the form is not valid or the password is incorrect
     messages.error(request, 'Error: invalid form.')
-    return render(request, 'login.html')
+    return render(request, 'students/login.html')
     
     
 def logoutUser(request):
@@ -67,4 +62,4 @@ def logoutUser(request):
 
 
 def reset(request):
-    return render(request, 'reset.html')
+    return render(request, 'students/reset.html')
