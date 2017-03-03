@@ -22,14 +22,13 @@ from home import views as home_views
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^$', home_views.index),
-    url(r'^password-reset/$', password_reset, name='password_reset'),
-    url(r'^password-reset/done/$', password_reset_done, name='password_reset_done'),
+    url(r'^$', views.index),
+    url(r'^reset-password/$', password_reset, name='password_reset'),
+    url(r'^reset-password/done/$', password_reset_done, name='password_reset_done'),
     url(r'^reset-password/confirm/(?P<uid64>[0-9A-Za-z]+)-(?P<token>.+)/$', password_reset_confirm, name='password_reset_confirm'),
-    url(r'^reset/done/$', password_reset_complete, name='password_reset_complete'),
-    url(r'^register/$', student_views.registerUser, name='register'),
-    url(r'^login/$', student_views.loginUser, name='login'),
-    url(r'^logout/$', student_views.logoutUser, name='logout'),
+    url(r'^reset-password-complete/$', password_reset_complete, name='password_reset_complete'),
+    url(r'^register/$', student_views.register, name='register'),
+    url(r'^login/$', student_views.login, name='login'),
     url(r'^reset/$', student_views.reset, name='reset'),
     #url(r'^posts/', include('posts.urls'))
 ]
