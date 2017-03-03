@@ -62,7 +62,8 @@ class Student(AbstractBaseUser, PermissionsMixin):
     first_name = models.CharField(blank=False, max_length=30)
     last_name = models.CharField(blank=False, max_length=30)
     is_tutor = models.BooleanField(default=False)
-    
+    is_active = models.BooleanField(default=True)
+
     objects = StudentManager()
     
     REQUIRED_FIELDS = ['first_name', 'last_name', 'is_tutor']
