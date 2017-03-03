@@ -14,7 +14,7 @@ def index(request):
         pass
     else:
         pass
-    return render(request, 'index.html', context)
+    return render(request, 'posts/index.html', context)
         
 def post(request, post_id):
     try:
@@ -22,4 +22,4 @@ def post(request, post_id):
         context = {'post': post}
     except Post.DoesNotExist:
         raise Http404("Post does not exist")
-    return render(request, 'detail.html', context)
+    return render(request, 'posts/detail.html', context)

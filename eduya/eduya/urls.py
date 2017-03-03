@@ -18,7 +18,7 @@ from django.contrib import admin
 from django.contrib.auth.views import password_reset, password_reset_done, password_reset_confirm, password_reset_complete
 
 from students import views as student_views
-from . import views
+from home import views as home_views
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
