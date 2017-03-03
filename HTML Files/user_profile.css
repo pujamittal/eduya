@@ -1,0 +1,164 @@
+body {
+	/*background: linear-gradient(rgba(20, 26, 91, 0.6), rgba(20, 26, 91, 0.6)),
+                rgba(20, 26, 91, 0.6) url("pattern.png") no-repeat center;*/
+    background: url("pattern.png");
+    background-attachment: fixed;
+    background-size: cover;
+    color: #fff;
+    text-rendering: optimizeLegibility;
+    margin: 0;
+    padding: 15px 10px 15px;
+  	height: 100%;
+    font-family: 'Raleway', sans-serif;
+}
+
+
+
+h2 {
+	color: rgba(20, 26, 91, .8);
+	font-family: 'Raleway', sans-serif;
+}
+
+h3 {
+color: rgba(20, 26, 91, .8);
+font-family: 'Raleway', sans-serif;
+margin-top: 2.5px;
+}
+
+p {
+	font-family: 'Raleway', sans-serif;
+}
+
+nav {
+	font-family: 'Raleway', sans-serif;
+	text-transform: uppercase;
+	float: right;
+	padding: 5px 10px 0 0;
+	font-size: 0.8em;
+	font-weight: 600;
+	letter-spacing: 0.25em;
+	text-transform: uppercase;
+}
+
+.vert-center {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    height: 100vh;
+}
+
+.vert-centerrow {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    height: 100%;
+}
+
+.vert-center h2 {
+  color: rgba(20, 26, 91, .8);
+  font-family: 'Raleway', sans-serif;
+}
+
+.pane {
+  padding: 2% 5%;
+  margin: auto;
+  width: 30%;
+  overflow: hidden;
+  background-color: #fff;
+  opacity: .8;
+  text-align: center;
+  box-shadow: 10px 10px 50px #303030;
+  overflow:visible;
+
+}
+
+.pane p {
+	font-family: 'Raleway', sans-serif;
+	color: 	#505050;	
+}
+
+
+
+input[type=text] {
+width: 40%;
+margin-bottom: 15px;
+padding: 10px;
+border: solid 2px #808080;
+transition: border 0.3s;
+background: none;
+}
+
+input[type=email] {
+width: 40%;
+margin-bottom: 15px;
+padding: 10px;
+border: solid 2px #808080;
+transition: border 0.3s;
+background: none;
+}
+
+input[type=password] {
+width: 40%;
+margin-bottom: 15px;
+padding: 10px;
+border: solid 2px #808080;
+transition: border 0.3s;
+background: none;
+}
+
+input[type=submit] {
+border: solid 2px #808080;
+margin-top: 7.5px;
+padding: 5px 20px 5px 20px;
+background: none;
+color: #303030;
+}
+
+#datetime {
+    width: 80%;
+margin-bottom: 15px;
+padding: 50px;
+border: solid 2px #808080;
+transition: border 0.3s;
+background: none;
+}
+
+.left-column {
+  float: left;
+  padding: 5px;
+  width: 30%;
+  text-align: left;
+  border-color: rgba(20, 26, 91, .8);
+  font-family: 'Raleway', sans-serif;
+  font-weight: bold;
+}
+
+.right-column {
+  float:right;
+  width: 50%;
+  padding: 5px;
+  text-align: left;
+  border-color: rgba(20, 26, 91, .8);
+  font-family: 'Raleway', sans-serif;
+  font-weight: bold;
+  vertical-align: center;
+}
+
+.image-cropper {
+    width: 10vw;
+    height: 10vw;
+    position: relative;
+    overflow: hidden;
+    border-radius: 50%;
+    flex-shrink: 1;
+}
+
+img {
+    display: inline;
+    margin: 0 auto;
+    height: 100%;
+    width: auto;
+    position: relative;
+    display: flex;
+}
+
