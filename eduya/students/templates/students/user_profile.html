@@ -19,8 +19,8 @@
         </div>
       </div>
       <div class="right-column">
-        <p><span style="font-weight:900">Name:</span> Shinji Ikari</p>
-        <p><span style="font-weight:900">Email:</span> sikari@purdue.edu</p>
+        <p><span style="font-weight:900">Name:</span> {{ user.first_name }} {{user.last_name }}</p>
+        <p><span style="font-weight:900">Email:</span> {{ user.email }}</p>
         <input type="button" onclick="location.href='';" value="Edit My Profile" /><br/>
         <input type="button" onclick="location.href='';" value="Become a Tutor" />
       </div>

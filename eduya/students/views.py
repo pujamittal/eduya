@@ -71,11 +71,13 @@ def logoutUser(request):
 def reset(request):
     return render(request, 'students/reset.html')
     
-def my_profile(request, student_id):
+def my_profile(request):
     if not request.user.is_authenticated():
         return HttpResponseRedirect('/login')
         
-    return render(request, 'students/user_profile.html')
+    context = {'user': request.user}
+        
+    return render(request, 'students/user_profile.html', context)
     
 def all_tutors(request):
     return HttpResponse('All tutors')
