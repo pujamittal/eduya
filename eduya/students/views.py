@@ -42,7 +42,7 @@ def registerUser(request):
 def loginUser(request):
     #If you're already logged in
     if request.user.is_authenticated(): 
-        return HttpResponseRedirect('/')
+        return HttpResponseRedirect('/profile')
     
     form = loginForm(request.POST or None)
     
