@@ -25,6 +25,7 @@ font-family: 'Raleway', sans-serif;
 margin-top: 2.5px;
 }
 
+
 p {
   font-family: 'Raleway', sans-serif;
 }
@@ -80,7 +81,7 @@ nav {
 
 
 input[type=text] {
-width: 40%;
+width: 100%;
 margin-bottom: 15px;
 padding: 10px;
 border: solid 2px #808080;
@@ -89,7 +90,7 @@ background: none;
 }
 
 input[type=email] {
-width: 40%;
+width: 100%;
 margin-bottom: 15px;
 padding: 10px;
 border: solid 2px #808080;
@@ -98,7 +99,7 @@ background: none;
 }
 
 input[type=password] {
-width: 40%;
+width: 100%;
 margin-bottom: 15px;
 padding: 10px;
 border: solid 2px #808080;
@@ -111,7 +112,12 @@ border: solid 2px #808080;
 margin-top: 7.5px;
 padding: 5px 20px 5px 20px;
 background: none;
+background: rgba(20, 26, 91, .1);
 color: #303030;
+}
+
+input[type=file] {
+border: thick;
 }
 
 input[type=button] {
@@ -135,9 +141,8 @@ background: none;
 
 .left-column {
   float: left;
-  padding: 5px;
-  width: 30%;
-  text-align: left;
+  width: 10vw;
+  text-align: center;
   border-color: rgba(20, 26, 91, .8);
   font-family: 'Raleway', sans-serif;
   font-weight: bold;
@@ -153,6 +158,17 @@ background: none;
   font-family: 'Raleway', sans-serif;
   font-weight: bold;
   vertical-align: center;
+}
+
+.bottom-row {
+  width: 100%;
+  padding: 5px;
+  text-align: center;
+  border-color: rgba(20, 26, 91, .8);
+  font-family: 'Raleway', sans-serif;
+  font-weight: bold;
+  vertical-align: center;
+  clear: both;
 }
 
 .image-cropper {
