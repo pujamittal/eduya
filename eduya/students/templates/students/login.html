@@ -2,7 +2,8 @@
 <head>
 <title>eduya</title>
     <meta charset="utf-8" />
-    <link rel="stylesheet" href="main.css" />
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'main.css' %}" />
     <link href="https://fonts.googleapis.com/css?family=Julius+Sans+One|Raleway|Montserrat|Work Sans" rel="stylesheet">
 </head>
 <body>
@@ -15,7 +16,7 @@
 		      {{ form.non_field_errors }}
 		      {{ form.title.errors }}
 		      {{ form.title }}
-          <p>Please fill out the fields below to create an account</p>
+          <p>Please enter your email and password</p>
           <input type="email" name="email" placeholder="Email" required/>
           <input type="password" name="password" placeholder="Password" pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" oninvalid="this.setCustomValidity('Please enter your 8+ character password containing an uppercase, lowercase and number or special character')"
 			oninput="setCustomValidity('')" required/>
