@@ -10,10 +10,6 @@ from django.shortcuts import render
 from students.models import Student 
 from django.http import HttpResponse
 
-# Create your views here.
-def register(request):
-    pass
-
 def confirm_email(request):
     subject = 'Thank you for registering with eduya'
     message = 'Welcome to eduya! Please confirm your email address at the following link.'
