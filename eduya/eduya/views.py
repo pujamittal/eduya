@@ -10,9 +10,8 @@ from django.shortcuts import render
 from students.models import Student 
 from django.http import HttpResponse
 
-def index(request):
-    # TODO: Link this to index.html/homepage route
-    return render(request, 'index.html')
+
+# Create your views here.
 
 
 def confirm_email(request):
@@ -25,3 +24,8 @@ def confirm_email(request):
     #return HttpResponseRedirect('/homepage/')
     #return render("homepage.html", locals(), context_instance=RequestContext(request))
 	
+
+def index(request):
+    # TODO: Link this to index.html/homepage route
+    return render(request, "index.html")
+

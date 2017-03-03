@@ -18,11 +18,11 @@ from django.contrib import admin
 from django.contrib.auth.views import password_reset, password_reset_done, password_reset_confirm, password_reset_complete
 
 from students import views as student_views
-from . import views
+from home import views as home_views
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^$', views.index),
+    url(r'^$', home_views.index),
     url(r'^password-reset/$', password_reset, name='password_reset'),
     url(r'^password-reset/done/$', password_reset_done, name='password_reset_done'),
     url(r'^reset-password/confirm/(?P<uid64>[0-9A-Za-z]+)-(?P<token>.+)/$', password_reset_confirm, name='password_reset_confirm'),

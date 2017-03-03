@@ -27,9 +27,9 @@ return true;
 		  {{ form.non_field_errors }}
           <p>Please fill out the fields below to create an account</p>
           <input type="email" name="email" placeholder="Your Email" required/>
-          <input type="text" name="first_name" placeholder="first_name" pattern="[A-Za-z]+" oninvalid="this.setCustomValidity('Please enter a valid first name')" oninput="setCustomValidity('')" required/>
-          <input type="text" name="last_name" placeholder="last_name" pattern="[A-Za-z]+" oninvalid="this.setCustomValidity('Please enter a valid last name')" oninput="setCustomValidity('')" required/>
-		  <input type="password" name="password" placeholder="Password" pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" oninvalid="this.setCustomValidity('Please enter an 8+ character password containing an uppercase, lowercase and number or special character')"
+           <input type="text" name="fname" placeholder="First name" pattern="[A-Za-z]+" oninvalid="this.setCustomValidity('Please enter a valid first name')" oninput="setCustomValidity('')" required/>
+          <input type="text" name="lname" placeholder="Last name" pattern="[A-Za-z]+" oninvalid="this.setCustomValidity('Please enter a valid last name')" oninput="setCustomValidity('')" required/>
+          <input type="password" name="password" placeholder="Password" pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" oninvalid="this.setCustomValidity('Please enter an 8+ character password containing an uppercase, lowercase and number or special character')"
 			oninput="setCustomValidity('')" required/>
 		  <input type="password" name="confirmpassword" placeholder="Confirm Password"  oninvalid="this.setCustomValidity('Passwords do not match')"
 			oninput="setCustomValidity('')" required/>
