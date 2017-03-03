@@ -1,5 +1,5 @@
 from django.contrib.auth import authenticate, login, logout
-from django.http import HttpResponseRedirect, HttpResponse
+from django.http import HttpResponseRedirect, HttpResponse, HttpResponseNotFound
 from django.shortcuts import render
 from django.contrib import messages
 from django.conf import settings
@@ -80,7 +80,15 @@ def my_profile(request):
     return render(request, 'students/user_profile.html', context)
     
 def all_tutors(request):
-    return HttpResponse('All tutors')
+    tutors = Student.objects.all().filter(is_tutor=True)
+    context = { 'tutors': tutors }
+    return render(request, 'students/tutors.html', context)
     
 def individual_tutor(request, tutor_id):
-    return render(request, 'students/tutor_profile.html')
+    try:
+        tutor = Student.objects.get(is_tutor=True, pk=tutor_id)
+        context = {'tutor' : tutor}
+    except Student.DoesNotExist:
+        return HttpResponseNotFound('<h1>Tutor not found</h1>')
+        
+    return render(request, 'students/tutor_profile.html', context)
