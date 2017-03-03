@@ -6,6 +6,14 @@ from models import Post
 def index(request):
     posts = Post.objects.all()
     context = {'posts': posts}
+    try:
+        print request.POST['subject'], request.POST['course'], request.POST['location'], 
+        request.POST['datetime'], request.POST['price'], request.POST['notes']
+        # TODO: Create the Post/Return any errors after User registration/sessions have been completed
+    except KeyError:
+        pass
+    else:
+        pass
     return render(request, 'index.html', context)
         
 def post(request, post_id):
