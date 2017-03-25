@@ -13,7 +13,8 @@
     }
   </script>
   <meta charset="utf-8" />
-  <link rel="stylesheet" href="user_profile.css" />
+  {% load static %}
+  <link rel="stylesheet" type="text/css" href="{% static 'user_edit.css' %}" />
   <link href="https://fonts.googleapis.com/css?family=Julius+Sans+One|Raleway|Montserrat|Work Sans" rel="stylesheet">
   <!-- <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-material-design/4.0.2/bootstrap-material-design.css" rel="stylesheet"> -->
 </head>
@@ -21,24 +22,29 @@
   <div class="vert-center">
     <div class="pane">
       <h2>Edit Profile</h2>
-      <form>
+      <form name="frm" action="/profile/edit/" method="POST">
+		    {% csrf_token %}
+		    {{ form.errors }}
+		    {{ form.non_field_errors }}
+		    {{ form.title.errors }}
+		    {{ form.title }}
         <div class="left-column">
           <p style="margin-top: 0px; margin-bottom: 10px;">Profile Picture</p>
           <div class="image-cropper">
             <img src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcRTy1GtPiIUg6rC2orWkc9B8O2Ho7SV0lejlHNZ8sWNvWQUWRax" class="rounded" />
             <div>
-            <input type="file" accept="images"/>
+            <!--<input type="file" accept="images"/>-->
             </div>
           </div>
         </div>
         <div class="right-column">
-          <input type="email" name="email" placeholder="Your Email" required/>
-          <input type="text" name="fname" placeholder="First name" pattern="[A-Za-z]+" oninvalid="this.setCustomValidity('Please enter a valid first name')" oninput="setCustomValidity('')" required/>
-          <input type="text" name="lname" placeholder="Last name" pattern="[A-Za-z]+" oninvalid="this.setCustomValidity('Please enter a valid last name')" oninput="setCustomValidity('')" required/>
-          <input type="password" name="password" placeholder="Password" pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" oninvalid="this.setCustomValidity('Please enter an 8+ character password containing an uppercase, lowercase and number or special character')"
-          oninput="setCustomValidity('')" required/>
-          <input type="password" name="confirmpassword" placeholder="Confirm Password"  oninvalid="this.setCustomValidity('Passwords do not match')"
-          oninput="setCustomValidity('')" required/>
+          <!--<input type="email" name="email" placeholder="Your Email"/>-->
+          <input type="text" name="first_name" placeholder="First name" pattern="[A-Za-z]+" oninvalid="this.setCustomValidity('Please enter a valid first name')" oninput="setCustomValidity('')"/>
+          <input type="text" name="last_name" placeholder="Last name" pattern="[A-Za-z]+" oninvalid="this.setCustomValidity('Please enter a valid last name')" oninput="setCustomValidity('')" />
+          <!--<input type="password" name="password" placeholder="Password" pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" oninvalid="this.setCustomValidity('Please enter an 8+ character password containing an uppercase, lowercase and number or special character')"-->
+          <!--oninput="setCustomValidity('')" />-->
+          <!--<input type="password" name="confirmpassword" placeholder="Confirm Password"  oninvalid="this.setCustomValidity('Passwords do not match')"-->
+          <!--oninput="setCustomValidity('')"/>-->
         </div>
         <div class="bottom-row">
           <input type="submit" value="Update Profile" id="submit" onclick="val();"/>
