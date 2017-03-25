@@ -10,6 +10,12 @@ If new dependencies are added, make note of them by updating requirements.txt: `
 
 Installing the requirements: `sudo pip3 install -r requirements.txt`
 
+In another terminal(cloud9 directions):
+```
+sudo service postgresql start
+psql
+```
+
 Setting up the database:
 Within the postgresql shell:
 ```
