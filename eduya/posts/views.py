@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse, Http404, HttpResponseRedirect
-from models import Post
+from posts.models import Post
 import datetime
 
 # Create your views here.
