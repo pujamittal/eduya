@@ -10,7 +10,7 @@ If new dependencies are added, make note of them by updating requirements.txt: `
 
 Installing the requirements: `sudo pip3 install -r requirements.txt`
 
-Copy the config example file: `cp eduya/eduya/settings.example.py eduya/eduya/settings.py` and change necessary settings
+Copy the config example file: `cp eduya/eduya/settings.example.py eduya/eduya/settings.py` and change necessary settings if needed
 
 In another terminal(cloud9 directions):
 ```
