@@ -5,17 +5,27 @@ import datetime
 
 # Create your views here.
 def all_courses(request):
-    return HttpResponse('all courses')
+    courses = Course.objects.all()
+    context = {'courses': courses}
+    return render(request, 'courses/courses.html', context)
 
 def course(request, course_id):
-    return HttpResponse('course id:%s' % course_id)
+    course = Course.objects.get(course_id=course_id)
+    context = {'course': course}
+    return render(request, 'courses/course.html', context)
 
 def all_sections(request, course_id):
-    return HttpResponse('all sections for course:%s' % course_id)
-    
+    course_sections = CourseSection.objects.all().filter(course=course_id)
+    context = {'course_sections' : course_sections}
+    return render(request, 'courses/sections.html', context)
+
 def section(request, course_id, course_section_id):
-    return HttpResponse('section %s' % course_section_id)
-    
+    section = CourseSection(pk=course_section_id)
+    context = {'section' : section}
+    return render(request, 'courses/section.html', context)
+
+
+# TODO: route functions below
 def all_professors(request):
     return HttpResponse('all professors')
     

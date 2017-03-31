@@ -11,6 +11,9 @@ class Course(models.Model):
     title = models.CharField(blank=False, max_length=100)
     course_id = models.CharField(blank=False, max_length=50, primary_key=True)
     
+    class Meta:
+        ordering = ('subject',)
+    
 class CourseSection(models.Model):
     course = models.ForeignKey(Course)
     rooms =  models.CharField(blank=False, max_length=250)
