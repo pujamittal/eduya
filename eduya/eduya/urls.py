@@ -19,6 +19,7 @@ from django.contrib.auth import views as reset_views
 
 from students import views as student_views
 from home import views as home_views
+from courses import views as courses_views
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
@@ -38,7 +39,11 @@ urlpatterns = [
     url(r'^profile/$', student_views.my_profile, name='my_profile'),
     url(r'^my-courses/$', student_views.my_courses, name='my_courses'),
     url(r'^my-listings/$', student_views.my_listings, name='my_listings'),
-    url(r'^courses/$', student_views.courses, name='courses'),
-    url(r'^professors/$', student_views.professors, name='professors')
-    
+    url(r'^course/(?P<course_id>[0-9]+)/$', courses_views.course, name='course'),
+    url(r'^course/(?P<course_id>[0-9]+)/sections/$', courses_views.all_sections, name='all_sections'),
+    url(r'^course/(?P<course_id>[0-9]+)/sections/(?P<course_section_id>[0-9]+)/$', courses_views.section, name='section'),
+    url(r'^courses/$', courses_views.all_courses, name='all_courses'),
+    url(r'^professors/$', courses_views.all_professors, name='all_professors'),
+    url(r'^professors/(?P<professor_id>[0-9]+)/$', courses_views.professor, name='professor'),
+    url(r'^professors/(?P<professor_id>[0-9]+)/reviews/$', courses_views.professor_reviews, name='professor_reviews')
 ]
