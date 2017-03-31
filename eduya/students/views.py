@@ -71,6 +71,21 @@ def logoutUser(request):
 def reset(request):
     return render(request, 'students/reset.html')
     
+def my_courses(request):
+    if request.user.is_authenticated():
+        return HttpResponseRedirect('/my_courses')
+    
+def my_listings(request):
+    if request.user.is_authenticated():
+        return HttpResponseRedirect('/my_listings')
+    
+def courses(request):
+    return HttpResponseRedirect('/courses')
+
+def professors(request):
+    if request.user.is_authenticated():
+        return HttpResponseRedirect('/professors')
+
 def my_profile(request):
     if not request.user.is_authenticated():
         return HttpResponseRedirect('/login')
