@@ -51,4 +51,8 @@ URL endpoints:
 /tutors/
 /tutors/<tutor_id>/
 /profile/
+/my-courses/
+/my-listings/
+/courses/
+/professors/
 ```
