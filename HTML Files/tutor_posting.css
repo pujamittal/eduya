@@ -110,6 +110,15 @@ transition: border 0.3s;
 background: none;
 }
 
+input[type=number] {
+width: 80%;
+margin-bottom: 15px;
+padding: 10px;
+border: solid 2px #808080;
+transition: border 0.3s;
+background: none;
+}
+
 input[type=email] {
 width: 80%;
 margin-bottom: 15px;
