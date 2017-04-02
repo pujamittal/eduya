@@ -24,7 +24,6 @@ class StudentManager(BaseUserManager):
             first_name=first_name,
             last_name=last_name,
             is_tutor=is_tutor)
-            
         user.set_password(password)
         user.save(using=self._db)
         return user
@@ -63,7 +62,6 @@ class Student(AbstractBaseUser, PermissionsMixin):
     last_name = models.CharField(blank=False, max_length=30)
     is_tutor = models.BooleanField(default=False)
     is_active = models.BooleanField(default=True)
-
     objects = StudentManager()
     
     REQUIRED_FIELDS = ['first_name', 'last_name', 'is_tutor']
@@ -78,4 +76,17 @@ class Student(AbstractBaseUser, PermissionsMixin):
     def __str__(self):
         return '<Student %s>' % self.email 
 
+class Tutor(models.Model):
+    studentLink = models.OneToOneField( Student, on_delete=models.CASCADE, primary_key = True,)
+    skillRating = models.PositiveSmallIntegerField()
+    moneyRating = models.PositiveSmallIntegerField()
+    
+    def get_short_name(self):
+        return self.studentLink.first_name
+    
+    def get_long_name(self):
+        return str(self.studentLink.first_name + self.studentLink.last_name)
+        
+    def __str__(self):
+        return '<Student %s>' % self.studentLink.email
     

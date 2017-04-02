@@ -1,0 +1,149 @@
+body {
+	/*background: linear-gradient(rgba(20, 26, 91, 0.6), rgba(20, 26, 91, 0.6)),*/
+ /*               rgba(20, 26, 91, 0.6) url("img/pattern.png") no-repeat center;*/
+    background: url("pattern.png");
+    background-attachment: fixed;
+    background-size: cover;
+    color: #fff;
+    text-rendering: optimizeLegibility;
+    margin: 0;
+    padding: 15px 10px 15px;
+  	height: 100%;
+    font-family: 'Raleway', sans-serif;
+}
+
+.checkbox-grid li {
+    display: inline;
+    /*width: 10%;
+    text-align: center; */
+}
+
+label {
+  color: black;
+  font-family: 'Raleway', sans-serif;
+}
+
+h2 {
+	color: rgba(20, 26, 91, .8);
+	font-family: 'Raleway', sans-serif;
+}
+
+h3 {
+color: rgba(20, 26, 91, .8);
+font-family: 'Raleway', sans-serif;
+margin-top: 2.5px;
+}
+
+h4 {
+color: rgba(20, 26, 91, .8);
+font-family: 'Raleway', sans-serif;
+margin-top: 25px;
+}
+
+p {
+	font-family: 'Raleway', sans-serif;
+}
+
+.days-title {
+  font-weight: bold;
+}
+
+nav {
+	font-family: 'Raleway', sans-serif;
+	text-transform: uppercase;
+	float: right;
+	padding: 5px 10px 0 0;
+	font-size: 0.8em;
+	font-weight: 600;
+	letter-spacing: 0.25em;
+	text-transform: uppercase;
+}
+
+.button-line {
+
+}
+
+.vert-center {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    height: 100vh;
+}
+
+.sub-vert-center {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+
+.vert-center h2 {
+  color: rgba(20, 26, 91, .8);
+  font-family: 'Raleway', sans-serif;
+}
+
+.pane {
+  padding: 2% 5%;
+  margin: auto;
+  width: 30%;
+  overflow: hidden;
+  background-color: #fff;
+  opacity: .8;
+  text-align: center;
+  box-shadow: 10px 10px 50px #303030;
+  overflow:visible;
+
+}
+
+.pane p {
+	font-family: 'Raleway', sans-serif;
+	color: 	#505050;	
+}
+
+
+
+input[type=text] {
+width: 80%;
+margin-bottom: 15px;
+padding: 10px;
+border: solid 2px #808080;
+transition: border 0.3s;
+background: none;
+}
+
+input[type=email] {
+width: 80%;
+margin-bottom: 15px;
+padding: 10px;
+border: solid 2px #808080;
+transition: border 0.3s;
+background: none;
+}
+
+input[type=password] {
+width: 80%;
+margin-bottom: 15px;
+padding: 10px;
+border: solid 2px #808080;
+transition: border 0.3s;
+background: none;
+}
+
+input[type=submit] {
+border: solid 2px #808080;
+margin-top: 5px;
+padding: 5px 10px 5px 10px;
+background: none;
+color: #303030;
+}
+
+
+#notes {
+width: 80%;
+min-height: 100px;
+margin-bottom: 15px;
+padding: 10px;
+border: solid 2px #808080;
+transition: border 0.3s;
+background: none;
+font-family: 'Raleway', sans-serif;
+}
