@@ -3,6 +3,7 @@
 <title>eduya</title>
     <meta charset="utf-8" />
     <link href="https://fonts.googleapis.com/css?family=Julius+Sans+One|Raleway|Montserrat|Work Sans" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     {% load static %}
     <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}" />
     
@@ -21,7 +22,7 @@
           <input type="email" name="email" placeholder="Email" required/>
           <input type="password" name="password" placeholder="Password" pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" oninvalid="this.setCustomValidity('Please enter your 8+ character password containing an uppercase, lowercase and number or special character')"
 			oninput="setCustomValidity('')" required/>
-          <h3 id="forg_pw"><a href="/reset-password/">Forgot password?</a></h3>
+          <h4 id="forg_pw"><a href="/reset-password/">Forgot password?</a></h4>
           <input type="submit" value="Submit" id="submit"/>
         </form>
 		</div>

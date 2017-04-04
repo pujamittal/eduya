@@ -14,15 +14,16 @@ return true;
 </script>
 
     <meta charset="utf-8" />
+    
+    <link href="https://fonts.googleapis.com/css?family=Julius+Sans+One|Raleway|Montserrat|Work Sans" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     {% load static %}
     <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}" />
-    <link href="https://fonts.googleapis.com/css?family=Julius+Sans+One|Raleway|Montserrat|Work Sans" rel="stylesheet">
 </head>
 <body>
 	<div class="vert-center">
 		<div class="pane">
-		<h2>Sign Up</h2>
+		<h2 class = "customh2">Sign Up</h2>
 		<form name="frm" action="/register/" method="POST">
 		  {% csrf_token %}
 		  {{ form.errors }}

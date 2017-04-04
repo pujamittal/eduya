@@ -1,14 +1,17 @@
 <!DOCTYPE HTML>
+
 <head>
   <title>eduya</title>
   <meta charset="utf-8" />
 
-  {% load static %}
-  <link rel="stylesheet" type="text/css" href="{% static 'tutor_posting.css' %}" />
+
 
   <link href="https://fonts.googleapis.com/css?family=Julius+Sans+One|Raleway|Montserrat|Work Sans" rel="stylesheet">
   <!-- <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-material-design/4.0.2/bootstrap-material-design.css" rel="stylesheet"> -->
+  <link rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> {% load static %}
+  <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}" />
 </head>
+
 <body>
   <div class="vert-center">
     <div class="pane">
@@ -20,20 +23,22 @@
         <input type="text" name="course" placeholder="course *" required="" />
         <input type="text" name="price" placeholder="price *" required="" />
         <input type="text" name="location" placeholder="location" required="" />
-        
-        <ul class="checkbox-grid" style="-webkit-padding-start: 0px;">
+
+        <ul class="checkbox-gridlayout" style="-webkit-padding-start: 0px;width:100%;">
         <!-- <div class="button-line"> -->
         <p class="days-title">Days available</p>
-          <li><input type="checkbox" id ="Monday" /><label for="text1">M</label></li>
-          <li><input type="checkbox" id="Tuesday" /><label for="text2">Tu</label></li>
-          <li><input type="checkbox" id="Wednesday" /><label for="text3">W</label></li>
-          <li><input type="checkbox" id="Thursday" /><label for="text4">Th</label></li>
-          <li><input type="checkbox" id="Friday" /><label for="text5">F</label></li>
-          <li><input type="checkbox" id="Saturday" /><label for="text6">Sa</label></li>
-          <li><input type="checkbox" id="Sunday" /><label for="text7">Su</label></li>
+          <li style="display:inline"><input type="checkbox" id ="Monday" /><label for="text1" style="color:rgba(120, 120, 120, 1);">M</label></li>
+          <li style="display:inline"><input type="checkbox" id="Tuesday" /><label for="text2" style="color:rgba(120, 120, 120, 1);">Tu</label></li>
+          <li style="display:inline"><input type="checkbox" id="Wednesday" /><label for="text3" style="color:rgba(120, 120, 120, 1);">W</label></li>
+          <li style="display:inline"><input type="checkbox" id="Thursday" /><label for="text4" style="color:rgba(120, 120, 120, 1);">Th</label></li>
+          <li style="display:inline"><input type="checkbox" id="Friday" /><label for="text5" style="color:rgba(120, 120, 120, 1);">F</label></li>
+          <li style="display:inline"><input type="checkbox" id="Saturday" /><label for="text6" style="color:rgba(120, 120, 120, 1);">Sa</label></li>
+          <li style="display:inline"><input type="checkbox" id="Sunday" /><label for="text7" style="color:rgba(120, 120, 120, 1);">Su</label></li>
           <!-- </div> -->
         </ul>
-        <textarea name="notes" id="notes" cols="100" placeholder="Comments"></textarea>
+        <!-- </div> -->
+        
+        <textarea name="notes" id="notes" cols="100" placeholder="Comments" style="width:100%; height:100px"></textarea>
         <input type="submit" value="Create post looking for tutor" />
       </form>
 
