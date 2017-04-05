@@ -1,3 +1,17 @@
-{% for course in courses %}
-    <h3>{{ course.course_id }} {{ course.title }}</h3>
-{% endfor %}
+<table>
+    <tr>
+        <th>Subject</th>
+        <th>Course Number</th>
+        <th>Course Title</th>
+        <th>Course Page</th>
+    </tr>
+    {% for course in courses %}
+        <tr>
+            <td>{{ course.subject.name }}</td>
+            <td>{{ course.course_id }}</td>
+            <td>{{ course.title }}</td>
+            <td><a href="/course/{{ course.course_id }}/">{{ course.course_id }}</a></td>
+        </tr>
+    {% endfor %}   
+</table>
+
