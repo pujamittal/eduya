@@ -1,0 +1,29 @@
+<!DOCTYPE HTML>
+<head>
+  <title>eduya</title>
+  <meta charset="utf-8" />
+
+  {% load static %}
+  <link rel="stylesheet" type="text/css" href="{% static 'user_profile.css' %}" />
+
+  <link href="https://fonts.googleapis.com/css?family=Julius+Sans+One|Raleway|Montserrat|Work Sans" rel="stylesheet">
+  <!-- <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-material-design/4.0.2/bootstrap-material-design.css" rel="stylesheet"> -->
+</head>
+<body>
+  <div class="vert-center">
+    <div class="pane">
+      <h2>My Profile</h2>
+      <div class="left-column">
+        <div class="image-cropper">
+          <img src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcRTy1GtPiIUg6rC2orWkc9B8O2Ho7SV0lejlHNZ8sWNvWQUWRax" class="rounded" />
+        </div>
+      </div>
+      <div class="right-column">
+        <p><span style="font-weight:900">Name:</span> {{ user.first_name }} {{user.last_name }}</p>
+        <p><span style="font-weight:900">Email:</span> {{ user.email }}</p>
+        <input type="button" onclick="location.href='/profile/edit/';" value="Edit My Profile" /><br/>
+        <input type="button" onclick="location.href='/tutor_profile/';" value="View Tutor Profile" />
+      </div>
+    </div>
+  </div>
+</body>
