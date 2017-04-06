@@ -89,10 +89,16 @@ def professors(request):
 def my_profile(request):
     if not request.user.is_authenticated():
         return HttpResponseRedirect('/login')
+    else:
+        context = {'user': request.user}
+        currentUser = Student.objects.get(email = request.user.email)
+        if currentUser.is_tutor == True:
+            return render(request, 'students/user_profile_isTutor.html', context)
+        return render(request, 'students/user_profile.html', context)
+            
+    
         
-    context = {'user': request.user}
-        
-    return render(request, 'students/user_profile.html', context)
+    
     
 def all_tutors(request):
     if request.user.is_authenticated():
@@ -179,6 +185,17 @@ def view_tutors(request):
             tutors = Tutor.objects.all().order_by('tutor_name')
             args = {'tutors': tutors}
             return render(request, 'students/tutors.html', args)
+            
+    else:
+        return HttpResponseRedirect('/login')
+
+def become_tutor(request):
+    if request.user.is_authenticated():
+        currentUser = Student.objects.get(email = request.user.email)
+        currentUser.is_tutor = True
+        currentUser.save()
+        Tutor.objects.create(studentLink = currentUser, tutor_name = str(currentUser.first_name + currentUser.last_name))
+        return HttpResponseRedirect("/profile")
             
     else:
         return HttpResponseRedirect('/login')

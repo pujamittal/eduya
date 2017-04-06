@@ -36,6 +36,7 @@ urlpatterns = [
     url(r'^tutors/$', student_views.view_tutors, name='view_tutors'),
     url(r'^tutors/(?P<tutor_id>[0-9]+)/$', student_views.individual_tutor, name='individual_tutor'),
     url(r'^profile/edit/$', student_views.update_profile, name='update_profile'),
+    url(r'^profile/become_tutor/$', student_views.become_tutor, name='become_tutor'),
     url(r'^profile/$', student_views.my_profile, name='my_profile'),
     url(r'^my-courses/$', student_views.my_courses, name='my_courses'),
     url(r'^my-listings/$', student_views.my_listings, name='my_listings'),
