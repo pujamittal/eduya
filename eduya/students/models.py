@@ -2,6 +2,7 @@ from __future__ import unicode_literals
 
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, PermissionsMixin
+from django.db.models import Avg
 
 # Custom Manager for Student model
 class StudentManager(BaseUserManager):
@@ -89,4 +90,9 @@ class Tutor(models.Model):
         
     def __str__(self):
         return '<Student %s>' % self.studentLink.email
+        
+class Review(models.Model):
+    skillRating = models.PositiveSmallIntegerField()
+    moneyRating = models.PositiveSmallIntegerField()
+    notes = models.TextField(null=True, max_length=500)
     
