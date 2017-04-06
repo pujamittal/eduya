@@ -6,7 +6,7 @@ from django.conf import settings
 from django.core.mail import send_mail
 
 from .forms import loginForm, registerForm
-from .models import Student
+from .models import Student, Tutor
 
 # Create your views here.
 def registerUser(request):
@@ -140,5 +140,28 @@ def update_profile(request):
                 return render(request, 'students/edit_user.html')
         else:
             return render(request, 'students/edit_user.html')
+    else:
+        return HttpResponseRedirect('/login')
+
+def view_tutors(request):
+    if request.user.is_authenticated():
+        if request.method == 'POST':
+            if 'skillUp' in request.POST:
+                tutors = Tutor.objects.all().order_by('skillRating', 'email');
+            elif 'skillDown' in request.POST:
+                tutors = Tutor.objects.all().order_by('-skillRating', 'email');
+            if 'moneyUp' in request.POST:
+                tutors = Tutor.objects.all().order_by('moneyRating', 'email');
+            elif 'moneyDown' in request.POST:
+                tutors = Tutor.objects.all().order_by('-moneyRating', 'email');
+            elif 'nameUp' in request.POST:
+                tutors = Tutor.objects.all().order_by('email');
+            elif 'nameDown' in request.POST:
+                tutors = Tutor.objects.all().order_by('-email');
+            args = {'tutors': tutors}
+            return render(request, '/students/tutors.html', args)
+        else:
+            return HttpResponseRedirect('https://www.google.com/')
+            
     else:
         return HttpResponseRedirect('/login')

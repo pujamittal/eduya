@@ -35,7 +35,7 @@ INSTALLED_APPS = [
     'home.apps.HomeConfig',
     'posts.apps.PostsConfig',
     'students.apps.StudentsConfig',
-    'courses.apps.CoursesConfig'
+    'courses.apps.CoursesConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

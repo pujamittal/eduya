@@ -75,18 +75,13 @@ class Student(AbstractBaseUser, PermissionsMixin):
         
     def __str__(self):
         return '<Student %s>' % self.email 
+    
 
 class Tutor(models.Model):
     studentLink = models.OneToOneField( Student, on_delete=models.CASCADE, primary_key = True,)
-    skillRating = models.PositiveSmallIntegerField()
-    moneyRating = models.PositiveSmallIntegerField()
-    
-    def get_short_name(self):
-        return self.studentLink.first_name
-    
-    def get_long_name(self):
-        return str(self.studentLink.first_name + self.studentLink.last_name)
-        
+    skillRating = models.PositiveSmallIntegerField(default=0)
+    moneyRating = models.PositiveSmallIntegerField(default=0)
+
     def __str__(self):
-        return '<Student %s>' % self.studentLink.email
+        return self.studentLink.email
     
