@@ -34,6 +34,31 @@
 
 	<div class="container">
 	<a href="">Price</a> <a href="">Rating</a> <a href="">Name</a>
+	<form action="" method="post">
+	    {% csrf_token %}
+	    <button name="skillUp" value="skillUp">Skill Up</button>
+	</form>
+	<form action="" method="post">
+	    {% csrf_token %}
+	    <button name="skillDown" value="skillDown">Skill Down</button>
+	</form>
+	<form action="" method="post">
+	    {% csrf_token %}
+	    <button name="moneyUp" value="moneyUp">Money Up</button>
+	</form>
+	<form action="" method="post">
+	    {% csrf_token %}
+	    <button name="moneyDown" value="moneyDown">Money Down</button>
+	</form>
+	<form action="" method="post">
+	    {% csrf_token %}
+	    <button name="nameUp" value="nameUp">Name Up</button>
+	</form>
+	<form action="" method="post">
+	    {% csrf_token %}
+	    <button name="nameDown" value="nameDown">Name Down</button>
+	</form>
+
 
 	<div class="row" style="margin-top: 15px;">
 		{% for tutor in tutors %}

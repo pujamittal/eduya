@@ -45,4 +45,4 @@ def post(request, post_id):
         context = {'post': post}
     except Post.DoesNotExist:
         raise Http404("Post does not exist")
-    return render(request, 'posts/detail.html', context)
+    return render(request, 'posts/listing_profile.html', context)
