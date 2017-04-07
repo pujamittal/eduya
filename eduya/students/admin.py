@@ -3,6 +3,7 @@ from django.contrib.auth.admin import UserAdmin
 from django.contrib.auth.models import User
 from students.models import *
 from courses.models import Subject, Course, CourseSection, TeachingAssistant, Professor, TeachingAssistantCourse, ProfessorCourse
+from posts.models import Post
 
 
 admin.site.register(User, UserAdmin)
@@ -16,3 +17,4 @@ admin.site.register(TeachingAssistantCourse)
 admin.site.register(ProfessorCourse)
 admin.site.register(Tutor)
 admin.site.register(TutorCourse)
+admin.site.register(Post)
