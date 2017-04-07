@@ -73,30 +73,23 @@ def reviewTutor(request, tutor_id, tutor_id2):
             #if form.is_valid():
             #if not str(request.POST.get('subject'))
             tutorID = str(request.path)
-            print tutorID
             tutorID = str(tutorID[tutorID.find("review") + 7:]) #extract tutor number from url of form /tutors/tutor_id/reviews/tutor_id/
-            print tutorID
             Skills = float(request.POST.get('Skills'))
-            print Skills
             Prices = float(request.POST.get('Prices'))
-            print Prices
             notes = str(request.POST.get('notes'))
-            print notes
-            print str(request.user)
             tutorToChange = Tutor.objects.get(pk=tutorID)
             tutorToChange.numRatings += 1
             tutorToChange.skillRating = float((tutorToChange.skillRating+Skills)/(tutorToChange.numRatings))
             tutorToChange.moneyRating = float((tutorToChange.moneyRating+Prices)/(tutorToChange.numRatings))
             #print tutorToChange.skillRating
             tutorToChange.save()
-            newReview = Review.objects.create(tutor=Tutor.objects.get(pk=tutorID), reviewer_name = request.user.email, skillRating = Skills, moneyRating = Prices, notes = notes);
+            newReview = Review.objects.create(tutor=Tutor.objects.get(pk=tutorID), reviewer_name = request.user.get_long_name(), skillRating = Skills, moneyRating = Prices, notes = notes);
             newReview.save()
             messages.success(request, 'Success! Your review has been posted.')
             return HttpResponseRedirect('/tutors')
         else:
             #tutors = Student.objects.all().filter(is_tutor=True)
             #args = {'tutors': tutors}
-            print "fuck"
             args = {'tutors': Tutor.objects.get(pk=tutor_id)}
             return render(request, 'students/tutor_review.html', args)
     else:
@@ -163,7 +156,8 @@ def individual_tutor(request, tutor_id):
         student = Student.objects.get(is_tutor=True, pk=tutor_id)
         tutor = Tutor.objects.get(studentLink=student)
         courses = TutorCourse.objects.all().filter(tutor=tutor)
-        context = {'tutor' : tutor, 'courses': courses}
+        reviews = Review.objects.all().filter(tutor=tutor)
+        context = {'tutor' : tutor, 'courses': courses, 'reviews': reviews}
     except Student.DoesNotExist:
         return HttpResponseNotFound('<h1>Tutor not found</h1>')
         
