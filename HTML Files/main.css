@@ -1,18 +1,12 @@
 body {
-<<<<<<< HEAD
-	
     background: url("pattern.png");
-=======
-	background: linear-gradient(rgba(20, 26, 91, 0.6), rgba(20, 26, 91, 0.6)),
-                rgba(20, 26, 91, 0.6) url("pattern.png") no-repeat center;
-    /*background: url("pattern.png");*/
->>>>>>> 9c2b3be44c7c42b38936ed71955a8cae0d8e17ad
+	/*background: linear-gradient(rgba(20, 26, 91, 0.6), rgba(20, 26, 91, 0.6)),
+        rgba(20, 26, 91, 0.6) url("pattern.png") no-repeat center;*/
     background-attachment: fixed;
     background-size: cover;
     color: #fff;
     text-rendering: optimizeLegibility;
     margin: 0;
-<<<<<<< HEAD
     /*padding: 15px 10px 15px;*/
   	height: 100%;
 }
@@ -28,10 +22,6 @@ body {
 	font-size: 16px;
 	font-family: 'Raleway', sans-serif;
 	font-weight: 200;
-}
-=======
-    padding: 15px 10px 15px;
-  	height: 100%;
 }
 
 hr {
@@ -328,4 +318,3 @@ color: #303030;
                 }
 
         }
->>>>>>> 9c2b3be44c7c42b38936ed71955a8cae0d8e17ad
