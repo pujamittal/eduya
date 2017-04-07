@@ -73,16 +73,16 @@ def reviewTutor(request, tutor_id, tutor_id2):
             #if form.is_valid():
             #if not str(request.POST.get('subject'))
             tutorID = str(request.path)
-            print tutorID
+            print(tutorID)
             tutorID = str(tutorID[tutorID.find("review") + 7:]) #extract tutor number from url of form /tutors/tutor_id/reviews/tutor_id/
-            print tutorID
+            print(tutorID)
             Skills = float(request.POST.get('Skills'))
-            print Skills
+            print(Skills)
             Prices = float(request.POST.get('Prices'))
-            print Prices
+            print(Prices)
             notes = str(request.POST.get('notes'))
-            print notes
-            print str(request.user)
+            print(notes)
+            print(str(request.user))
             tutorToChange = Tutor.objects.get(pk=tutorID)
             tutorToChange.numRatings += 1
             tutorToChange.skillRating = float((tutorToChange.skillRating+Skills)/(tutorToChange.numRatings))
@@ -96,7 +96,7 @@ def reviewTutor(request, tutor_id, tutor_id2):
         else:
             #tutors = Student.objects.all().filter(is_tutor=True)
             #args = {'tutors': tutors}
-            print "fuck"
+            print("fuck")
             args = {'tutors': Tutor.objects.get(pk=tutor_id)}
             return render(request, 'students/tutor_review.html', args)
     else:
