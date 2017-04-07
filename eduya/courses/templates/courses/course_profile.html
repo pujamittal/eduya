@@ -11,22 +11,31 @@
   <div class="vert-center">
     <div class="panel panel-primary" style="width: 60%; border: 0;">
         <div class="panel-heading" style="padding-top: 50px;">
-          <h3 style="font-family: 'Raleway', sans-serif;">{{ course.course_id }}: {{ course.title }}</h3>
+          <h3 style="font-family: 'Raleway', sans-serif;">{{course.subject.abbreviation }}{{ course.number }} : {{ course.title }}</h3>
         </div>
         <div class="panel-body">
           <div style="float: left; width: 50%;">
             <p> Course Sections: 
-              {% for course_section in course_sections %}
-                <a href="/course/{{ course.course_id }}/section/115/">{{ course_section }}</a>
-              {% endfor %}
+              <table>
+                  <tr>
+                      <th>CRN</th>
+                      <th>Type</th>
+                      <th>Meetings</th>
+                  </tr>
+                  {% for section in course_sections %}
+                  <tr>
+                      <td>{{ section.crn }}</td>
+                      <td>{{ section.section_type }}</td>
+                      <td>{{ section.meetings.DaysOfWeek }} at {{ section.meetings.Location }}</td>
+                  </tr>
+                  {% endfor %}
+              </table>
             </p>
             <p> Tutors for this Course: 3</p>
             <div>
             <a href="">View Tutors Available for this Course</a>
               <br />
               <a href="">Become a Tutor for this Course</a>
-              <br />
-              <a href="">Add a Section for this Course</a>
             </div>
           </div>
           <div style="float: left; width: 50%;">

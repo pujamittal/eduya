@@ -30,7 +30,7 @@ def course(request, subject_id, course_id):
             location = meetings_json[meeting]['Room']['BuildingCode'] + meetings_json[meeting]['Room']['RoomNumber']
             section.meetings = {'DaysOfWeek': meetings_json[meeting]['DaysOfWeek'], 'Location': location}
     context = {'course': course, 'course_sections': course_sections}
-    return render(request, 'courses/course.html', context)
+    return render(request, 'courses/course_profile.html', context)
 
 def section(request, course_id, course_section_id):
     # section = CourseSection(pk=course_section_id)
