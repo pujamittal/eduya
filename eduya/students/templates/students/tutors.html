@@ -63,8 +63,13 @@
 		{% for tutor in tutors %}
 		<div class="col-sm-4 card">
 			<div class="card-heading"><a href="/tutors/{{ tutor.pk }}">{{tutor.tutor_name}}<!-- {{ tutor.first_name }} {{ tutor.last_name }} --></a></div>
-			<div class="card-content"> 
-				<p>Some field: </p>
+			<div class="card-content">
+				<div style="float: left; width: 50%;" >
+				<p style="color:black">Skills Rating: {{tutor.skillRating}} out of 5</p>
+			</div>
+			<div style="float: left;width: 50%;">
+				<p style="color:black">Pricing Rating: {{tutor.moneyRating}} out of 3</p>
+			</div>
 			</div>
 		</div>
 		{% endfor %}
