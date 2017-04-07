@@ -72,23 +72,33 @@ def reviewTutor(request, tutor_id, tutor_id2):
             #form = reviewForm(request.POST)
             #if form.is_valid():
             #if not str(request.POST.get('subject'))
-            tutorID = request.POST.path
-            tutorID = tutorID[tutorID.find("review") + 7:len(tutorID)-1] #extract tutor number from url of form /tutors/tutor_id/reviews/tutor_id/
+            tutorID = str(request.path)
             print tutorID
-            skills = request.POST.get('skills')
-            print skills
-            money = request.POST.get('money')
-            print money
+            tutorID = str(tutorID[tutorID.find("review") + 7:]) #extract tutor number from url of form /tutors/tutor_id/reviews/tutor_id/
+            print tutorID
+            Skills = float(request.POST.get('Skills'))
+            print Skills
+            Prices = float(request.POST.get('Prices'))
+            print Prices
             notes = str(request.POST.get('notes'))
             print notes
-            #newReview = Review.objects.create(tutor=Tutor.objects.get(pk=tutorID));
-            #newReview.save()
+            print str(request.user)
+            tutorToChange = Tutor.objects.get(pk=tutorID)
+            tutorToChange.numRatings += 1
+            tutorToChange.skillRating = float((tutorToChange.skillRating+Skills)/(tutorToChange.numRatings))
+            tutorToChange.moneyRating = float((tutorToChange.moneyRating+Prices)/(tutorToChange.numRatings))
+            #print tutorToChange.skillRating
+            tutorToChange.save()
+            newReview = Review.objects.create(tutor=Tutor.objects.get(pk=tutorID), reviewer_name = request.user.email, skillRating = Skills, moneyRating = Prices, notes = notes);
+            newReview.save()
             messages.success(request, 'Success! Your review has been posted.')
             return HttpResponseRedirect('/tutors')
         else:
             #tutors = Student.objects.all().filter(is_tutor=True)
             #args = {'tutors': tutors}
-            return render(request, 'students/tutor_review.html')
+            print "fuck"
+            args = {'tutors': Tutor.objects.get(pk=tutor_id)}
+            return render(request, 'students/tutor_review.html', args)
     else:
         return HttpResponseRedirect('/login')
 

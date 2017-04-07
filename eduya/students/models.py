@@ -92,8 +92,9 @@ class StudentAdmin(UserAdmin):
 class Tutor(models.Model):
     studentLink = models.OneToOneField( Student, on_delete=models.CASCADE, primary_key = True,)
     tutor_name = models.CharField(blank=False, max_length = 256, default="John Doe");
-    skillRating = models.PositiveSmallIntegerField(default=0)
-    moneyRating = models.PositiveSmallIntegerField(default=0)
+    skillRating = models.FloatField(default=0)
+    moneyRating = models.FloatField(default=0)
+    numRatings = models.PositiveSmallIntegerField(default=0)
 
     def __str__(self):
         return self.studentLink.email
