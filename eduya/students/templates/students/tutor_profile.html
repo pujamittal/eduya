@@ -27,12 +27,12 @@
               <input type="text" class="form-control col-md-8" placeholder="Search">
             </div>
           </form>
-          <li><a href=''>My Courses</a></li>
-          <li><a href=''>My Listings</a></li>
-          <li><a href=''>Tutors</a></li>
-          <li><a href=''>Posts</a></li>
-          <li><a href=''>All Courses</a></li>
-          <li><a href=''>All Professors</a></li>
+          <li><a href='{% url "my_courses" %}'>My Courses</a></li>
+	        <li><a href='{% url "my_listings" %}'>My Listings</a></li>
+	        <li><a href='{% url "view_tutors" %}'>Tutors</a></li>
+	        <li><a href=''>Posts</a></li>
+	        <li><a href='{% url "all_courses" %}'>All Courses</a></li>
+	        <li><a href='{% url "all_professors" %}'>All Professors</a></li>
         </ul>
       </div>
     </div>

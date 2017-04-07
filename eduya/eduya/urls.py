@@ -32,7 +32,7 @@ urlpatterns = [
     url(r'^login/$', student_views.loginUser, name='login'),
     url(r'^logout/$', student_views.logoutUser, name='logout'),
     url(r'^reset/$', student_views.reset, name='reset'),
-    url(r'^posts/', include('posts.urls'), name='posts'),
+    url(r'^posts/', include('posts.urls')), #previously student_views.posts,
     url(r'^tutors/$', student_views.view_tutors, name='view_tutors'),
     url(r'^tutors/(?P<tutor_id>[0-9]+)/$', student_views.individual_tutor, name='individual_tutor'),
     url(r'^profile/edit/$', student_views.update_profile, name='update_profile'),
