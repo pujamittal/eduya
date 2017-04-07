@@ -1,7 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse, Http404, HttpResponseRedirect
 from courses.models import *
-from students.models import TutorCourse
+from students.models import TutorCourse, Tutor, Student
 import datetime
 import json
 import ast
@@ -36,10 +36,18 @@ def course(request, subject_id, course_id):
     context = {'course': course, 'course_sections': course_sections, 'tutors': tutors, 'professors': professors, 'teaching_assistants': teaching_assistants}
     return render(request, 'courses/course_profile.html', context)
 
-def section(request, course_id, course_section_id):
-    # section = CourseSection(pk=course_section_id)
-    # context = {'section' : section}
-    return render(request, 'courses/section_profile.html')
+def become_tutor_for_course(request, subject_id, course_id):
+    subject = Subject.objects.all().get(abbreviation=subject_id)
+    course = Course.objects.all().filter(subject=subject).filter(number=course_id)[0]
+    tutor = Tutor.objects.all().filter(studentLink=request.user)[0]
+    
+    tutor_exists = len(TutorCourse.objects.all().filter(course=course, tutor=tutor))
+    if tutor_exists == 0:
+        t = TutorCourse()
+        t.tutor = tutor
+        t.course = course
+        t.save()
+    return redirect('/subjects/%s/courses/%s/' % (subject_id, course_id))
 
 # TODO: route functions below
 def all_professors(request):

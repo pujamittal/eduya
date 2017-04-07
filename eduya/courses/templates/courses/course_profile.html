@@ -32,9 +32,9 @@
                   {% endfor %}
               </table>
               
-            <p style="padding:10px 0 0 0;"> Tutors for this Course: 3</p>
-            <div>
-              <a href="">Become a Tutor for this Course</a>
+            
+            <div style="padding: 10px 0 0 0">
+              <a  href="/subjects/{{ course.subject.abbreviation }}/courses/{{ course.number }}/become_tutor_for_course/">Become a Tutor for this Course</a>
             </div>
           </div>
           <div style="float: left; width: 50%;">
@@ -47,8 +47,8 @@
                   </tr>
                   {% for tutor in tutors %}
                   <tr>
-                      <td style="padding:0 15px 5px 15px;">{{ tutor.tutor.tutor_name }}</td>
-                      <td style="padding:0 15px 5px 15px;"><a href="#">Link</a></td>
+                      <td style="padding:0 15px 5px 15px;">{{ tutor.tutor.studentLink.first_name }} {{ tutor.tutor.studentLink.last_name }}</td>
+                      <td style="padding:0 15px 5px 15px;"><a href="/tutors/{{ tutor.tutor.studentLink.pk }}/">Link</a></td>
                   </tr>
                   {% endfor %}
               </table>

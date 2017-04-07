@@ -20,6 +20,7 @@ class LogInTest(TestCase):
         # should be logged in now
         self.assertTrue(response.context['user'].is_active)
 """
+"""
 class SimpleCreateAndLoginTest(TestCase):
     def setUp(self):
         user = Student.objects.create_user('temporary@gmail.com', 'Eduya307' ,'Test', 'User', False)
@@ -29,7 +30,7 @@ class SimpleCreateAndLoginTest(TestCase):
         response = self.client.get('/profile/', follow=True)
         user = Student.objects.get(email='temporary@gmail.com')
         self.assertEqual(response.context['email'], 'temporary@gmail.com')
-        
+"""        
 class SimpleLogoutTest(TestCase):
 
    def test_logout(self):
