@@ -5,8 +5,8 @@ from django.contrib import messages
 from django.conf import settings
 from django.core.mail import send_mail
 
-from .forms import loginForm, registerForm, reviewForm
-from .models import Student, Tutor, Review
+from .forms import loginForm, registerForm #, reviewForm
+from .models import Student, Tutor #, Review
 
 # Create your views here.
 def registerUser(request):
