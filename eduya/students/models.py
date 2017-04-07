@@ -31,7 +31,7 @@ class StudentManager(BaseUserManager):
         user.set_password(password)
         user.save(using=self._db)
         if is_tutor == True:
-            Tutor.objects.create(studentLink = user, tutor_name = str(first_name + last_name))
+            Tutor.objects.create(studentLink = user, tutor_name = str(first_name + " " + last_name))
         return user
         
     def create_superuser(self, email, password, first_name, last_name, is_tutor):
@@ -81,7 +81,7 @@ class Student(AbstractBaseUser, PermissionsMixin):
         return self.first_name
     
     def get_long_name(self):
-        return str(self.first_name + self.last_name)
+        return str(self.first_name + " " + self.last_name)
 
     def __str__(self):
         return '<Student %s>' % self.email 
