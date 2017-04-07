@@ -9,7 +9,7 @@ from courses.models import Course
 
 # Custom Manager for Student model
 class StudentManager(BaseUserManager):
-    def create_user(self, email, password, first_name, last_name, is_tutor=False):
+    def create_user(self, email, password, first_name, last_name, is_tutor):
         
         # Check if all fields are set
         if email is None:
@@ -45,6 +45,7 @@ class StudentManager(BaseUserManager):
             raise ValueError('First name must be set')
         if last_name is None:
             raise ValueError('Last name must be set')
+        
         
         user = self.create_user(
             email=self.normalize_email(email),
@@ -101,11 +102,9 @@ class TutorCourse(models.Model):
     tutor = models.ForeignKey(Tutor)
     course = models.ForeignKey(Course)        
         
-"""
 class Review(models.Model):
     tutor = models.ForeignKey(Tutor, on_delete=models.CASCADE, related_name='tutorReview')
+    reviewer_name = models.CharField(blank=True, max_length = 256, default="Anonymous");
     skillRating = models.PositiveSmallIntegerField(default=0)
     moneyRating = models.PositiveSmallIntegerField(default=0)
     notes = models.TextField(null=False, max_length=500)
-
-"""
