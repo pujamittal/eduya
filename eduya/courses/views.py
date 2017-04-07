@@ -40,10 +40,13 @@ def become_tutor_for_course(request, subject_id, course_id):
     subject = Subject.objects.all().get(abbreviation=subject_id)
     course = Course.objects.all().filter(subject=subject).filter(number=course_id)[0]
     tutor = Tutor.objects.all().filter(studentLink=request.user)[0]
-    t = TutorCourse()
-    t.tutor = tutor
-    t.course = course
-    t.save()
+    
+    tutor_exists = len(TutorCourse.objects.all().filter(course=course, tutor=tutor))
+    if tutor_exists == 0:
+        t = TutorCourse()
+        t.tutor = tutor
+        t.course = course
+        t.save()
     return redirect('/subjects/%s/courses/%s/' % (subject_id, course_id))
 
 # TODO: route functions below
