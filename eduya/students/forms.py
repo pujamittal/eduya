@@ -35,6 +35,30 @@ class registerForm(forms.Form):
 class loginForm(forms.Form):
     email = forms.CharField(label='email', widget=forms.EmailInput, required=True)
     password = forms.CharField(label='password', widget=forms.PasswordInput, required=True)
+
+   
+class reviewForm(forms.Form):
+    mOne= 1
+    mTwo = 2
+    mThree = 3
+    mFour = 4
+    mFive = 5
+    SKILLCHOICES = (
+        (mOne,'$'), 
+        (mTwo,'$$'), 
+        (mThree,'$$$'),
+    )
+    MONEYCHOICES = (
+        (mOne), 
+        (mTwo), 
+        (mThree), 
+        (mFour), 
+        (mFive),
+    )
+    skills = forms.ChoiceField(label='skills', widget=forms.RadioSelect, choices=SKILLCHOICES, required=False)
+    money = forms.ChoiceField(label='money', widget=forms.RadioSelect, choices=MONEYCHOICES, required=False)
+    notes = forms.CharField(label='notes', widget=forms.TextInput, required=False)
+    
 """
 class updateForm(forms.ModelForm):
     email = forms.CharField(label='email', widget=forms.EmailInput, required=True)

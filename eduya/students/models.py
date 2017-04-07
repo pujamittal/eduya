@@ -87,14 +87,11 @@ class Tutor(models.Model):
     moneyRating = models.PositiveSmallIntegerField(default=0)
 
     def __str__(self):
-<<<<<<< HEAD
-        return '<Student %s>' % self.studentLink.email
-        
-class Review(models.Model):
-    skillRating = models.PositiveSmallIntegerField()
-    moneyRating = models.PositiveSmallIntegerField()
-    notes = models.TextField(null=True, max_length=500)
-=======
         return self.studentLink.email
->>>>>>> 91eafb22c2be5cb18d559b071c8b1ce6d2ffafd4
+
+class Review(models.Model):
+    tutor = models.ForeignKey(Tutor, on_delete=models.CASCADE)
+    skillRating = models.PositiveSmallIntegerField(default=0)
+    moneyRating = models.PositiveSmallIntegerField(default=0)
+    notes = models.TextField(null=True, max_length=500)
     

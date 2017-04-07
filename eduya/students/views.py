@@ -6,7 +6,7 @@ from django.conf import settings
 from django.core.mail import send_mail
 
 from .forms import loginForm, registerForm
-from .models import Student, Tutor
+from .models import Student, Tutor, Review
 
 # Create your views here.
 def registerUser(request):
@@ -62,7 +62,25 @@ def loginUser(request):
     messages.error(request, 'Error: invalid form.')
     return render(request, 'students/login.html')
     
-    
+def reviewTutor(request):
+    if request.user.is_authenticated():
+        if request.method == 'POST':
+            form = reviewForm(request.POST)
+            if form.is_valid():
+                newReview = Review.objects.create();
+                skills = str(request.POST.get('skills'))
+                money = str(request.POST.get('money'))
+                notes = str(request.POST.get('notes'))
+                newReview.save()
+                messages.success(request, 'Success! Your review has been posted.')
+                return HttpResponseRedirect('/tutors')
+        else:
+            tutors = Student.objects.all().filter(is_tutor=True)
+            args = {'tutors': tutors}
+            return render(request, 'students/tutors.html', args)
+    else:
+        return HttpResponseRedirect('/login')
+
 def logoutUser(request):
     logout(request)
     messages.success(request, 'You are now logged out')
@@ -95,10 +113,6 @@ def my_profile(request):
         if currentUser.is_tutor == True:
             return render(request, 'students/user_profile_isTutor.html', context)
         return render(request, 'students/user_profile.html', context)
-            
-    
-        
-    
     
 def all_tutors(request):
     if request.user.is_authenticated():
