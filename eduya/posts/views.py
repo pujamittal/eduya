@@ -11,7 +11,7 @@ def index(request):
         
     posts = Post.objects.all()
     context = {'posts': posts}
-    return render(request, 'posts/index.html', context)
+    return render(request, 'posts/listing_page.html', context)
         
 def new_post(request):
     if not request.user.is_authenticated(): 
