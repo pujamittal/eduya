@@ -74,11 +74,15 @@ def reviewTutor(request, tutor_id, tutor_id2):
             #if not str(request.POST.get('subject'))
             tutorID = request.POST.path
             tutorID = tutorID[tutorID.find("review") + 7:len(tutorID)-1] #extract tutor number from url of form /tutors/tutor_id/reviews/tutor_id/
-            skills = str(request.POST.get('skills'))
-            money = str(request.POST.get('money'))
+            print tutorID
+            skills = request.POST.get('skills')
+            print skills
+            money = request.POST.get('money')
+            print money
             notes = str(request.POST.get('notes'))
-            newReview = Review.objects.create(tutor=Tutor.objects.get(pk=tutorID));
-            newReview.save()
+            print notes
+            #newReview = Review.objects.create(tutor=Tutor.objects.get(pk=tutorID));
+            #newReview.save()
             messages.success(request, 'Success! Your review has been posted.')
             return HttpResponseRedirect('/tutors')
         else:
