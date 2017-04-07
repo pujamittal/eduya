@@ -5,6 +5,7 @@ from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, Permis
 from django.db.models import Avg
 from django.contrib.auth.admin import UserAdmin
 from django.contrib import admin
+from courses.models import Course
 
 # Custom Manager for Student model
 class StudentManager(BaseUserManager):
@@ -95,6 +96,11 @@ class Tutor(models.Model):
 
     def __str__(self):
         return self.studentLink.email
+
+class TutorCourse(models.Model):
+    tutor = models.ForeignKey(Tutor)
+    course = models.ForeignKey(Course)        
+        
 """
 class Review(models.Model):
     tutor = models.ForeignKey(Tutor, on_delete=models.CASCADE, related_name='tutorReview')
