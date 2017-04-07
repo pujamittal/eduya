@@ -5,7 +5,7 @@ from django.contrib import messages
 from django.conf import settings
 from django.core.mail import send_mail
 
-from .forms import loginForm, registerForm
+from .forms import loginForm, registerForm, reviewForm
 from .models import Student, Tutor, Review
 
 # Create your views here.
@@ -61,7 +61,7 @@ def loginUser(request):
     #if the form is not valid or the password is incorrect
     messages.error(request, 'Error: invalid form.')
     return render(request, 'students/login.html')
-    
+"""    
 def reviewTutor(request):
     if request.user.is_authenticated():
         if request.method == 'POST':
@@ -80,7 +80,7 @@ def reviewTutor(request):
             return render(request, 'students/tutors.html', args)
     else:
         return HttpResponseRedirect('/login')
-
+"""
 def logoutUser(request):
     logout(request)
     messages.success(request, 'You are now logged out')
@@ -111,7 +111,6 @@ def my_profile(request):
         context = {'user': request.user}
         currentUser = Student.objects.get(email = request.user.email)
         if currentUser.is_tutor == True:
-            context = {'user': request.user, 'tutor': Tutor.objects.get(studentLink = currentUser)}
             return render(request, 'students/user_profile_isTutor.html', context)
         return render(request, 'students/user_profile.html', context)
     

@@ -88,10 +88,11 @@ class Tutor(models.Model):
 
     def __str__(self):
         return self.studentLink.email
-
+"""
 class Review(models.Model):
-    tutor = models.ForeignKey(Tutor, on_delete=models.CASCADE)
+    tutor = models.ForeignKey(Tutor, on_delete=models.CASCADE, related_name='tutorReview')
     skillRating = models.PositiveSmallIntegerField(default=0)
     moneyRating = models.PositiveSmallIntegerField(default=0)
-    notes = models.TextField(null=True, max_length=500)
-    
+    notes = models.TextField(null=False, max_length=500)
+
+"""
