@@ -47,8 +47,8 @@
                   </tr>
                   {% for tutor in tutors %}
                   <tr>
-                      <td style="padding:0 15px 5px 15px;">{{ tutor.tutor.tutor_name }}</td>
-                      <td style="padding:0 15px 5px 15px;"><a href="#">Link</a></td>
+                      <td style="padding:0 15px 5px 15px;">{{ tutor.tutor.studentLink.first_name }} {{ tutor.tutor.studentLink.last_name }}</td>
+                      <td style="padding:0 15px 5px 15px;"><a href="/tutors/{{ tutor.tutor.studentLink.pk }}/">Link</a></td>
                   </tr>
                   {% endfor %}
               </table>
