@@ -17,7 +17,7 @@ def all_courses(request, subject_id):
     subject = Subject.objects.all().get(abbreviation=subject_id)
     courses = Course.objects.all().filter(subject=subject).order_by('number')
     context = {'courses': courses}
-    return render(request, 'courses/courses.html', context)
+    return render(request, 'courses/courses_page.html', context)
 
 def course(request, subject_id, course_id):
     subject = Subject.objects.all().get(abbreviation=subject_id)
