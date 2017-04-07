@@ -33,7 +33,7 @@ urlpatterns = [
     url(r'^login/$', student_views.loginUser, name='login'),
     url(r'^logout/$', student_views.logoutUser, name='logout'),
     url(r'^reset/$', student_views.reset, name='reset'),
-    url(r'^posts/', include('posts.urls'), name='posts'),
+    url(r'^posts/', include('posts.urls')), #previously student_views.posts,
     url(r'^tutors/$', student_views.view_tutors, name='view_tutors'),
     url(r'^tutors/(?P<tutor_id>[0-9]+)/$', student_views.individual_tutor, name='individual_tutor'),
     url(r'^tutors/(?P<tutor_id>[0-9]+)/review/(?P<tutor_id2>[0-9]+)$', student_views.reviewTutor, name='review_tutor'),
@@ -42,10 +42,8 @@ urlpatterns = [
     url(r'^profile/$', student_views.my_profile, name='my_profile'),
     url(r'^my-courses/$', student_views.my_courses, name='my_courses'),
     url(r'^my-listings/$', student_views.my_listings, name='my_listings'),
-    url(r'^course/(?P<course_id>[a-zA-Z0-9]+)/$', courses_views.course, name='course'),
-    url(r'^course/(?P<course_id>[a-zA-Z0-9]+)/section/(?P<course_section_id>[0-9]+)/$', courses_views.section, name='section'),
-    url(r'^courses/$', courses_views.all_courses, name='all_courses'),
-    url(r'^professors/$', courses_views.all_professors, name='all_professors'),
-    url(r'^professors/(?P<professor_id>[0-9]+)/$', courses_views.professor, name='professor'),
-    url(r'^professors/(?P<professor_id>[0-9]+)/reviews/$', courses_views.professor_reviews, name='professor_reviews')
+    url(r'^subjects/$', courses_views.all_subjects, name='all_subjects'),
+    url(r'^subjects/(?P<subject_id>[A-Z]+)/courses/$', courses_views.all_courses, name='all_courses'),
+    url(r'^subjects/(?P<subject_id>[A-Z]+)/courses/(?P<course_id>[0-9]+)/$', courses_views.course, name='course'),
+    url(r'^subjects/(?P<subject_id>[A-Z]+)/courses/(?P<course_id>[0-9]+)/become_tutor_for_course/$', courses_views.become_tutor_for_course, name='become_tutor_for_course')
 ]

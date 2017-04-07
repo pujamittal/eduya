@@ -3,6 +3,7 @@
   <title>eduya</title>
   <meta charset="utf-8" />
   {% load static %}
+  <link rel="stylesheet" type="text/css" href="{% static 'courses.css' %}" />
   <link href="https://fonts.googleapis.com/css?family=Julius+Sans+One|Raleway|Montserrat|Work Sans" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-material-design/4.0.2/bootstrap-material-design.css" rel="stylesheet">
@@ -11,38 +12,78 @@
   <div class="vert-center">
     <div class="panel panel-primary" style="width: 60%; border: 0;">
         <div class="panel-heading" style="padding-top: 50px;">
-          <h3 style="font-family: 'Raleway', sans-serif;">{{ course.course_id }}: {{ course.title }}</h3>
+          <h3 style="font-family: 'Raleway', sans-serif;">{{course.subject.abbreviation }}{{ course.number }} : {{ course.title }}</h3>
         </div>
         <div class="panel-body">
           <div style="float: left; width: 50%;">
-            <p> Course Sections: 
-              {% for course_section in course_sections %}
-                <a href="/course/{{ course.course_id }}/section/115/">{{ course_section }}</a>
-              {% endfor %}
-            </p>
-            <p> Tutors for this Course: 3</p>
-            <div>
-            <a href="">View Tutors Available for this Course</a>
-              <br />
-              <a href="">Become a Tutor for this Course</a>
-              <br />
-              <a href="">Add a Section for this Course</a>
+            <h3 style="padding:0 0 10px 0;"> Course Sections </h3>
+              <table>
+                  <tr>
+                      <th style="padding:0 15px 0 15px;">CRN</th>
+                      <th style="padding:0 15px 0 15px;">Type</th>
+                      <th style="padding:0 15px 0 15px;">Meetings</th>
+                  </tr>
+                  {% for section in course_sections %}
+                  <tr>
+                      <td style="padding:0 15px 5px 15px;">{{ section.crn }}</td>
+                      <td style="padding:0 15px 5px 15px;">{{ section.section_type }}</td>
+                      <td style="padding:0 15px 5px 15px;">{{ section.meetings.DaysOfWeek }} at {{ section.meetings.Location }}</td>
+                  </tr>
+                  {% endfor %}
+              </table>
+              
+            
+            <div style="padding: 10px 0 0 0">
+              <a  href="/subjects/{{ course.subject.abbreviation }}/courses/{{ course.number }}/become_tutor_for_course/">Become a Tutor for this Course</a>
             </div>
           </div>
           <div style="float: left; width: 50%;">
-            <h4 id="review-header">Course Info</h4>
-            <p>
-              <ul>
-                <li>You will have a rudimentary understanding of program language interpreters, operating systems, unix/linux systems, networking, and theory of computability.</li>
-                <li>You will consolidate the programming skills from the previous core courses.</li>
-                <li>You will understand how programs run in user space and how the interact with the OS.</li>
-                <li>You will be able to write large programs (>1000 lines).</li>
-                <li>You will be able to use tools like IDEs, debuggers, profilers, and source control to help them write good and maintainable code.</li>
-                <li>You will learn how to work in teams.</li>
-                <li>Use of Scripting Languages.</li>
-                <li>You will learn to write multi-process and multi-threaded programs.</li> 
-              </ul>
-            </p>
+            <h3 id="review-header" style="padding:0 0 0 0;">Resources</h3>
+            <h5 style="padding:5px 0 0 0;">Tutors</h5>
+              <table>
+                  <tr>
+                      <th style="padding:0 15px 0 15px;">Name</th>
+                      <th style="padding:0 15px 0 15px;">Page</th>
+                  </tr>
+                  {% for tutor in tutors %}
+                  <tr>
+                      <td style="padding:0 15px 5px 15px;">{{ tutor.tutor.studentLink.first_name }} {{ tutor.tutor.studentLink.last_name }}</td>
+                      <td style="padding:0 15px 5px 15px;"><a href="/tutors/{{ tutor.tutor.studentLink.pk }}/">Link</a></td>
+                  </tr>
+                  {% endfor %}
+              </table>
+              
+              <h5 style="padding:5px 0 0 0;">Professors</h5>
+              <table>
+                  <tr>
+                      <th style="padding:0 15px 0 15px;">Name</th>
+                      <th style="padding:0 15px 0 15px;">Email</th>
+                      <th style="padding:0 15px 0 15px;">Office Hours</th>
+                  </tr>
+                  {% for professor in professors %}
+                  <tr>
+                      <td style="padding:0 15px 5px 15px;">{{ professor.professor.name }}</td>
+                      <td style="padding:0 15px 5px 15px;">{{ professor.professor.email }}</td>
+                      <td style="padding:0 15px 5px 15px;">{{ professor.professor.office_hours }} in {{ professor.professor.office }}</td>
+                  </tr>
+                  {% endfor %}
+              </table>
+            
+              <h5 style="padding:5px 0 0 0;">Teaching Assistants</h5>
+              <table>
+                  <tr>
+                      <th style="padding:0 15px 0 15px;">Name</th>
+                      <th style="padding:0 15px 0 15px;">Email</th>
+                      <th style="padding:0 15px 0 15px;">Office Hours</th>
+                  </tr>
+                  {% for teaching_assistant in teaching_assistants %}
+                  <tr>
+                      <td style="padding:0 15px 5px 15px;">{{ teaching_assistant.teaching_assistant.name }}</td>
+                      <td style="padding:0 15px 5px 15px;">{{ teaching_assistant.teaching_assistant.email }}</td>
+                      <td style="padding:0 15px 5px 15px;">{{ teaching_assistant.teaching_assistant.office_hours }} in {{ teaching_assistant.teaching_assistant.office }}</td>
+                  </tr>
+                  {% endfor %}
+              </table>
           </div>
         </div>
     </div>

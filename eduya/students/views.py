@@ -6,7 +6,8 @@ from django.conf import settings
 from django.core.mail import send_mail
 
 from .forms import loginForm, registerForm #, reviewForm
-from .models import Student, Tutor, Review
+from .models import Student, Tutor, Review, TutorCourse
+
 
 # Create your views here.
 def registerUser(request):
@@ -102,7 +103,11 @@ def my_courses(request):
 def my_listings(request):
     if request.user.is_authenticated():
         return HttpResponseRedirect('/my_listings')
-    
+   
+# def posts(request):
+#     if request.user.is_authenticated():
+#         return HttpResponseRedirect('/posts')
+        
 def courses(request):
     return HttpResponseRedirect('/courses')
 
@@ -141,8 +146,10 @@ def all_tutors(request):
     
 def individual_tutor(request, tutor_id):
     try:
-        tutor = Student.objects.get(is_tutor=True, pk=tutor_id)
-        context = {'tutor' : tutor}
+        student = Student.objects.get(is_tutor=True, pk=tutor_id)
+        tutor = Tutor.objects.get(studentLink=student)
+        courses = TutorCourse.objects.all().filter(tutor=tutor)
+        context = {'tutor' : tutor, 'courses': courses}
     except Student.DoesNotExist:
         return HttpResponseNotFound('<h1>Tutor not found</h1>')
         

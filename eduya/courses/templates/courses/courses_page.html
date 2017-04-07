@@ -1,10 +1,10 @@
 <head>
 	<link rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     {% load static %}
-    <link rel="stylesheet" type="text/css" href="{% static 'puja.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'students.css' %}" />
     <link href="https://fonts.googleapis.com/css?family=Julius+Sans+One|Raleway|Montserrat|Work Sans" rel="stylesheet">
 </head><body>
-	  <div class="navbar navbar-default navbar-fixed-top" style="background: #4E5279; border: none;">
+	  <div class="navbar navbar-default navbar-fixed-top" style="background: #4E5279; border: none; height: 52px;">
 	  <div class="container-fluid">
 	    <div class="navbar-header">
 	      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
@@ -21,34 +21,29 @@
 	            <input type="text" class="form-control col-md-8" placeholder="Search">
 	          </div>
 	        </form>
-	        <li><a href=''>My Courses</a></li>
-	        <li><a href=''>My Listings</a></li>
-	        <li><a href=''>Tutors</a></li>
-	        <li><a href=''>Posts</a></li>
-	        <li><a href=''>All Courses</a></li>
-	        <li><a href=''>All Professors</a></li>
+	        <li><a href='#'>My Courses</a></li>
+	        <li><a href='#'>My Listings</a></li>
+	        <li><a href='{% url "view_tutors" %}'>Tutors</a></li>
+	        <li><a href='{% url "posts" %}'>Posts</a></li>
+	        <li><a href='{% url "all_subjects" %}'>All Subjects</a></li>
+	        <li><a href='#'>All Professors</a></li>
 	      </ul>
 	    </div>
 	  </div>
 	</div>
 
 	<div class="container">
-	<a href="/posts/new/">Create a new post</a>
-
-	<div class="row">
-		{% for post in posts %}
+	<div class="row" style="margin-top: 15px;">
+		{% for course in courses %}
 		<div class="col-sm-4 card">
-			<div class="card-heading"><a href="/posts/{{ post.pk }}/">{{ post.subject }}</a></div>
+			<div class="card-heading" style="background-color: #D28AB2"><a href="/subjects/{{ course.subject.abbreviation }}/courses/{{ course.number }}/">{{ course.subject.abbreviation }}{{ course.number }}<!-- {{ tutor.first_name }} {{ tutor.last_name }} --></a></div>
 			<div class="card-content"> 
-				<p>Student: {{ post.student }}</p>
-				<p>Course: {{ post.course }}</p>
-				<p>Price: ${{ post.price }}</p>
-				<p>Location: {{ post.location }}</p>
-				<p>Additional Notes: {{ post.notes }}</p>
+				<div style="float: center; width: 75%;">
+					<p style="color:black; padding:0 0 10px 0;">{{ course.title }}</p>
+					</div>
 			</div>
 		</div>
 		{% endfor %}
 	</div>
 </div>
 </body>
-

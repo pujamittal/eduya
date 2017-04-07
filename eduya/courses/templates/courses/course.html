@@ -1,1 +1,17 @@
-<h3>{% course.course_id %} {% course.title %}</h3>
+<h3>{{course.subject.abbreviation }}{{ course.number }} : {{ course.title }}</h3>
+
+<h3>Sections:</h3>
+<table>
+    <tr>
+        <th>CRN</th>
+        <th>Type</th>
+        <th>Meetings</th>
+    </tr>
+    {% for section in course_sections %}
+    <tr>
+        <td>{{ section.crn }}</td>
+        <td>{{ section.section_type }}</td>
+        <td>{{ section.meetings.DaysOfWeek }} at {{ section.meetings.Location }}</td>
+    </tr>
+    {% endfor %}
+</table>
