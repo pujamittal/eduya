@@ -62,8 +62,10 @@
         <div class="panel-body">
           <div style="float: left; width: 50%;">
             <!-- <p> Rating: <span class="star">&starf;</span> <span class="star">&starf;</span> <span class="star">&starf;</span> <span class="star">&starf;</span> <span class="star">&starf;</span></p> -->
-            <p>Rating: <span class="stars" data-stars="{{ tutor.skillRating }}">★★★★★</span></p>
-            <p style="font:black"> Price: <span class="money" data-stars="{{ tutor.moneyRating }}">$$$</p>
+            <!--<p>Rating: <span class="stars" data-stars="{{ tutor.skillRating }}">★★★★★</span></p>-->
+            <!--<p style="font:black"> Price: <span class="money" data-stars="{{ tutor.moneyRating }}">$$$</p>-->
+            <p>Rating: {{ tutor.skillRating }}</p>
+            <p> Price: {{ tutor.moneyRating }}</p>
             <p> Location: Pawnee, IN</p>
             <p> Tutors in: {% for course in courses %}<a style="visiblility:visible; color:black" href="/subjects/{{ course.course.subject.abbreviation }}/courses/{{ course.course.number }}/">{{ course.course }}</a> {% endfor %}</p>
           
