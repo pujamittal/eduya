@@ -62,7 +62,7 @@
         <div class="panel-body">
           <div style="float: left; width: 50%;">
             <!-- <p> Rating: <span class="star">&starf;</span> <span class="star">&starf;</span> <span class="star">&starf;</span> <span class="star">&starf;</span> <span class="star">&starf;</span></p> -->
-            <!--<p>Rating: <span class="stars" data-stars="{{ tutor.skillRating }}">★★★★★</span></p>-->
+            <!-- <p>Rating: <span class="stars" data-stars="{{ tutor.skillRating }}">★★★★★</span></p>-->
             <!--<p style="font:black"> Price: <span class="money" data-stars="{{ tutor.moneyRating }}">$$$</p>-->
             <p>Rating: {{ tutor.skillRating }}</p>
             <p> Price: {{ tutor.moneyRating }}</p>
@@ -76,7 +76,7 @@
             </div> -->
           </div>
           <div style="float: left; width: 50%;">
-            <a href="javascript:void(0)" class="btn btn-raised btn-default" style="background: #B0B0B0; border: none; float: right;" onclick="location.href=/tutors/{{ tutor.pk }}/review/{{ tutor.pk }}">REVIEW THIS TUTOR</a> 
+            <a href="/tutors/{{ tutor.studentLink.pk }}/review/{{ tutor.studentLink.pk }}" class="button">REVIEW THIS TUTOR</a> 
             <h4 id="review-header">Reviews</h4>
             {% for review in reviews %}
               <p>Skills Rating: {{ review.skillRating }} Price Rating: {{ review.moneyRating }}</p>
