@@ -1,0 +1,56 @@
+#TEST 1
+Sign Up as:
+Your Email: testuser@yahoo.com
+First Name: Test
+Last Name: User
+Password: testUser101
+Confirm Password: testUser101
+Tutor: False
+#TEST 1 Passed!
+
+#TEST 2
+Sign Up as:
+Your Email: testeruser@yahoo.com
+First Name: Tester
+Last Name: User
+Password: testUser101
+Confirm Password: testUser101
+Tutor: True
+#TEST 2 Passed!
+
+#TEST 3
+Login as:
+Your Email: testuser@yahoo.com
+Password: testUser101
+#TEST 3 Passed!
+
+#TEST 4
+Login as:
+Your Email: testeruser@yahoo.com
+Password: testUser101
+#TEST 4 Passed!
+
+#TEST 5
+Logout as:
+Your Email: testuser@yahoo.com
+#TEST 5 Passed!
+
+#TEST 6
+Logout as:
+Your Email: testeruser@yahoo.com
+#TEST 6 Passed!
+
+#TEST 7
+Edit Profile as:
+Your Email: testuser@yahoo.com
+First Name: User
+Last Name: Test
+#TEST 7 Passed!
+
+#TEST 7
+Edit Profile as:
+Your Email: testeruser@yahoo.com
+First Name: User
+Last Name: Tester
+#TEST 7 Passed!
+
