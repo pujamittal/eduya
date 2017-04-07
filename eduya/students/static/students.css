@@ -108,6 +108,20 @@ button {
     /*margin-right: 20px;*/
 }
 
+#review-button {
+    background-color: none;
+    border: 1px solid white;
+    /*color: white;*/
+    padding: 1% 2%;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-family: 'Raleway', sans-serif;
+    margin-top: 23px;
+    /*margin-right: 20px;*/
+    color: white;
+}
+
 h1 {
 	/*padding-top: 50px;*/
 	font-family: 'Julius Sans One', sans-serif;

@@ -57,6 +57,11 @@
             <!-- <div class="image-cropper" style="float: right;">
               <img src="http://media.salon.com/2012/11/knope_campaign_rect.jpg"  />
             </div> -->
+
+          <div style=" float: right;">
+            <a href="/tutors/{{ tutor.studentLink.pk }}/review/{{ tutor.studentLink.pk }}" id="review-button">REVIEW THIS TUTOR</a>
+          </div>
+
           <h3 style="font-family: 'Raleway', sans-serif;">{{ tutor.studentLink.first_name }} {{ tutor.studentLink.last_name }}</h3>
         </div>
         <div class="panel-body">
@@ -66,7 +71,7 @@
             <!--<p style="font:black"> Price: <span class="money" data-stars="{{ tutor.moneyRating }}">$$$</p>-->
             <p>Rating: {{ tutor.skillRating }}</p>
             <p> Price: {{ tutor.moneyRating }}</p>
-            <p> Location: Pawnee, IN</p>
+            <!-- <p> Location: Pawnee, IN</p> -->
             <p> Tutors in: {% for course in courses %}<a style="visiblility:visible; color:black" href="/subjects/{{ course.course.subject.abbreviation }}/courses/{{ course.course.number }}/">{{ course.course }}</a> {% endfor %}</p>
           
             <!-- <div>
@@ -75,8 +80,7 @@
               <a href="javascript:void(0)" class="btn btn-raised btn-default" style="background:  #B0B0B0">ENV102</a>
             </div> -->
           </div>
-          <div style="float: left; width: 50%;">
-            <a href="/tutors/{{ tutor.studentLink.pk }}/review/{{ tutor.studentLink.pk }}" class="button">REVIEW THIS TUTOR</a> 
+          <div style="float: left; width: 50%;"> 
             <h4 id="review-header">Reviews</h4>
             {% for review in reviews %}
               <p>Skills Rating: {{ review.skillRating }} Price Rating: {{ review.moneyRating }}</p>
