@@ -25,8 +25,8 @@
 	        <li><a href='{% url "my_listings" %}'>My Listings</a></li>
 	        <li><a href='{% url "view_tutors" %}'>Tutors</a></li>
 	        <li><a href=''>Posts</a></li>
-	        <li><a href='{% url "all_subjects" %}'>All Subjects</a></li>
-	        <li><a href='#'>All Professors</a></li>
+	        <li><a href='{% url "all_courses" %}'>All Courses</a></li>
+	        <li><a href='{% url "all_professors" %}'>All Professors</a></li>
 	      </ul>
 	    </div>
 	  </div>
@@ -64,12 +64,7 @@
 		<div class="col-sm-4 card">
 			<div class="card-heading"><a href="/tutors/{{ tutor.pk }}">{{tutor.tutor_name}}<!-- {{ tutor.first_name }} {{ tutor.last_name }} --></a></div>
 			<div class="card-content"> 
-				<div style="float: left; width: 50%;">
-					<p style="color:black">Skills Rating: {{tutor.skillRating}} out of 5</p>
-					</div>
-				<div style="float: left; width: 50%;">
-					<p style="color:black">Pricing Rating: {{tutor.moneyRating}} out of 3</p>
-					</div>
+				<p>Some field: </p>
 			</div>
 		</div>
 		{% endfor %}
