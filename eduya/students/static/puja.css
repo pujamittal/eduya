@@ -1,0 +1,61 @@
+/* Main CSS */
+
+body {
+	/*background: linear-gradient(rgba(20, 26, 91, 0.6), rgba(20, 26, 91, 0.6)),
+                rgba(20, 26, 91, 0.6) url("pattern.png") no-repeat center;*/
+    background: url("pattern.png");
+    background-attachment: fixed;
+    background-size: cover;
+    color: #fff;
+    text-rendering: optimizeLegibility;
+    margin: 0;
+  	height: 100%;
+  	padding-top: 70px; 
+}
+
+/* Navbar CSS */
+
+.navbar-default .navbar-nav > li >a {
+	text-transform: uppercase;
+	color: #fff;
+	font-size: 16px;
+	font-family: 'Raleway', sans-serif;
+	font-weight: 200;
+}
+
+#logo {
+	font-family: 'Julius Sans One', sans-serif;
+	color: white;
+	margin: 1px;
+	/*border: 1px solid white;*/
+}
+
+/* Cards CSS */
+
+.card {
+	width: 31%;
+	height: 250px;
+	margin-right: 2%;
+	padding: 0;
+	border: none;
+	background: white;
+	margin-bottom: 20px;
+}
+
+.card-content {
+	padding: 5%;
+}
+
+.card-content > p {
+	color: #444;
+}
+
+.card-heading {
+	background-color: #F6A623;
+	padding: 5%;
+}
+
+.card-heading > a {
+	color: white;
+	text-transform: uppercase;
+}

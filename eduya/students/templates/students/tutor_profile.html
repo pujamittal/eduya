@@ -4,37 +4,82 @@
   <meta charset="utf-8" />
 
   {% load static %}
-  <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}" />
+  <link rel="stylesheet" type="text/css" href="{% static 'students.css' %}" />
 
   <link href="https://fonts.googleapis.com/css?family=Julius+Sans+One|Raleway|Montserrat|Work Sans" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-material-design/4.0.2/bootstrap-material-design.css" rel="stylesheet">
+  <script type="text/javascript">
+    $(".stars").each(function() {
+      var num_stars = $(this).data('stars');
+      var rating = (num_stars / 5)*100;
+      $(this).css("background-image", "linear-gradient( to right, gold, gold "+rating+"%, transparent "+rating+"%, transparent)")
+    });
+
+    $(".money").each(function() {
+      var num_dollar = $(this).data('money');
+      var rating = (num_dollar / 3)*100;
+      $(this).css("background-image", "linear-gradient( to right, green, green "+rating+"%, transparent "+rating+"%, transparent)")
+    });
+  </script>
 </head>
 <body>
+  <div class="navbar navbar-default navbar-fixed-top" style="background: #4E5279; border: none; height: 52px;">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="javascript:void(0)" id="logo">EDUYA</a>
+      </div>
+      <div class="navbar-collapse collapse navbar-responsive-collapse">
+        <ul class="nav navbar-nav">
+          <form class="navbar-form navbar-left">
+            <div class="form-group">
+              <input type="text" class="form-control col-md-8" placeholder="Search">
+            </div>
+          </form>
+          <li><a href='{% url "my_courses" %}'>My Courses</a></li>
+	        <li><a href='{% url "my_listings" %}'>My Listings</a></li>
+	        <li><a href='{% url "view_tutors" %}'>Tutors</a></li>
+	        <li><a href=''>Posts</a></li>
+	        <li><a href='{% url "all_courses" %}'>All Courses</a></li>
+	        <li><a href='{% url "all_professors" %}'>All Professors</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
   <div class="vert-center">
     <div class="panel panel-primary" style="width: 60%; border: 0;">
-        <div class="panel-heading" style="padding-top: 50px;">
-            <div class="image-cropper" style="float: right;">
+        <div class="panel-heading" style="padding-top: 50px; background-color: #D53C4F; border: none;">
+            <!-- <div class="image-cropper" style="float: right;">
               <img src="http://media.salon.com/2012/11/knope_campaign_rect.jpg"  />
-            </div>
+            </div> -->
           <h3 style="font-family: 'Raleway', sans-serif;">{{ tutor.first_name }} {{ tutor.last_name }}</h3>
         </div>
         <div class="panel-body">
           <div style="float: left; width: 50%;">
-            <p> Rating: <span class="star">&starf;</span> <span class="star">&starf;</span> <span class="star">&starf;</span> <span class="star">&starf;</span> <span class="star">&starf;</span></p>
-            <p> Price: $</p>
+            <!-- <p> Rating: <span class="star">&starf;</span> <span class="star">&starf;</span> <span class="star">&starf;</span> <span class="star">&starf;</span> <span class="star">&starf;</span></p> -->
+            <p>Rating: <span class="stars" data-stars="{{ tutor.skillRating }}">★★★★★</span></p>
+            <p> Price: <span class="money" data-stars="{{ tutor.moneyRating }}">$$$</p>
             <p> Location: Pawnee, IN</p>
-            <div>
-              <a href="javascript:void(0)" class="btn btn-raised btn-default" style="background: #A0A0A0">POL237</a>
-              <a href="javascript:void(0)" class="btn btn-raised btn-default" style="background: #A0A0A0">Government</a>
-              <a href="javascript:void(0)" class="btn btn-raised btn-default" style="background: #A0A0A0">ENV102</a>
-            </div>
+            <p> Courses: POL237, Government, ENV102</p>
+            <!-- <div>
+              <a href="javascript:void(0)" class="btn btn-raised btn-default" style="background:  #B0B0B0">POL237</a>
+              <a href="javascript:void(0)" class="btn btn-raised btn-default" style="background:  #B0B0B0">Government</a>
+              <a href="javascript:void(0)" class="btn btn-raised btn-default" style="background:  #B0B0B0">ENV102</a>
+            </div> -->
           </div>
           <div style="float: left; width: 50%;">
             <h4 id="review-header">Reviews</h4>
             <p>"A beautiful, tropical fish. Smart as a whip and cool under pressure."</p>
             <p>"Truly a poetic, noble land-mermaid."</p>
             <p>"She's a beautiful, talented, brilliant, powerful musk-ox."</p>
+
+            <!-- should go to the tutor review form -->
+            <a href="javascript:void(0)" class="btn btn-raised btn-default" style="background: #B0B0B0; border: none; float: right;">GIVE REVIEW</a> 
           </div>
         </div>
     </div>

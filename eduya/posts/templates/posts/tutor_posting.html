@@ -19,10 +19,10 @@
       <form class="form-group" action="/posts/new/" method="post">
         {% csrf_token %}
         <p>Please fill out the required fields to post for tutors to find you!</p>
-        <input type="text" name="subject" placeholder="subject *" required="" />
-        <input type="text" name="course" placeholder="course *" required="" />
-        <input type="text" name="price" placeholder="price *" required="" />
-        <input type="text" name="location" placeholder="location" required="" />
+        <input style="color:black" type="text" name="subject" placeholder="subject *" required="" />
+        <input style="color:black" type="text" name="course" placeholder="course *" required="" />
+        <input style="color:black" type="text" name="price" placeholder="price *" required="" />
+        <input style="color:black" type="text" name="location" placeholder="location" required="" />
 
         <ul class="checkbox-gridlayout" style="-webkit-padding-start: 0px;width:100%;">
         <!-- <div class="button-line"> -->
@@ -38,7 +38,7 @@
         </ul>
         <!-- </div> -->
         
-        <textarea name="notes" id="notes" cols="100" placeholder="Comments" style="width:100%; height:100px"></textarea>
+        <textarea  name="notes" id="notes" cols="100" placeholder="Comments" style="width:100%; height:100px; color:black;"></textarea>
         <input type="submit" value="Create post looking for tutor" />
       </form>
 

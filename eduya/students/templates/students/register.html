@@ -16,7 +16,7 @@ return true;
     <meta charset="utf-8" />
     <link rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     {% load static %}
-    <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'students.css' %}" />
     <link href="https://fonts.googleapis.com/css?family=Julius+Sans+One|Raleway|Montserrat|Work Sans" rel="stylesheet">
 </head>
 <body>
@@ -30,12 +30,12 @@ return true;
 		  {{ form.title.errors }}
 		  {{ form.title }}
           <p>Please fill out the fields below to create an account</p>
-          <input type="email" name="email" placeholder="Your Email" required/>
-           <input type="text" name="first_name" placeholder="First Name" pattern="[A-Za-z]+" oninvalid="this.setCustomValidity('Please enter a valid first name')" oninput="setCustomValidity('')" required/>
-          <input type="text" name="last_name" placeholder="Last Name" pattern="[A-Za-z]+" oninvalid="this.setCustomValidity('Please enter a valid last name')" oninput="setCustomValidity('')" required/>
-          <input type="password" name="password" placeholder="Password" pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" oninvalid="this.setCustomValidity('Please enter an 8+ character password containing an uppercase, lowercase and number or special character')"
+          <input style="color:black" type="email" name="email" placeholder="Your Email" required/>
+           <input style="color:black" type="text" name="first_name" placeholder="First Name" pattern="[A-Za-z]+" oninvalid="this.setCustomValidity('Please enter a valid first name')" oninput="setCustomValidity('')" required/>
+          <input style="color:black" type="text" name="last_name" placeholder="Last Name" pattern="[A-Za-z]+" oninvalid="this.setCustomValidity('Please enter a valid last name')" oninput="setCustomValidity('')" required/>
+          <input style="color:black" type="password" name="password" placeholder="Password" pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" oninvalid="this.setCustomValidity('Please enter an 8+ character password containing an uppercase, lowercase and number or special character')"
 			oninput="setCustomValidity('')" required/>
-		  <input type="password" name="confirmpassword" placeholder="Confirm Password"  oninvalid="this.setCustomValidity('Passwords do not match')"
+		  <input style="color:black" type="password" name="confirmpassword" placeholder="Confirm Password"  oninvalid="this.setCustomValidity('Passwords do not match')"
 			oninput="setCustomValidity('')" required/>
           <p>I want to sign up to be a tutor! <input type="checkbox" name="is_tutor"/> </p>
           <input type="submit" value="Submit" id="submit" onclick="val();"/>

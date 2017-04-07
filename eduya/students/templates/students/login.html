@@ -5,7 +5,7 @@
     <link href="https://fonts.googleapis.com/css?family=Julius+Sans+One|Raleway|Montserrat|Work Sans" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     {% load static %}
-    <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'students.css' %}" />
     
 </head>
 <body>
@@ -19,8 +19,8 @@
 		      {{ form.title.errors }}
 		      {{ form.title }}
           <p>Please enter your email and password</p>
-          <input type="email" name="email" placeholder="Email" required/>
-          <input type="password" name="password" placeholder="Password" pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" oninvalid="this.setCustomValidity('Please enter your 8+ character password containing an uppercase, lowercase and number or special character')"
+          <input style="color:black" type="email" name="email" placeholder="Email" required/>
+          <input style="color:black" type="password" name="password" placeholder="Password" pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" oninvalid="this.setCustomValidity('Please enter your 8+ character password containing an uppercase, lowercase and number or special character')"
 			oninput="setCustomValidity('')" required/>
           <h4 id="forg_pw"><a href="/reset-password/">Forgot password?</a></h4>
           <input type="submit" value="Submit" id="submit"/>

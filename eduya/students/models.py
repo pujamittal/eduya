@@ -2,6 +2,7 @@ from __future__ import unicode_literals
 
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, PermissionsMixin
+from django.db.models import Avg
 
 # Custom Manager for Student model
 class StudentManager(BaseUserManager):
@@ -18,7 +19,7 @@ class StudentManager(BaseUserManager):
             raise ValueError('Last name must be set')
         if is_tutor is None:
             raise ValueError('Is tutor must be set')
-    
+       
         user = self.model(
             email=self.normalize_email(email),
             first_name=first_name,
@@ -26,6 +27,8 @@ class StudentManager(BaseUserManager):
             is_tutor=is_tutor)
         user.set_password(password)
         user.save(using=self._db)
+        if is_tutor == True:
+            Tutor.objects.create(studentLink = user, tutor_name = str(first_name + last_name))
         return user
         
     def create_superuser(self, email, password, first_name, last_name, is_tutor):
@@ -75,18 +78,21 @@ class Student(AbstractBaseUser, PermissionsMixin):
         
     def __str__(self):
         return '<Student %s>' % self.email 
+    
 
 class Tutor(models.Model):
     studentLink = models.OneToOneField( Student, on_delete=models.CASCADE, primary_key = True,)
-    skillRating = models.PositiveSmallIntegerField()
-    moneyRating = models.PositiveSmallIntegerField()
-    
-    def get_short_name(self):
-        return self.studentLink.first_name
-    
-    def get_long_name(self):
-        return str(self.studentLink.first_name + self.studentLink.last_name)
-        
+    tutor_name = models.CharField(blank=False, max_length = 256, default="John Doe");
+    skillRating = models.PositiveSmallIntegerField(default=0)
+    moneyRating = models.PositiveSmallIntegerField(default=0)
+
     def __str__(self):
-        return '<Student %s>' % self.studentLink.email
-    
+        return self.studentLink.email
+"""
+class Review(models.Model):
+    tutor = models.ForeignKey(Tutor, on_delete=models.CASCADE, related_name='tutorReview')
+    skillRating = models.PositiveSmallIntegerField(default=0)
+    moneyRating = models.PositiveSmallIntegerField(default=0)
+    notes = models.TextField(null=False, max_length=500)
+
+"""

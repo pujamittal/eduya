@@ -5,8 +5,8 @@ from django.contrib import messages
 from django.conf import settings
 from django.core.mail import send_mail
 
-from .forms import loginForm, registerForm
-from .models import Student
+from .forms import loginForm, registerForm #, reviewForm
+from .models import Student, Tutor #, Review
 
 # Create your views here.
 def registerUser(request):
@@ -23,7 +23,7 @@ def registerUser(request):
         first_name=form.cleaned_data['first_name'], 
         last_name=form.cleaned_data['last_name'],
         is_tutor=form.cleaned_data['is_tutor'])
-        newStudent.save()    
+        newStudent.save()
         # Used to send email
         subject = 'Thank you for registering with eduya'
         message = 'Welcome to eduya! Your account is now active.'
@@ -61,8 +61,26 @@ def loginUser(request):
     #if the form is not valid or the password is incorrect
     messages.error(request, 'Error: invalid form.')
     return render(request, 'students/login.html')
-    
-    
+"""    
+def reviewTutor(request):
+    if request.user.is_authenticated():
+        if request.method == 'POST':
+            form = reviewForm(request.POST)
+            if form.is_valid():
+                newReview = Review.objects.create();
+                skills = str(request.POST.get('skills'))
+                money = str(request.POST.get('money'))
+                notes = str(request.POST.get('notes'))
+                newReview.save()
+                messages.success(request, 'Success! Your review has been posted.')
+                return HttpResponseRedirect('/tutors')
+        else:
+            tutors = Student.objects.all().filter(is_tutor=True)
+            args = {'tutors': tutors}
+            return render(request, 'students/tutors.html', args)
+    else:
+        return HttpResponseRedirect('/login')
+"""
 def logoutUser(request):
     logout(request)
     messages.success(request, 'You are now logged out')
@@ -78,7 +96,11 @@ def my_courses(request):
 def my_listings(request):
     if request.user.is_authenticated():
         return HttpResponseRedirect('/my_listings')
-    
+ """       
+def posts(request):
+    if request.user.is_authenticated():
+        return HttpResponseRedirect('/posts')
+ """   
 def courses(request):
     return HttpResponseRedirect('/courses')
 
@@ -89,15 +111,31 @@ def professors(request):
 def my_profile(request):
     if not request.user.is_authenticated():
         return HttpResponseRedirect('/login')
-        
-    context = {'user': request.user}
-        
-    return render(request, 'students/user_profile.html', context)
+    else:
+        context = {'user': request.user}
+        currentUser = Student.objects.get(email = request.user.email)
+        if currentUser.is_tutor == True:
+            context = {'user': request.user, 'tutor': Tutor.objects.get(studentLink = currentUser)}
+            return render(request, 'students/user_profile_isTutor.html', context)
+        return render(request, 'students/user_profile.html', context)
     
 def all_tutors(request):
-    tutors = Student.objects.all().filter(is_tutor=True)
-    context = { 'tutors': tutors }
-    return render(request, 'students/tutors.html', context)
+    if request.user.is_authenticated():
+        if request.method == 'POST':
+            tutors = Student.objects.all().filter(is_tutor=True)
+            if 'skillUp' in request.POST:
+                tutors = tutors.order_by('first_name');
+            elif 'skillDown' in request.POST:
+                tutors = tutors.order_by('-first_name');
+            args = {'tutors': tutors}
+            return render(request, 'students/tutors.html', args)
+        else:
+            tutors = Student.objects.all().filter(is_tutor=True)
+            args = {'tutors': tutors}
+            return render(request, 'students/tutors.html', args)
+            
+    else:
+        return HttpResponseRedirect('/login')
     
 def individual_tutor(request, tutor_id):
     try:
@@ -140,5 +178,43 @@ def update_profile(request):
                 return render(request, 'students/edit_user.html')
         else:
             return render(request, 'students/edit_user.html')
+    else:
+        return HttpResponseRedirect('/login')
+
+def view_tutors(request):
+    if request.user.is_authenticated():
+        if request.method == 'POST':
+            if 'skillUp' in request.POST:
+                tutors = Tutor.objects.all().order_by('skillRating', 'tutor_name');
+            elif 'skillDown' in request.POST:
+                tutors = Tutor.objects.all().order_by('-skillRating', 'tutor_name');
+            elif 'moneyUp' in request.POST:
+                tutors = Tutor.objects.all().order_by('moneyRating', 'tutor_name');
+            elif 'moneyDown' in request.POST:
+                tutors = Tutor.objects.all().order_by('-moneyRating', 'tutor_name');
+            elif 'nameUp' in request.POST:
+                tutors = Tutor.objects.all().order_by('tutor_name');
+            elif 'nameDown' in request.POST:
+                tutors = Tutor.objects.all().order_by('-tutor_name');
+            else:
+                tutors = Tutor.objects.all().order_by('tutor_name')
+            args = {'tutors': tutors}
+            return render(request, 'students/tutors.html', args)
+        else:
+            tutors = Tutor.objects.all().order_by('tutor_name')
+            args = {'tutors': tutors}
+            return render(request, 'students/tutors.html', args)
+            
+    else:
+        return HttpResponseRedirect('/login')
+
+def become_tutor(request):
+    if request.user.is_authenticated():
+        currentUser = Student.objects.get(email = request.user.email)
+        currentUser.is_tutor = True
+        currentUser.save()
+        Tutor.objects.create(studentLink = currentUser, tutor_name = str(currentUser.first_name + currentUser.last_name))
+        return HttpResponseRedirect("/profile")
+            
     else:
         return HttpResponseRedirect('/login')
