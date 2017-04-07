@@ -32,6 +32,53 @@
                   {% endfor %}
               </table>
             
+              <h3 style="padding:0 0 10px 0;">Tutors</h3>
+              <table>
+                  <tr>
+                      <th style="padding:0 15px 0 15px;">Name</th>
+                      <th style="padding:0 15px 0 15px;">Page</th>
+                  </tr>
+                  {% for tutor in tutors %}
+                  <tr>
+                      <td style="padding:0 15px 5px 15px;">{{ tutor.tutor.tutor_name }}</td>
+                      <td style="padding:0 15px 5px 15px;"><a href="#">Link</a></td>
+                  </tr>
+                  {% endfor %}
+              </table>
+              
+              <h3 style="padding:0 0 10px 0;">Professors</h3>
+              <table>
+                  <tr>
+                      <th style="padding:0 15px 0 15px;">Name</th>
+                      <th style="padding:0 15px 0 15px;">Email</th>
+                      <th style="padding:0 15px 0 15px;">Office Hours</th>
+                  </tr>
+                  {% for professor in professors %}
+                  <tr>
+                      <td style="padding:0 15px 5px 15px;">{{ professor.professor.name }}</td>
+                      <td style="padding:0 15px 5px 15px;">{{ professor.professor.email }}</td>
+                      <td style="padding:0 15px 5px 15px;">{{ professor.professor.office_hours }} in {{ professor.professor.office }}</td>
+                  </tr>
+                  {% endfor %}
+              </table>
+            
+              <h3 style="padding:0 0 10px 0;">Teaching Assistants</h3>
+              <table>
+                  <tr>
+                      <th style="padding:0 15px 0 15px;">Name</th>
+                      <th style="padding:0 15px 0 15px;">Email</th>
+                      <th style="padding:0 15px 0 15px;">Office Hours</th>
+                  </tr>
+                  {% for teaching_assistant in teaching_assistants %}
+                  <tr>
+                      <td style="padding:0 15px 5px 15px;">{{ teaching_assistant.teaching_assistant.name }}</td>
+                      <td style="padding:0 15px 5px 15px;">{{ teaching_assistant.teaching_assistant.email }}</td>
+                      <td style="padding:0 15px 5px 15px;">{{ teaching_assistant.teaching_assistant.office_hours }} in {{ teaching_assistant.teaching_assistant.office }}</td>
+                  </tr>
+                  {% endfor %}
+              </table>
+            
+            
             <p style="padding:10px 0 0 0;"> Tutors for this Course: 3</p>
             <div>
               <a href="">View Tutors Available for this Course</a>
