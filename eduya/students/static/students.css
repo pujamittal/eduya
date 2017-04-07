@@ -63,9 +63,25 @@ body {
 
 /* Body CSS */
 
+form {
+    display: inline;
+}
+
 input[type=button] {
-    background-color: none; /* Green */
+    background-color: none;
     border: 1px solid #4E5279;
+    /*color: white;*/
+    padding: 1% 2%;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-family: 'Raleway', sans-serif;
+    margin-top: 10px;
+}
+
+button {
+    background-color: none;
+    border: 0px solid #4E5279;
     /*color: white;*/
     padding: 1% 2%;
     text-align: center;
