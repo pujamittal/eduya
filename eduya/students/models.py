@@ -81,7 +81,7 @@ class Student(AbstractBaseUser, PermissionsMixin):
         return self.first_name
     
     def get_long_name(self):
-        return str(self.first_name + self.last_name)
+        return str(self.first_name + " " + self.last_name)
 
     def __str__(self):
         return '<Student %s>' % self.email 
