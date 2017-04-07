@@ -34,12 +34,12 @@
 
 	<div class="container">
 	<div class="row" style="margin-top: 15px;">
-		{% for subject in subjects %}
+		{% for course in courses %}
 		<div class="col-sm-4 card">
-			<div class="card-heading" style="background-color: #FCB759"><a href="/subjects/{{ subject.abbreviation }}/courses/">All {{ subject.abbreviation }} Courses<!-- {{ tutor.first_name }} {{ tutor.last_name }} --></a></div>
+			<div class="card-heading" style="background-color: #D28AB2"><a href="/subjects/{{ course.subject.abbreviation }}/courses/{{ course.number }}/">{{ course.subject.abbreviation }}{{ course.number }}<!-- {{ tutor.first_name }} {{ tutor.last_name }} --></a></div>
 			<div class="card-content"> 
 				<div style="float: center; width: 75%;">
-					<p style="color:black">{{ subject.name }}</p>
+					<p style="color:black; padding:0 0 10px 0;">{{ course.title }}</p>
 					</div>
 			</div>
 		</div>
