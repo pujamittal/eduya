@@ -1,33 +1,52 @@
-<!DOCTYPE HTML>
 <head>
-  <title>eduya</title>
-  <meta charset="utf-8" />
-
-  {% load static %}
-  <link rel="stylesheet" type="text/css" href="{% static 'tutor_profile.css' %}" />
-
-  <link href="https://fonts.googleapis.com/css?family=Julius+Sans+One|Raleway|Montserrat|Work Sans" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-material-design/4.0.2/bootstrap-material-design.css" rel="stylesheet">
-</head>
-<body>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'posts.css' %}" />
+    <link href="https://fonts.googleapis.com/css?family=Julius+Sans+One|Raleway|Montserrat|Work Sans" rel="stylesheet">
+</head><body>
+    <div class="navbar navbar-default navbar-fixed-top" style="background: #4E5279; border: none;">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="javascript:void(0)" id="logo">EDUYA</a>
+      </div>
+      <div class="navbar-collapse collapse navbar-responsive-collapse">
+        <ul class="nav navbar-nav">
+          <form class="navbar-form navbar-left">
+            <div class="form-group">
+              <input type="text" class="form-control col-md-8" placeholder="Search">
+            </div>
+          </form>
+          <li><a href=''>My Courses</a></li>
+          <li><a href=''>My Listings</a></li>
+          <li><a href=''>Tutors</a></li>
+          <li><a href=''>Posts</a></li>
+          <li><a href=''>All Courses</a></li>
+          <li><a href=''>All Professors</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
   <div class="vert-center">
-    <div class="panel panel-primary" style="width: 60%; border: 0;">
-        <div class="panel-heading" style="padding-top: 50px;">
-            
-          <h3 style="font-family: 'Raleway', sans-serif;">Listing #{{ post.pk }}</h3>
+    <div class="panel panel-primary" style="width: 40%; border: 0;">
+        <div class="panel-heading" style="padding-top: 50px; background-color: #F6A623; border: none;">
+            <!-- <div class="image-cropper" style="float: right;">
+              <img src="http://media.salon.com/2012/11/knope_campaign_rect.jpg"  />
+            </div> -->
+          <h3 style="font-family: 'Raleway', sans-serif;">{{ post.course }} | {{ post.subject }}</h3>
         </div>
         <div class="panel-body">
-          <div style="float: left; width: 50%;">
-            <p style="font:black"> Course: {{ post.course }}</p>
-            <p> Price: {{ post.price }}</p>
-            <p> Location: {{ post.location }}</p>
-          </div>
-          <div style="float: left; width: 50%;">
-            <h4 id="review-header">Notes</h4>
-            <p>{{ post.notes }}</p>
-          </div>
+          <p>Student: {{ post.student }}</p>
+          <p>Price: ${{ post.price }}</p>
+          <p>Loction: {{ post.location }}</p>
+          <p>Notes: {{ post.notes }}</p>
         </div>
     </div>
   </div>
+
 </body>
