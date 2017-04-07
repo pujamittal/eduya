@@ -24,6 +24,7 @@ from courses import views as courses_views
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', home_views.index),
+    url(r'^test$', student_views.temp),
     url(r'^reset-password/$', reset_views.password_reset, name='password_reset'),
     url(r'^reset-password/done/$', reset_views.password_reset_done, name='password_reset_done'),
     url(r'^reset-password/confirm/(?P<uidb64>[0-9A-Za-z_\-]+)/(?P<token>[0-9A-Za-z]{1,13}-[0-9A-Za-z]{1,20})/$', reset_views.password_reset_confirm, name='password_reset_confirm'),
@@ -35,6 +36,7 @@ urlpatterns = [
     url(r'^posts/', include('posts.urls'), name='posts'),
     url(r'^tutors/$', student_views.view_tutors, name='view_tutors'),
     url(r'^tutors/(?P<tutor_id>[0-9]+)/$', student_views.individual_tutor, name='individual_tutor'),
+    url(r'^tutors/(?P<tutor_id>[0-9]+)/review/(?P<tutor_id2>[0-9]+)$', student_views.reviewTutor, name='review_tutor'),
     url(r'^profile/edit/$', student_views.update_profile, name='update_profile'),
     url(r'^profile/become_tutor/$', student_views.become_tutor, name='become_tutor'),
     url(r'^profile/$', student_views.my_profile, name='my_profile'),

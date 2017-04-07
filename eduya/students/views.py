@@ -6,7 +6,7 @@ from django.conf import settings
 from django.core.mail import send_mail
 
 from .forms import loginForm, registerForm #, reviewForm
-from .models import Student, Tutor #, Review
+from .models import Student, Tutor, Review
 
 # Create your views here.
 def registerUser(request):
@@ -61,26 +61,32 @@ def loginUser(request):
     #if the form is not valid or the password is incorrect
     messages.error(request, 'Error: invalid form.')
     return render(request, 'students/login.html')
-"""    
-def reviewTutor(request):
+
+def temp(request):
+    return render(request, 'students/tutor_review.html')
+
+def reviewTutor(request, tutor_id, tutor_id2):
     if request.user.is_authenticated():
         if request.method == 'POST':
-            form = reviewForm(request.POST)
-            if form.is_valid():
-                newReview = Review.objects.create();
-                skills = str(request.POST.get('skills'))
-                money = str(request.POST.get('money'))
-                notes = str(request.POST.get('notes'))
-                newReview.save()
-                messages.success(request, 'Success! Your review has been posted.')
-                return HttpResponseRedirect('/tutors')
+            #form = reviewForm(request.POST)
+            #if form.is_valid():
+            #if not str(request.POST.get('subject'))
+            tutorID = request.POST.path
+            tutorID = tutorID[tutorID.find("review") + 7:len(tutorID)-1] #extract tutor number from url of form /tutors/tutor_id/reviews/tutor_id/
+            skills = str(request.POST.get('skills'))
+            money = str(request.POST.get('money'))
+            notes = str(request.POST.get('notes'))
+            newReview = Review.objects.create(tutor=Tutor.objects.get(pk=tutorID));
+            newReview.save()
+            messages.success(request, 'Success! Your review has been posted.')
+            return HttpResponseRedirect('/tutors')
         else:
-            tutors = Student.objects.all().filter(is_tutor=True)
-            args = {'tutors': tutors}
-            return render(request, 'students/tutors.html', args)
+            #tutors = Student.objects.all().filter(is_tutor=True)
+            #args = {'tutors': tutors}
+            return render(request, 'students/tutor_review.html')
     else:
         return HttpResponseRedirect('/login')
-"""
+
 def logoutUser(request):
     logout(request)
     messages.success(request, 'You are now logged out')
