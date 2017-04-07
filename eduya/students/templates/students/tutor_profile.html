@@ -8,6 +8,19 @@
 
   <link href="https://fonts.googleapis.com/css?family=Julius+Sans+One|Raleway|Montserrat|Work Sans" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script type="text/javascript">
+    $(".stars").each(function() {
+      var num_stars = $(this).data('stars');
+      var rating = (num_stars / 5)*100;
+      $(this).css("background-image", "linear-gradient( to right, gold, gold "+rating+"%, transparent "+rating+"%, transparent)")
+    });
+
+    $(".money").each(function() {
+      var num_dollar = $(this).data('money');
+      var rating = (num_dollar / 3)*100;
+      $(this).css("background-image", "linear-gradient( to right, green, green "+rating+"%, transparent "+rating+"%, transparent)")
+    });
+  </script>
 </head>
 <body>
   <div class="navbar navbar-default navbar-fixed-top" style="background: #4E5279; border: none; height: 52px;">
@@ -48,10 +61,11 @@
         </div>
         <div class="panel-body">
           <div style="float: left; width: 50%;">
-            <p> Rating: <span class="star">&starf;</span> <span class="star">&starf;</span> <span class="star">&starf;</span> <span class="star">&starf;</span> <span class="star">&starf;</span></p>
-            <p> Price: $</p>
+            <!-- <p> Rating: <span class="star">&starf;</span> <span class="star">&starf;</span> <span class="star">&starf;</span> <span class="star">&starf;</span> <span class="star">&starf;</span></p> -->
+            <p>Rating: <span class="stars" data-stars="{{ tutor.skillRating }}">★★★★★</span></p>
+            <p> Price: <span class="money" data-stars="{{ tutor.moneyRating }}">$$$</p>
             <p> Location: Pawnee, IN</p>
-            <p> Courses: POL237, Government ENV102</p>
+            <p> Courses: POL237, Government, ENV102</p>
             <!-- <div>
               <a href="javascript:void(0)" class="btn btn-raised btn-default" style="background:  #B0B0B0">POL237</a>
               <a href="javascript:void(0)" class="btn btn-raised btn-default" style="background:  #B0B0B0">Government</a>

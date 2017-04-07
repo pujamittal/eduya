@@ -111,6 +111,7 @@ def my_profile(request):
         context = {'user': request.user}
         currentUser = Student.objects.get(email = request.user.email)
         if currentUser.is_tutor == True:
+            context = {'user': request.user, 'tutor': Tutor.objects.get(studentLink = currentUser)}
             return render(request, 'students/user_profile_isTutor.html', context)
         return render(request, 'students/user_profile.html', context)
     

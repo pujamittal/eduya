@@ -34,7 +34,7 @@ body {
 
 .card {
     width: 31%;
-    height: 200px;
+    height: 135px;
     margin-right: 2%;
     padding: 0;
     border: none;
@@ -59,6 +59,22 @@ body {
 .card-heading > a {
     color: white;
     text-transform: uppercase;
+}
+
+/* Stars CSS */
+
+.stars {
+  display: inline-block;
+  font-size: 15px;
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+}
+
+.money {
+  display: inline-block;
+  font-size: 15px;
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
 }
 
 /* Body CSS */
