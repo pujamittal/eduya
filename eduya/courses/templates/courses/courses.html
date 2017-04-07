@@ -8,9 +8,9 @@
     {% for course in courses %}
         <tr>
             <td>{{ course.subject.name }}</td>
-            <td>{{ course.course_id }}</td>
+            <td>{{ course.number }}</td>
             <td>{{ course.title }}</td>
-            <td><a href="/course/{{ course.course_id }}/">{{ course.course_id }}</a></td>
+            <td><a href="/subjects/{{ course.subject.abbreviation }}/courses/{{ course.number }}/">{{ course.subject.abbreviation }}{{ course.number }}</a></td>
         </tr>
     {% endfor %}   
 </table>

@@ -39,10 +39,7 @@ urlpatterns = [
     url(r'^profile/$', student_views.my_profile, name='my_profile'),
     url(r'^my-courses/$', student_views.my_courses, name='my_courses'),
     url(r'^my-listings/$', student_views.my_listings, name='my_listings'),
-    url(r'^course/(?P<course_id>[a-zA-Z0-9]+)/$', courses_views.course, name='course'),
-    url(r'^course/(?P<course_id>[a-zA-Z0-9]+)/section/(?P<course_section_id>[0-9]+)/$', courses_views.section, name='section'),
-    url(r'^courses/$', courses_views.all_courses, name='all_courses'),
-    url(r'^professors/$', courses_views.all_professors, name='all_professors'),
-    url(r'^professors/(?P<professor_id>[0-9]+)/$', courses_views.professor, name='professor'),
-    url(r'^professors/(?P<professor_id>[0-9]+)/reviews/$', courses_views.professor_reviews, name='professor_reviews')
+    url(r'^subjects/$', courses_views.all_subjects, name='all_subjects'),
+    url(r'^subjects/(?P<subject_id>[A-Z]+)/courses/$', courses_views.all_courses, name='all_courses'),
+    url(r'^subjects/(?P<subject_id>[A-Z]+)/courses/(?P<course_id>[0-9]+)/$', courses_views.course, name='course')
 ]
