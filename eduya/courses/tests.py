@@ -2,6 +2,7 @@ from django.test import TestCase, Client
 
 # Create your tests here.
 from student.models import Student
+from django.core import mail
 
 """
 class LogInTest(TestCase):
@@ -20,7 +21,7 @@ class LogInTest(TestCase):
         # should be logged in now
         self.assertTrue(response.context['user'].is_active)
 """
-"""
+
 class SimpleCreateAndLoginTest(TestCase):
     def setUp(self):
         user = Student.objects.create_user('temporary@gmail.com', 'Eduya307' ,'Test', 'User', False)
@@ -29,8 +30,8 @@ class SimpleCreateAndLoginTest(TestCase):
         self.client.login(email='temporary@gmail.com', password='Eduya307')
         response = self.client.get('/profile/', follow=True)
         user = Student.objects.get(email='temporary@gmail.com')
-        self.assertEqual(response.context['email'], 'temporary@gmail.com')
-"""        
+        self.assertEqual(response.status_code, 202)
+        
 class SimpleLogoutTest(TestCase):
 
    def test_logout(self):
@@ -41,3 +42,18 @@ class SimpleLogoutTest(TestCase):
         self.client.login(email='temporary@gmail.com', password='Eduya307')
         response = self.client.get('/logout/')
         self.assertEqual(response.status_code, 302)
+        
+class EmailTest(TestCase):
+    def test_send_email(self):
+        # Send message.
+        mail.send_mail(
+            'Subject here', 'Here is the message.',
+            'from@example.com', ['to@example.com'],
+            fail_silently=False,
+        )
+
+        # Test that one message has been sent.
+        self.assertEqual(len(mail.outbox), 1)
+
+        # Verify that the subject of the first message is correct.
+        self.assertEqual(mail.outbox[0].subject, 'Subject here')
