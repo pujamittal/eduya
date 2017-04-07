@@ -22,7 +22,8 @@
         <p><span style="font-weight:900">Name:</span> {{ user.first_name }} {{user.last_name }}</p>
         <p><span style="font-weight:900">Email:</span> {{ user.email }}</p>
         <input type="button" onclick="location.href='/profile/edit/';" value="Edit My Profile" /><br/>
-        <input type="button" onclick="location.href='/tutor_profile/';" value="View Tutor Profile" />
+        <input type="button" onclick="location.href='/tutors/{{ tutor.pk }}'" value="View Tutor Profile" />
+        
       </div>
     </div>
   </div>

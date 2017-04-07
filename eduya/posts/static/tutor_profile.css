@@ -1,0 +1,153 @@
+body {
+	
+    background: url("pattern.png");
+    background-attachment: fixed;
+    background-size: cover;
+    color: #fff;
+    text-rendering: optimizeLegibility;
+    margin: 0;
+    padding: 15px 10px 15px;
+  	height: 100%;
+}
+
+
+
+#info {
+  float:left;
+  padding: 15px;
+  width: 50%;
+  text-align: left;
+  border-right: thin double;
+  border-color: rgba(20, 26, 91, .8);
+  font-family: 'Raleway', sans-serif;
+  font-weight: bold;
+}
+
+#info div {
+	font-weight: normal;
+}
+
+#reviews {
+  float:right;
+  padding: 15px;
+  width: 50%;
+  text-align: left;
+  font-family: 'Raleway', sans-serif;
+}
+
+#reviews h4 {
+	padding-bottom: 5px;
+	font-weight: bold;
+}
+
+#banner {
+  border-style: solid;
+  width: 100%;
+  position: relative;
+  display: flex;
+  padding-top: 10%;
+  background-image: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%);
+  border-color: black;
+}
+
+#banner h2 {
+  vertical-align: bottom;
+  color: rgba(40, 26, 91, .8);
+  font-family: 'Raleway', sans-serif;
+  position: relative;
+}
+
+h1 {
+	color: rgba(20, 26, 91, .8);
+  font-family: 'Raleway', sans-serif;
+}
+
+
+
+h2 {
+	color: rgba(20, 26, 91, .8);
+	font-family: 'Raleway', sans-serif;
+}
+
+h3 {
+color: rgba(20, 26, 91, .8);
+font-family: 'Raleway', sans-serif;
+margin-top: 2.5px;
+}
+
+p {
+	font-family: 'Raleway', sans-serif;
+}
+
+
+.vert-center {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    height: 100vh;
+}
+
+.pane {
+  padding: 2% 5%;
+  margin: auto;
+  width: 50%;
+  overflow: hidden;
+  background-color: #fff;
+  opacity: .8;
+  text-align: center;
+  box-shadow: 10px 10px 50px #303030;
+  overflow:visible;
+}
+
+.pane p {
+	font-family: 'Raleway', sans-serif;
+	color: 	#505050;	
+}
+
+.image-cropper {
+    width: 100px;
+    height: 100px;
+    position: relative;
+    overflow: hidden;
+    border-radius: 50%;
+    flex-shrink: 1;
+}
+
+img {
+    display: inline;
+    margin: 0 auto;
+    height: 100%;
+    width: auto;
+    position: relative;
+    display: flex;
+}
+
+#shift-right {
+  position: relative;
+  float: left;
+  vertical-align: top;
+}
+#star {
+	font-family: 'Raleway', sans-serif;
+	font-size:125%;
+	color:black;
+}
+
+/*input[type=text] {
+	width: 80%;
+	padding: 10px;
+	border: solid 2px #808080;
+	transition: border 0.3s;
+	background: none;
+}
+
+input[type=submit] {
+	border: solid 2px #808080;
+	margin-top: 20px;
+	padding: 5px 10px 5px 10px;
+	background: none;
+	color: #303030;
+}*/
+
+
+
