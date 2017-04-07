@@ -62,7 +62,7 @@
             <a href="/tutors/{{ tutor.studentLink.pk }}/review/{{ tutor.studentLink.pk }}" id="review-button">REVIEW THIS TUTOR</a>
           </div>
 
-          <h3 style="font-family: 'Raleway', sans-serif;">{{ tutor.studentLink.first_name }} {{ tutor.studentLink.last_name }}</h3>
+          <h3 style="font-family: 'Raleway', sans-serif;">{{ tutor.studentLink.first_name }}  {{ tutor.studentLink.last_name }}</h3>
         </div>
         <div class="panel-body">
           <div style="float: left; width: 50%;">
@@ -83,9 +83,9 @@
           <div style="float: left; width: 50%;"> 
             <h4 id="review-header">Reviews</h4>
             {% for review in reviews %}
-              <p>Skills Rating: {{ review.skillRating }} Price Rating: {{ review.moneyRating }}</p>
-              <p>"{{ review.notes }}"</p>
-              <p>-{{ review.reviewer_name }}</p>
+              <p style="margin:0 0 2.5px">Skills Rating: {{ review.skillRating }} Price Rating: {{ review.moneyRating }}</p>
+              <p style="margin:0 0 2.5px">"{{ review.notes }}"</p>
+              <p style="margin:0 0 10px">-{{ review.reviewer_name }}</p>
             {% endfor %}
           </div>
         </div>
