@@ -11,7 +11,7 @@ import ast
 def all_subjects(request):
     subjects = Subject.objects.all().order_by('abbreviation')
     context = {'subjects': subjects}
-    return render(request, 'courses/subjects.html', context)
+    return render(request, 'courses/subject_page.html', context)
 
 def all_courses(request, subject_id):
     subject = Subject.objects.all().get(abbreviation=subject_id)
