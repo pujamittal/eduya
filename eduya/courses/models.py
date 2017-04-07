@@ -6,11 +6,23 @@ from django.conf import settings
 class Subject(models.Model):
     name = models.CharField(blank=False, max_length=50)
     abbreviation = models.CharField(primary_key=True, blank=False, max_length=50, unique=True)
+    
+    def __repr__ (self):
+        return '<Subject %s>' % self.abbreviation
+
+    def __str__ (self):
+        return self.abbreviation
 
 class Course(models.Model):
     subject = models.ForeignKey(Subject)
     title = models.CharField(blank=False, max_length=100)
     number = models.CharField(blank=False, max_length=50)
+    
+    def __repr__ (self):
+        return '<Course %s>' % (self.subject.abbreviation + self.number)
+        
+    def __str__ (self):
+        return str((self.subject.abbreviation + self.number))
 
 class CourseSection(models.Model):
     course = models.ForeignKey(Course)
@@ -23,6 +35,12 @@ class TeachingAssistant(models.Model):
     email = models.EmailField()
     office = models.CharField(max_length=250)
     office_hours = models.CharField(max_length=250)
+    
+    def __repr__ (self):
+        return '<TeachingAssistant %s>' % (self.email)
+        
+    def __str__ (self):
+        return self.email
 
 class Professor(models.Model):
     name = models.CharField(blank=False, max_length=250)
@@ -30,6 +48,12 @@ class Professor(models.Model):
     office = models.CharField(max_length=250)
     office_hours = models.CharField(max_length=250)
     website = models.CharField(max_length=250)
+    
+    def __repr__ (self):
+        return '<Professor %s>' % (self.email)
+        
+    def __str__ (self):
+        return self.email
 
 class TeachingAssistantCourse(models.Model):
     course = models.ForeignKey(Course)
