@@ -96,11 +96,11 @@ def my_courses(request):
 def my_listings(request):
     if request.user.is_authenticated():
         return HttpResponseRedirect('/my_listings')
-        
+ """       
 def posts(request):
     if request.user.is_authenticated():
         return HttpResponseRedirect('/posts')
-    
+ """   
 def courses(request):
     return HttpResponseRedirect('/courses')
 
