@@ -1,13 +1,54 @@
-{% for post in posts %}
-    <a href="/posts/{{ post.pk }}/">Link</a> 
-    {{ post.student }}
-    {{ post.subject }}
-    {{ post.course }}
-    {{ post.price }}
-    {{ post.location }}
-    {{ post.datetime }}
-    {{ post.notes }}
-    <br><hr>
-{% endfor %}
+<head>
+	<link rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'puja.css' %}" />
+    <link href="https://fonts.googleapis.com/css?family=Julius+Sans+One|Raleway|Montserrat|Work Sans" rel="stylesheet">
+</head><body>
+	  <div class="navbar navbar-default navbar-fixed-top" style="background: #4E5279; border: none;">
+	  <div class="container-fluid">
+	    <div class="navbar-header">
+	      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+	        <span class="icon-bar"></span>
+	        <span class="icon-bar"></span>
+	        <span class="icon-bar"></span>
+	      </button>
+	      <a class="navbar-brand" href="javascript:void(0)" id="logo">EDUYA</a>
+	    </div>
+	    <div class="navbar-collapse collapse navbar-responsive-collapse">
+	      <ul class="nav navbar-nav">
+	        <form class="navbar-form navbar-left">
+	          <div class="form-group">
+	            <input type="text" class="form-control col-md-8" placeholder="Search">
+	          </div>
+	        </form>
+	        <li><a href=''>My Courses</a></li>
+	        <li><a href=''>My Listings</a></li>
+	        <li><a href=''>Tutors</a></li>
+	        <li><a href=''>Posts</a></li>
+	        <li><a href=''>All Courses</a></li>
+	        <li><a href=''>All Professors</a></li>
+	      </ul>
+	    </div>
+	  </div>
+	</div>
 
-<a href="/posts/new/">Create a new post</a>
+	<div class="container">
+	<a href="/posts/new/">Create a new post</a>
+
+	<div class="row">
+		{% for post in posts %}
+		<div class="col-sm-4 card">
+			<div class="card-heading"><a href="/posts/{{ post.pk }}/">{{ post.subject }}</a></div>
+			<div class="card-content"> 
+				<p>Student: {{ post.student }}</p>
+				<p>Course: {{ post.course }}</p>
+				<p>Price: ${{ post.price }}</p>
+				<p>Location: {{ post.location }}</p>
+				<p>Additional Notes: {{ post.notes }}</p>
+			</div>
+		</div>
+		{% endfor %}
+	</div>
+</div>
+</body>
+

@@ -1,10 +1,11 @@
-<head>
+<!DOCTYPE HTML>
+<html><head>
 	<link rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     {% load static %}
-    <link rel="stylesheet" type="text/css" href="{% static 'students.css' %}" />
+    <!-- <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}" /> -->
     <link href="https://fonts.googleapis.com/css?family=Julius+Sans+One|Raleway|Montserrat|Work Sans" rel="stylesheet">
 </head><body>
-	  <div class="navbar navbar-default navbar-fixed-top" style="background: #4E5279; border: none; height: 52px;">
+	  <div class="navbar navbar-default navbar-static-top" style="background: rgba(20, 26, 91, 0.6); border: none;">
 	  <div class="container-fluid">
 	    <div class="navbar-header">
 	      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
@@ -21,29 +22,15 @@
 	            <input type="text" class="form-control col-md-8" placeholder="Search">
 	          </div>
 	        </form>
-	        <li><a href=''>My Courses</a></li>
-	        <li><a href=''>My Listings</a></li>
-	        <li><a href=''>Tutors</a></li>
-	        <li><a href=''>Posts</a></li>
-	        <li><a href=''>All Courses</a></li>
-	        <li><a href=''>All Professors</a></li>
+	        <li><a href='{% url "my_courses" %}'>My Courses</a></li>
+	        <li><a href='{% url "my_listings" %}'>My Listings</a></li>
+	        <li><a href='{% url "all_tutors" %}'>Tutors</a></li>
+	        <li><a href='{% url "posts" %}'>Posts</a></li>
+	        <li><a href='{% url "all_courses" %}'>All Courses</a></li>
+	        <li><a href='{% url "all_professors" %}'>All Professors</a></li>
 	      </ul>
 	    </div>
 	  </div>
 	</div>
-
-	<div class="container">
-	<a href="">Price</a> <a href="">Rating</a> <a href="">Name</a>
-
-	<div class="row" style="margin-top: 15px;">
-		{% for tutor in tutors %}
-		<div class="col-sm-4 card">
-			<div class="card-heading"><a href="/tutors/{{ tutor.pk }}">{{ tutor.first_name }} {{ tutor.last_name }}</a></div>
-			<div class="card-content"> 
-				<p>Some field: </p>
-			</div>
-		</div>
-		{% endfor %}
-	</div>
-</div>
-</body>
+	{% block content %}{% endblock %}
+</body></html>
