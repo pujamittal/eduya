@@ -18,18 +18,26 @@ class CourseSection(models.Model):
     section_type = models.CharField(blank=False, max_length=250)
     meetings = models.TextField()
 
-# class TeachingAssistant(models.Model):
-#     name = models.CharField(blank=False, max_length=250)
-#     email = models.EmailField()
-#     office = models.CharField(max_length=250)
-#     office_hours = models.CharField(max_length=250)
+class TeachingAssistant(models.Model):
+    name = models.CharField(blank=False, max_length=250)
+    email = models.EmailField()
+    office = models.CharField(max_length=250)
+    office_hours = models.CharField(max_length=250)
 
-# class Professor(models.Model):
-#     name = models.CharField(blank=False, max_length=250)
-#     email = models.EmailField()
-#     office = models.CharField(max_length=250)
-#     office_hours = models.CharField(max_length=250)
-#     website = models.CharField(max_length=250)
+class Professor(models.Model):
+    name = models.CharField(blank=False, max_length=250)
+    email = models.EmailField()
+    office = models.CharField(max_length=250)
+    office_hours = models.CharField(max_length=250)
+    website = models.CharField(max_length=250)
+
+class TeachingAssistantCourse(models.Model):
+    course = models.ForeignKey(Course)
+    teaching_assistant = models.ForeignKey(TeachingAssistant)
+
+class ProfessorCourse(models.Model):
+    course = models.ForeignKey(Course)
+    professor = models.ForeignKey(Professor)
 
 # class Review(models.Model):
 #     course_section = models.ForeignKey(CourseSection)
