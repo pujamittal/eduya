@@ -61,6 +61,22 @@ body {
     text-transform: uppercase;
 }
 
+/* Stars CSS */
+
+.stars {
+  display: inline-block;
+  font-size: 15px;
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+}
+
+.money {
+  display: inline-block;
+  font-size: 15px;
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+}
+
 /* Body CSS */
 
 form {
