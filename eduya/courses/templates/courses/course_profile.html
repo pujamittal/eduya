@@ -3,6 +3,7 @@
   <title>eduya</title>
   <meta charset="utf-8" />
   {% load static %}
+  <link rel="stylesheet" type="text/css" href="{% static 'courses.css' %}" />
   <link href="https://fonts.googleapis.com/css?family=Julius+Sans+One|Raleway|Montserrat|Work Sans" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-material-design/4.0.2/bootstrap-material-design.css" rel="stylesheet">
@@ -15,23 +16,23 @@
         </div>
         <div class="panel-body">
           <div style="float: left; width: 50%;">
-            <p> Course Sections: 
+            <h3 style="padding:0 0 10px 0;"> Course Sections </h3>
               <table>
                   <tr>
-                      <th>CRN</th>
-                      <th>Type</th>
-                      <th>Meetings</th>
+                      <th style="padding:0 15px 0 15px;">CRN</th>
+                      <th style="padding:0 15px 0 15px;">Type</th>
+                      <th style="padding:0 15px 0 15px;">Meetings</th>
                   </tr>
                   {% for section in course_sections %}
                   <tr>
-                      <td>{{ section.crn }}</td>
-                      <td>{{ section.section_type }}</td>
-                      <td>{{ section.meetings.DaysOfWeek }} at {{ section.meetings.Location }}</td>
+                      <td style="padding:0 15px 5px 15px;">{{ section.crn }}</td>
+                      <td style="padding:0 15px 5px 15px;">{{ section.section_type }}</td>
+                      <td style="padding:0 15px 5px 15px;">{{ section.meetings.DaysOfWeek }} at {{ section.meetings.Location }}</td>
                   </tr>
                   {% endfor %}
               </table>
-            </p>
-            <p> Tutors for this Course: 3</p>
+            
+            <p style="padding:10px 0 0 0;"> Tutors for this Course: 3</p>
             <div>
               <a href="">View Tutors Available for this Course</a>
               <br />
@@ -39,10 +40,10 @@
             </div>
           </div>
           <div style="float: left; width: 50%;">
-            <h4 id="review-header">Course Info</h4>
-            <h5>Professors:</h5>
-            <h5>Teaching Assistants:</h5>
-            <h5>SI Sessions:</h5>
+            <h3 id="review-header" style="padding:0 0 10px 0;">Course Info</h4>
+            <p style="padding:0 0 -20px 0;">Professors:</p>
+            <p style="padding:0 0 -20px 0;">Teaching Assistants:</p>
+            <p style="padding:0 0 -20px 0;">SI Sessions:</p>
           </div>
         </div>
     </div>
