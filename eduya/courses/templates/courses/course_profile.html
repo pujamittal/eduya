@@ -9,13 +9,35 @@
   <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-material-design/4.0.2/bootstrap-material-design.css" rel="stylesheet">
 </head>
 <body>
+    <div class="navbar navbar-default navbar-fixed-top" style="background: #4E5279; border: none; height: 52px;">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="javascript:void(0)" id="logo">EDUYA</a>
+      </div>
+      <div class="navbar-collapse collapse navbar-responsive-collapse">
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href='#' style="color: white;">My Courses</a></li>
+          <li><a href='#' style="color: white;">My Listings</a></li>
+          <li><a href='{% url "view_tutors" %}' style="color: white;">Tutors</a></li>
+          <li><a href='{% url "posts" %}' style="color: white;">Posts</a></li>
+          <li><a href='{% url "all_subjects" %}' style="color: white;">All Subjects</a></li>
+          <li><a href='#' style="color: white;">All Professors</a></li>
+          <li><a href='{% url "logout" %}' style="color: white;">Logout</a></li>
+        </ul>
+      </div>
+    </div>
+
   <div class="vert-center">
-    <div class="panel panel-primary" style="width: 60%; border: 0;">
-        <div class="panel-heading" style="padding-top: 50px;">
+    <div class="card" style="width: 80%; border: 0; margin-top: -250px;">
+        <div class="card-heading" style="padding-top: 50px;">
           <h3 style="font-family: 'Raleway', sans-serif;">{{course.subject.abbreviation }}{{ course.number }} : {{ course.title }}</h3>
         </div>
-        <div class="panel-body">
-          <div style="float: left; width: 50%;">
+        <div class="card-content" style="background-color: white; height: 300%">
+          <div style="float: left; width: 50%; height: 100%;">
             <h3 style="padding:0 0 10px 0;"> Course Sections </h3>
               <table>
                   <tr>
@@ -31,8 +53,6 @@
                   </tr>
                   {% endfor %}
               </table>
-              
-            
             <div style="padding: 10px 0 0 0">
               <a  href="/subjects/{{ course.subject.abbreviation }}/courses/{{ course.number }}/become_tutor_for_course/">Become a Tutor for this Course</a>
             </div>
