@@ -36,7 +36,7 @@
         <div class="card-heading" style="padding-top: 50px;">
           <h3 style="font-family: 'Raleway', sans-serif;">{{course.subject.abbreviation }}{{ course.number }} : {{ course.title }}</h3>
         </div>
-        <div class="card-content" style="background-color: white; height: 300%">
+        <div class="card-content" style="background-color: white; height: 260%">
           <div style="float: left; width: 50%; height: 100%;">
             <h3 style="padding:0 0 10px 0;"> Course Sections </h3>
               <table>
@@ -104,6 +104,9 @@
                   </tr>
                   {% endfor %}
               </table>
+              <div style="border: 10px; margin-top: 20px;">
+                <a style="background: #666; padding: 10px; color: white; font-family: 'Raleway';" onclick="window.open('https://www.google.com/#q={{course.subject.abbreviation }}+{{ course.number }}+{{ course.title }}+purdue')">Find Course Page</a>
+              </div>
           </div>
         </div>
     </div>
