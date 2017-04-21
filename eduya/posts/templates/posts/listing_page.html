@@ -1,7 +1,7 @@
 <head>
 	<link rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     {% load static %}
-    <link rel="stylesheet" type="text/css" href="{% static 'puja.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'posts.css' %}" />
     <link href="https://fonts.googleapis.com/css?family=Julius+Sans+One|Raleway|Montserrat|Work Sans" rel="stylesheet">
 </head><body>
 	  <div class="navbar navbar-default navbar-fixed-top" style="background: #4E5279; border: none;">
@@ -15,37 +15,59 @@
 	      <a class="navbar-brand" href="javascript:void(0)" id="logo">EDUYA</a>
 	    </div>
 	    <div class="navbar-collapse collapse navbar-responsive-collapse">
-	      <ul class="nav navbar-nav">
-	        <form class="navbar-form navbar-left">
-	          <div class="form-group">
-	            <input type="text" class="form-control col-md-8" placeholder="Search">
-	          </div>
-	        </form>
+	      <ul class="nav navbar-nav navbar-right">
 	        <li><a href='#'>My Courses</a></li>
 	        <li><a href='#'>My Listings</a></li>
 	        <li><a href='{% url "view_tutors" %}'>Tutors</a></li>
 	        <li><a href='{% url "posts" %}'>Posts</a></li>
 	        <li><a href='{% url "all_subjects" %}'>All Subjects</a></li>
 	        <li><a href='#'>All Professors</a></li>
+	        <li><a href='{% url "logout" %}'>Logout</a></li>
 	      </ul>
 	    </div>
 	  </div>
 	</div>
 
 	<div class="container">
-	<button>
-	<a href="/posts/new/">Create a new post</a></button>
+	<button style="margin-bottom: 15px;">
+		<a href="/posts/new/" style="color: #fff;">Create a new post</a>
+	</button>
+
+	<form action="" method="post" style="display: inline;">
+	    {% csrf_token %}
+	    <button name="skillUp" value="skillUp">Skill Up</button>
+	</form>
+	<form action="" method="post" style="display: inline;">
+	    {% csrf_token %}
+	    <button name="skillDown" value="skillDown">Skill Down</button>
+	</form>
+	<form action="" method="post" style="display: inline;">
+	    {% csrf_token %}
+	    <button name="moneyUp" value="moneyUp">Money Up</button>
+	</form>
+	<form action="" method="post" style="display: inline;">
+	    {% csrf_token %}
+	    <button name="moneyDown" value="moneyDown">Money Down</button>
+	</form>
+	<form action="" method="post" style="display: inline;">
+	    {% csrf_token %}
+	    <button name="nameUp" value="nameUp">Name Up</button>
+	</form>
+	<form action="" method="post" style="display: inline;">
+	    {% csrf_token %}
+	    <button name="nameDown" value="nameDown">Name Down</button>
+	</form>
 
 	<div class="row">
 		{% for post in posts %}
 		<div class="col-sm-4 card">
-			<div class="card-heading"><a href="/posts/{{ post.pk }}/">{{ post.subject }}</a></div>
+			<div class="card-heading" style="background-color: #6BB31C"><a href="/posts/{{ post.pk }}/">{{ post.subject }}</a></div>
 			<div class="card-content"> 
-				<p>Student: {{ post.student }}</p>
+				<p>Student: {{ post.student.first_name }} {{ post.student.last_name }}</p>
 				<p>Course: {{ post.course }}</p>
 				<p>Price: ${{ post.price }}</p>
 				<p>Location: {{ post.location }}</p>
-				<p>Additional Notes: {{ post.notes }}</p>
+				<!-- <p>Additional Notes: {{ post.notes }}</p> -->
 			</div>
 		</div>
 		{% endfor %}

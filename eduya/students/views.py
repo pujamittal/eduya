@@ -1,9 +1,11 @@
+from __future__ import division
 from django.contrib.auth import authenticate, login, logout
 from django.http import HttpResponseRedirect, HttpResponse, HttpResponseNotFound
 from django.shortcuts import render
 from django.contrib import messages
 from django.conf import settings
 from django.core.mail import send_mail
+
 
 from .forms import loginForm, registerForm #, reviewForm
 from .models import Student, Tutor, Review, TutorCourse
@@ -78,9 +80,9 @@ def reviewTutor(request, tutor_id, tutor_id2):
             Prices = float(request.POST.get('Prices'))
             notes = str(request.POST.get('notes'))
             tutorToChange = Tutor.objects.get(pk=tutorID)
-            tutorToChange.numRatings += 1
-            tutorToChange.skillRating = float((tutorToChange.skillRating+Skills)/(tutorToChange.numRatings))
-            tutorToChange.moneyRating = float((tutorToChange.moneyRating+Prices)/(tutorToChange.numRatings))
+            tutorToChange.skillRating = float(((tutorToChange.numRatings*tutorToChange.skillRating)+Skills)/(tutorToChange.numRatings + 1))
+            tutorToChange.moneyRating = float(((tutorToChange.numRatings*tutorToChange.moneyRating)+Prices)/(tutorToChange.numRatings + 1))
+            tutorToChange.numRatings = tutorToChange.numRatings + 1
             #print tutorToChange.skillRating
             tutorToChange.save()
             newReview = Review.objects.create(tutor=Tutor.objects.get(pk=tutorID), reviewer_name = request.user.get_long_name(), skillRating = Skills, moneyRating = Prices, notes = notes);

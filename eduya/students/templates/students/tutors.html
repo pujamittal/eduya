@@ -15,18 +15,14 @@
 	      <a class="navbar-brand" href="javascript:void(0)" id="logo">EDUYA</a>
 	    </div>
 	    <div class="navbar-collapse collapse navbar-responsive-collapse">
-	      <ul class="nav navbar-nav">
-	        <form class="navbar-form navbar-left">
-	          <div class="form-group">
-	            <input type="text" class="form-control col-md-8" placeholder="Search">
-	          </div>
-	        </form>
+	      <ul class="nav navbar-nav navbar-right">
 	        <li><a href='#'>My Courses</a></li>
 	        <li><a href='#'>My Listings</a></li>
 	        <li><a href='{% url "view_tutors" %}'>Tutors</a></li>
 	        <li><a href='{% url "posts" %}'>Posts</a></li>
 	        <li><a href='{% url "all_subjects" %}'>All Subjects</a></li>
 	        <li><a href='#'>All Professors</a></li>
+	        <li><a href='{% url "logout" %}'>Logout</a></li>
 	      </ul>
 	    </div>
 	  </div>
@@ -65,12 +61,9 @@
 		<div class="col-sm-4 card">
 			<div class="card-heading"><a href="/tutors/{{ tutor.pk }}">{{tutor.studentLink.first_name}} {{tutor.studentLink.last_name}}<!-- {{ tutor.first_name }} {{ tutor.last_name }} --></a></div>
 			<div class="card-content">
-				<div style="float: left; width: 50%;" >
+				
 				<p style="color:black">Skills Rating: {{tutor.skillRating}} out of 5</p>
-			</div>
-			<div style="float: left;width: 50%;">
 				<p style="color:black">Pricing Rating: {{tutor.moneyRating}} out of 3</p>
-			</div>
 			</div>
 		</div>
 		{% endfor %}

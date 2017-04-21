@@ -7,9 +7,40 @@ body {
     color: #fff;
     text-rendering: optimizeLegibility;
     margin: 0;
-    padding: 15px 10px 15px;
-  	height: 100%;
+    height: 100%;
+    /*padding-top: 70px; */
+}
+
+/* Cards CSS */
+
+.card {
+    width: 31%;
+    height: 135px;
+    margin-right: 2%;
+    padding: 0;
+    border: none;
+    background-color: white;
+    margin-bottom: 20px;
+}
+
+.card-content {
+    padding: 2% 5%;
+}`
+
+.card-content > p {
+    color: #444;
+}
+
+.card-heading {
+    background-color: #D53C4F;
+    padding: 5%;
     font-family: 'Raleway', sans-serif;
+}
+
+
+.card-heading > a {
+    color: white;
+    text-transform: uppercase;
 }
 
 .checkbox-grid li {
@@ -40,6 +71,11 @@ font-family: 'Raleway', sans-serif;
 margin-top: 25px;
 }
 
+h5 {
+  font-family: 'Raleway', sans-serif;
+  color: rgba(20, 26, 91, .8);
+}
+
 p {
 	font-family: 'Raleway', sans-serif;
 }
@@ -48,15 +84,22 @@ p {
   font-weight: bold;
 }
 
-nav {
-	font-family: 'Raleway', sans-serif;
-	text-transform: uppercase;
-	float: right;
-	padding: 5px 10px 0 0;
-	font-size: 0.8em;
-	font-weight: 600;
-	letter-spacing: 0.25em;
-	text-transform: uppercase;
+/* Navbar CSS */
+
+.navbar-default .navbar-nav > li >a {
+    text-transform: uppercase;
+    color: #fff;
+    font-size: 16px;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 200;
+}
+
+#logo {
+    font-family: 'Julius Sans One', sans-serif;
+    color: white;
+    margin: 10px;
+    padding-top: 15px;
+    /*border: 1px solid white;*/
 }
 
 .button-line {
