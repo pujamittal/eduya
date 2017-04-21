@@ -24,8 +24,8 @@ body {
 }
 
 .card-content {
-    padding: 5%;
-}
+    padding: 2% 5%;
+}`
 
 .card-content > p {
     color: #444;
