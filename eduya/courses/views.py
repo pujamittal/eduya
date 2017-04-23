@@ -57,4 +57,4 @@ def professor(request, subject_id, course_id, professor_id):
     
     context = {'course': course, 'professor': professor }
     
-    return render(request, 'courses/professor.html', context)
+    return render(request, 'courses/professor_page.html', context)
