@@ -61,7 +61,7 @@
 	<div class="row">
 		{% for post in posts %}
 		<div class="col-sm-4 card">
-			<div class="card-heading" style="background-color: #6BB31C"><a href="/posts/{{ post.pk }}/">{{ post.subject }}</a></div>
+			<div class="card-heading" style="background-color: #6BB31C"><a href="/posts/{{ post.pk }}/">Subject: {{ post.subject }}</a></div>
 			<div class="card-content"> 
 				<p>Student: {{ post.student.first_name }} {{ post.student.last_name }}</p>
 				<p>Course: {{ post.course }}</p>
