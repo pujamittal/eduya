@@ -62,6 +62,17 @@ class TeachingAssistantCourse(models.Model):
 class ProfessorCourse(models.Model):
     course = models.ForeignKey(Course)
     professor = models.ForeignKey(Professor)
+    
+class ProfessorComment(models.Model):
+    professor = models.ForeignKey(Professor)
+    student = models.ForeignKey(settings.AUTH_USER_MODEL)
+    text = models.TextField(null=True, max_length=250)
+    
+class CourseComment(models.Model):
+    course = models.ForeignKey(Course)
+    student = models.ForeignKey(settings.AUTH_USER_MODEL)
+    text = models.TextField(null=True, max_length=250)    
+    
 
 # class Review(models.Model):
 #     course_section = models.ForeignKey(CourseSection)
