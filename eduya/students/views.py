@@ -8,7 +8,7 @@ from django.core.mail import send_mail
 
 
 from .forms import loginForm, registerForm #, reviewForm
-from .models import Student, Tutor, Review, TutorCourse
+from .models import Student, Tutor, Review, TutorCourse, Course, Subject
 
 
 # Create your views here.
@@ -105,10 +105,18 @@ def logoutUser(request):
 def reset(request):
     return render(request, 'students/reset.html')
     
-def my_courses(request):
+def my_courses(request, subject_id):
     if request.user.is_authenticated():
-        return HttpResponseRedirect('/my_courses')
-    
+        subject = Subject.objects.all().get(abbreviation=subject_id)
+        courses = Course.objects.all().filter(subject=subject).order_by('number')
+        context = {'courses': courses}
+    return render(request, 'courses/courses_page.html', context)
+#        return HttpResponseRedirect('/my_courses')
+#        subject = Subject.objects.all().get(abbreviation=subject_id)
+#        course = Course.objects.get(abbreviation=Course.subject_id)
+#        context = {'courses': courses}
+#    return render(request, 'courses/courses_page.html', context)
+
 def my_listings(request):
     if request.user.is_authenticated():
         return HttpResponseRedirect('/my_listings')
