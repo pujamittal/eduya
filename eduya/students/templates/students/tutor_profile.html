@@ -54,7 +54,7 @@
               <img src="http://media.salon.com/2012/11/knope_campaign_rect.jpg"  />
             </div> -->
 
-          <div style="float: right;">
+          <div style="float: right; width: 20%;">
             <a href="/tutors/{{ tutor.studentLink.pk }}/review/{{ tutor.studentLink.pk }}" id="review-button">REVIEW THIS TUTOR</a>
           </div>
 
@@ -68,7 +68,7 @@
             <p>Rating: {{ tutor.skillRating }}</p>
             <p> Price: {{ tutor.moneyRating }}</p>
             <!-- <p> Location: Pawnee, IN</p> -->
-            <p> Tutors in: {% for course in courses %}<a style="visiblility:visible; color:black" href="/subjects/{{ course.course.subject.abbreviation }}/courses/{{ course.course.number }}/">{{ course.course }}</a> {% endfor %}</p>
+            <p> Tutors in: {% for course in courses %}<a style="visiblility:visible; color:black" href="/subjects/{{ course.course.subject.abbreviation }}/courses/{{ course.course.number }}/">{{ course.course }},</a> {% endfor %}</p>
           
             <!-- <div>
               <a href="javascript:void(0)" class="btn btn-raised btn-default" style="background:  #B0B0B0">POL237</a>
