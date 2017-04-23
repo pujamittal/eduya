@@ -45,5 +45,6 @@ urlpatterns = [
     url(r'^subjects/$', courses_views.all_subjects, name='all_subjects'),
     url(r'^subjects/(?P<subject_id>[A-Z]+)/courses/$', courses_views.all_courses, name='all_courses'),
     url(r'^subjects/(?P<subject_id>[A-Z]+)/courses/(?P<course_id>[0-9]+)/$', courses_views.course, name='course'),
+    url(r'^subjects/(?P<subject_id>[A-Z]+)/courses/(?P<course_id>[0-9]+)/professors/(?P<professor_id>[0-9]+)/$', courses_views.professor, name='professor'),
     url(r'^subjects/(?P<subject_id>[A-Z]+)/courses/(?P<course_id>[0-9]+)/become_tutor_for_course/$', courses_views.become_tutor_for_course, name='become_tutor_for_course')
 ]
