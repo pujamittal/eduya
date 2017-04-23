@@ -65,8 +65,9 @@
             <!-- <p> Rating: <span class="star">&starf;</span> <span class="star">&starf;</span> <span class="star">&starf;</span> <span class="star">&starf;</span> <span class="star">&starf;</span></p> -->
             <!-- <p>Rating: <span class="stars" data-stars="{{ tutor.skillRating }}">★★★★★</span></p>-->
             <!--<p style="font:black"> Price: <span class="money" data-stars="{{ tutor.moneyRating }}">$$$</p>-->
-            <p>Rating: {{ tutor.skillRating }}</p>
-            <p> Price: {{ tutor.moneyRating }}</p>
+            {% load humanize %}
+            <p>Rating: {{ tutor.skillRating|floatformat }}</p>
+            <p> Price: {{ tutor.moneyRating|floatformat }}</p>
             <!-- <p> Location: Pawnee, IN</p> -->
             <p> Tutors in: {% for course in courses %}<a style="visiblility:visible; color:black" href="/subjects/{{ course.course.subject.abbreviation }}/courses/{{ course.course.number }}/">{{ course.course }},</a> {% endfor %}</p>
           
@@ -79,10 +80,9 @@
           <div style="float: left; width: 50%;"> 
             <h4 id="review-header">Reviews</h4>
             {% for review in reviews %}
-              {% load humanize %}
-              <p style="margin:0 0 2.5px">Skills Rating: {{ review.skillRating|floatformat }} Price Rating: {{ review.moneyRating|floatformat }}</p>
+              <p style="margin:0 0 2.5px">Skills Rating: {{ review.skillRating }} Price Rating: {{ review.moneyRating }}</p>
               <p style="margin:0 0 2.5px; font-weight: bold;">{{ review.notes }}</p>
-              <p style="margin:0 0 10px">-{{ review.reviewer_name }}</p>
+              <p style="margin:0 0 10px">- {{ review.reviewer_name }}</p>
             {% endfor %}
           </div>
         </div>
