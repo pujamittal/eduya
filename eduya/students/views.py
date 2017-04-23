@@ -120,9 +120,27 @@ def add_course_to_student(request, subject_id, course_id):
     return redirect('/subjects/%s/courses/%s/' % (subject_id, course_id))
 #    return HttpResponseRedirect('/subjects')
 
+#def all_my_subjects(request):
+#    subjects = Subject.objects.get(student=email)
+#    context = {'subjects': subjects}
+#    return render(request, 'courses/subject_page.html', context)
+    
+#def all_my_courses(request, subject_id):
+#    subject = Subject.objects.all().get(abbreviation=subject_id)
+#    courses = Course.objects.all().filter(subject=subject).order_by('number')
+#    context = {'courses': courses}
+#    return render(request, 'courses/courses_page.html', context)
+
 def my_courses(request):
-    if request.user.is_authenticated():
-        return HttpResponseRedirect('/my_courses')
+    #if request.user.is_authenticated():
+    try:
+        student = Student.objects.get(pk=1)
+        courses = MyCourse.objects.all().filter(student=student)
+        context = {'courses': courses}
+    except Student.DoesNotExist:
+        return HttpResponseNotFound('<h1>Student not found</h1>')
+    return render(request, 'courses/courses_page.html', context)
+       # return HttpResponseRedirect('/my_courses')
 
 def my_listings(request):
     if request.user.is_authenticated():
