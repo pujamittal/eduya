@@ -85,7 +85,7 @@
                   </tr>
                   {% for professor in professors %}
                   <tr>
-                      <td style="padding:0 15px 5px 15px;">{{ professor.professor.name }}</td>
+                      <td style="padding:0 15px 5px 15px;"><a href="/subjects/{{ course.subject.abbreviation }}/courses/{{ course.number }}/professors/{{ professor.professor.pk }}">{{ professor.professor.name }}</a></td>
                       <td style="padding:0 15px 5px 15px;">{{ professor.professor.email }}</td>
                       <td style="padding:0 15px 5px 15px;">{{ professor.professor.office_hours }} in {{ professor.professor.office }}</td>
                   </tr>
