@@ -53,7 +53,7 @@ def become_tutor_for_course(request, subject_id, course_id):
 def professors(request):
     professors = Professor.objects.all()
     context = { 'professors': professors }
-    return render(request, 'courses/all_professors.html', context)
+    return render(request, 'courses/professors.html', context)
 
 
 def professor(request, subject_id, course_id, professor_id):
