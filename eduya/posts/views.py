@@ -6,12 +6,39 @@ import datetime
 # Create your views here.
 
 def index(request):
-    if not request.user.is_authenticated(): 
-        return HttpResponseRedirect('/login/')
-        
-    posts = Post.objects.all()
-    context = {'posts': posts}
-    return render(request, 'posts/listing_page.html', context)
+    if request.user.is_authenticated():
+        if request.method == 'POST':
+            if 'postTime' in request.POST:
+                posts = Post.objects.all().order_by('-datetime', 'student_name');
+            elif 'postTimeBack' in request.POST:
+                posts = Post.objects.all().order_by('datetime', 'student_name');
+            elif 'moneyUp' in request.POST:
+                posts = Post.objects.all().order_by('price', 'student_name');
+            elif 'moneyDown' in request.POST:
+                posts = Post.objects.all().order_by('-price', 'student_name');
+            elif 'nameUp' in request.POST:
+                posts = Post.objects.all().order_by('student_name');
+            elif 'nameDown' in request.POST:
+                posts = Post.objects.all().order_by('-student_name');
+            elif 'subjectUp' in request.POST:
+                posts = Post.objects.all().order_by('subject');
+            elif 'subjectDown' in request.POST:
+                posts = Post.objects.all().order_by('-subject');
+            elif 'courseUp' in request.POST:
+                posts = Post.objects.all().order_by('course', 'student_name');
+            elif 'courseDown' in request.POST:
+                posts = Post.objects.all().order_by('-course', 'student_name');
+            else:
+                posts = Post.objects.all()
+            args = {'posts': posts}
+            return render(request, 'posts/listing_page.html', args)
+        else:
+            posts = Post.objects.all()
+            args = {'posts': posts}
+            return render(request, 'posts/listing_page.html', args)
+            
+    else:
+        return HttpResponseRedirect('/login')
         
 def new_post(request):
     if not request.user.is_authenticated(): 
@@ -20,6 +47,7 @@ def new_post(request):
     if request.method == 'POST':
         p = Post(
             student=request.user,
+            student_name=str(request.user.get_long_name()),
             subject=str(request.POST.get('subject')),
             course=str(request.POST.get('course')),
             location=str(request.POST.get('location')),
