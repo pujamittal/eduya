@@ -19,13 +19,13 @@
         <a class="navbar-brand" href="javascript:void(0)" id="logo">EDUYA</a>
       </div>
       <div class="navbar-collapse collapse navbar-responsive-collapse">
-        <ul class="nav navbar-nav navbar-right">
-          <li><a href='#' style="color: white;">My Courses</a></li>
+        <ul class="nav navbar-nav">
+          <li><a href='{% url "my_courses" %}' style="color: white;">My Courses</a></li>
           <li><a href='#' style="color: white;">My Listings</a></li>
           <li><a href='{% url "view_tutors" %}' style="color: white;">Tutors</a></li>
           <li><a href='{% url "posts" %}' style="color: white;">Posts</a></li>
           <li><a href='{% url "all_subjects" %}' style="color: white;">All Subjects</a></li>
-          <li><a href='#' style="color: white;">All Professors</a></li>
+          <li><a href='{% url "professors" %}' style="color: white;">All Professors</a></li>
           <li><a href='{% url "logout" %}' style="color: white;">Logout</a></li>
         </ul>
       </div>
@@ -56,6 +56,9 @@
             <div style="padding: 10px 0 0 0">
               <a  href="/subjects/{{ course.subject.abbreviation }}/courses/{{ course.number }}/become_tutor_for_course/">Become a Tutor for this Course</a>
             </div>
+              <div style="border: 10px; margin-top: 20px;" >
+                <a href="/subjects/{{ course.subject.abbreviation }}/courses/{{ course.number }}/add_course_to_student/">Add {{ course.subject.abbreviation }} {{ course.number }} to My Courses</a>
+              </div>
           </div>
           <div style="float: left; width: 50%;">
             <h3 id="review-header" style="padding:0 0 0 0;">Resources</h3>
@@ -82,7 +85,7 @@
                   </tr>
                   {% for professor in professors %}
                   <tr>
-                      <td style="padding:0 15px 5px 15px;">{{ professor.professor.name }}</td>
+                      <td style="padding:0 15px 5px 15px;"><a href="/subjects/{{ course.subject.abbreviation }}/courses/{{ course.number }}/professors/{{ professor.professor.pk }}">{{ professor.professor.name }}</a></td>
                       <td style="padding:0 15px 5px 15px;">{{ professor.professor.email }}</td>
                       <td style="padding:0 15px 5px 15px;">{{ professor.professor.office_hours }} in {{ professor.professor.office }}</td>
                   </tr>

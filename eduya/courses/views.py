@@ -49,12 +49,18 @@ def become_tutor_for_course(request, subject_id, course_id):
         t.save()
     return redirect('/subjects/%s/courses/%s/' % (subject_id, course_id))
 
-# TODO: route functions below
-def all_professors(request):
-    return HttpResponse('all professors')
+
+def professors(request):
+    professors = Professor.objects.all()
+    context = { 'professors': professors }
+    return render(request, 'courses/professors.html', context)
+
+
+def professor(request, subject_id, course_id, professor_id):
+    subject = Subject.objects.all().get(abbreviation=subject_id)
+    course = Course.objects.all().filter(subject=subject).filter(number=course_id)[0]
+    professor = Professor.objects.all().get(pk=professor_id)
     
-def professor(request, professor_id):
-    return HttpResponse('professor %s' % professor_id)
+    context = {'course': course, 'professor': professor }
     
-def professor_reviews(request, professor_id):
-    return HttpResponse('professor %s reviews' % professor_id)
+    return render(request, 'courses/professor_page.html', context)

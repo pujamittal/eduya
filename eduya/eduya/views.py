@@ -15,7 +15,7 @@ from django.http import HttpResponse
 
 def confirm_email(request):
     subject = 'Thank you for registering with eduya'
-    message = 'Welcome to eduya! Please confirm your email address at the following link.'
+    message = 'Welcome to eduya!'
     from_email = settings.EMAIL_HOST_USER
     to_list = [Student.email, settings.EMAIL_HOST_USER]
     send_mail(subject, message, from_email, to_list, fail_silently=True)

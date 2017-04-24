@@ -5,7 +5,7 @@ from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, Permis
 from django.db.models import Avg
 from django.contrib.auth.admin import UserAdmin
 from django.contrib import admin
-from courses.models import Course
+from courses.models import Course, Subject
 
 # Custom Manager for Student model
 class StudentManager(BaseUserManager):
@@ -109,3 +109,7 @@ class Review(models.Model):
     skillRating = models.PositiveSmallIntegerField(default=0)
     moneyRating = models.PositiveSmallIntegerField(default=0)
     notes = models.TextField(null=False, max_length=500)
+    
+class MyCourse(models.Model):
+    student = models.ForeignKey(Student, on_delete=models.CASCADE, related_name='myStudents')
+    course = models.ForeignKey(Course, on_delete=models.CASCADE, related_name='myCourses')

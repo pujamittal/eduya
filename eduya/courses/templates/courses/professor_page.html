@@ -1,0 +1,61 @@
+<!DOCTYPE HTML>
+<head>
+  <title>eduya</title>
+  <meta charset="utf-8" />
+  {% load static %}
+  <link rel="stylesheet" type="text/css" href="{% static 'courses.css' %}" />
+  <link href="https://fonts.googleapis.com/css?family=Julius+Sans+One|Raleway|Montserrat|Work Sans" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-material-design/4.0.2/bootstrap-material-design.css" rel="stylesheet">
+</head>
+<body>
+    <div class="navbar navbar-default navbar-fixed-top" style="background: #4E5279; border: none; height: 52px;">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="javascript:void(0)" id="logo">EDUYA</a>
+      </div>
+      <div class="navbar-collapse collapse navbar-responsive-collapse">
+        <ul class="nav navbar-nav">
+          <li><a href='{% url "my_courses" %}' style="color: white;">My Courses</a></li>
+          <li><a href='#' style="color: white;">My Listings</a></li>
+          <li><a href='{% url "view_tutors" %}' style="color: white;">Tutors</a></li>
+          <li><a href='{% url "posts" %}' style="color: white;">Posts</a></li>
+          <li><a href='{% url "all_subjects" %}' style="color: white;">All Subjects</a></li>
+          <li><a href='{% url "professors" %}' style="color: white;">All Professors</a></li>
+          <li><a href='{% url "logout" %}' style="color: white;">Logout</a></li>
+        </ul>
+      </div>
+    </div>
+
+  <div class="vert-center">
+    <div class="card" style="width: 80%; border: 0; margin-top: -250px;">
+        <div class="card-heading" style="padding-top: 40px; background-color: #D28AB2">
+          <h3 style="font-family: 'Raleway', sans-serif;">{{professor.name}}</h3>
+        </div>
+        <div class="card-content" style="background-color: white; height: 260%; overflow: auto;">
+          <div style="float: left; width: 50%; height: 100%;">
+            <p>Email: {{ professor.email }}</p>
+            <p>Office: {{ professor.office }}</p>
+            <p>Office Hours: {{ professor.office_hours }}</p>
+            <p>Website: {{ professor.website }}</p>
+            <p>RateMyProfessor Rating: TODO</p>
+            <div style="padding: 0px 0 0 0">
+              <a  href="#">{{professor.name}}'s RateMyProfessor Page</a>
+            </div>
+          </div>
+          <div style="float: left; width: 50%;">
+            <h3 id="review-header" style="padding:0 0 0 0;">Comments</h3>
+            <p style="font-weight:bold">Leave a Comment and View other Users' Comments about this Professor</p>
+            <form>
+                <textarea  name="notes" id="notes" cols="100" placeholder="Comments" style="width:80%; height:100px; color:black;"></textarea>
+                <input type="submit" value="Submit Comment" style="padding: 5px 15px 5px 15px" />
+            </form>
+          </div>
+        </div>
+    </div>
+  </div>
+</body>

@@ -5,10 +5,11 @@ from django.shortcuts import render
 from django.contrib import messages
 from django.conf import settings
 from django.core.mail import send_mail
+from django.shortcuts import redirect
 
 
 from .forms import loginForm, registerForm #, reviewForm
-from .models import Student, Tutor, Review, TutorCourse
+from .models import Student, Tutor, Review, TutorCourse, Course, Subject, MyCourse
 
 
 # Create your views here.
@@ -105,10 +106,42 @@ def logoutUser(request):
 def reset(request):
     return render(request, 'students/reset.html')
     
-def my_courses(request):
-    if request.user.is_authenticated():
-        return HttpResponseRedirect('/my_courses')
+def add_course_to_student(request, subject_id, course_id):
+    subject = Subject.objects.all().get(abbreviation=subject_id)
+    course = Course.objects.all().filter(subject=subject).filter(number=course_id)[0]
+    student = Student.objects.all().filter(email=request.user)[0]
     
+    student_exists = len(MyCourse.objects.all().filter(course=course, student=student))
+    if student_exists == 0:
+        s = MyCourse()
+        s.course = course
+        s.student = student
+        s.save()
+    return redirect('/subjects/%s/courses/%s/' % (subject_id, course_id))
+#    return HttpResponseRedirect('/subjects')
+
+#def all_my_subjects(request):
+#    subjects = Subject.objects.get(student=email)
+#    context = {'subjects': subjects}
+#    return render(request, 'courses/subject_page.html', context)
+    
+#def all_my_courses(request, subject_id):
+#    subject = Subject.objects.all().get(abbreviation=subject_id)
+#    courses = Course.objects.all().filter(subject=subject).order_by('number')
+#    context = {'courses': courses}
+#    return render(request, 'courses/courses_page.html', context)
+
+def my_courses(request):
+    #if request.user.is_authenticated():
+    try:
+        student = Student.objects.get(pk=1)
+        courses = MyCourse.objects.all().filter(student=student)
+        context = {'courses': courses}
+    except Student.DoesNotExist:
+        return HttpResponseNotFound('<h1>Student not found</h1>')
+    return render(request, 'courses/courses_page.html', context)
+       # return HttpResponseRedirect('/my_courses')
+
 def my_listings(request):
     if request.user.is_authenticated():
         return HttpResponseRedirect('/my_listings')
