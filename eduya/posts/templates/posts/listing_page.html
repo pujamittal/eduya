@@ -35,27 +35,35 @@
 
 	<form action="" method="post" style="display: inline;">
 	    {% csrf_token %}
-	    <button name="skillUp" value="skillUp">Skill Up</button>
+	    <button name="postTime" value="postTime">Most Recent</button>
 	</form>
 	<form action="" method="post" style="display: inline;">
 	    {% csrf_token %}
-	    <button name="skillDown" value="skillDown">Skill Down</button>
+	    <button name="postTimeBack" value="postTimeBack">Least Recent</button>
 	</form>
 	<form action="" method="post" style="display: inline;">
 	    {% csrf_token %}
-	    <button name="moneyUp" value="moneyUp">Money Up</button>
+	    <button name="moneyUp" value="moneyUp">Lowest Paying</button>
 	</form>
 	<form action="" method="post" style="display: inline;">
 	    {% csrf_token %}
-	    <button name="moneyDown" value="moneyDown">Money Down</button>
+	    <button name="moneyDown" value="moneyDown">Highest Paying</button>
 	</form>
 	<form action="" method="post" style="display: inline;">
 	    {% csrf_token %}
-	    <button name="nameUp" value="nameUp">Name Up</button>
+	    <button name="nameUp" value="nameUp">Name A-Z</button>
 	</form>
 	<form action="" method="post" style="display: inline;">
 	    {% csrf_token %}
-	    <button name="nameDown" value="nameDown">Name Down</button>
+	    <button name="nameDown" value="nameDown">Name Z-A</button>
+	</form>
+	<form action="" method="post" style="display: inline;">
+	    {% csrf_token %}
+	    <button name="courseUp" value="courseUp">Course A-Z</button>
+	</form>
+	<form action="" method="post" style="display: inline;">
+	    {% csrf_token %}
+	    <button name="courseDown" value="courseDown">Course Z-A</button>
 	</form>
 
 	<div class="row">
