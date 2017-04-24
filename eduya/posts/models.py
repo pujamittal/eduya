@@ -5,6 +5,7 @@ from django.conf import settings
 
 class Post(models.Model):
     student = models.ForeignKey(settings.AUTH_USER_MODEL)
+    student_name = models.CharField(blank=False, max_length = 256, default="John Doe");
     subject = models.CharField(blank=False, max_length=50)
     course = models.CharField(blank=False, max_length=50)
     location = models.CharField(blank=False, max_length=50)
