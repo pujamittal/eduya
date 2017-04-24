@@ -53,6 +53,12 @@
                   </tr>
                   {% endfor %}
               </table>
+              <div style="border: 10px; margin-top: 20px;" >
+                <a style="background: #999; padding: 10px; color: white; font-family: 'Raleway';" href="/subjects/{{ course.subject.abbreviation }}/courses/{{ course.number }}/add_course_to_student/">Add {{ course.subject.abbreviation }}{{ course.number }} to My Courses</a>
+              </div>
+              <div style="border: 10px; margin-top: 20px;" >
+                <a style="background: #999; padding: 10px; color: white; font-family: 'Raleway';" href="/subjects/{{ course.subject.abbreviation }}/courses/{{ course.number }}/add_course_to_student/">Remove {{ course.subject.abbreviation }}{{ course.number }} from My Courses</a>
+              </div>
           </div>
           <div style="float: left; width: 50%;">
             <h3 id="review-header" style="padding:0 0 0 0; font-family: 'Raleway';">Resources</h3>
@@ -103,12 +109,6 @@
                   </tr>
                   {% endfor %}
               </table>
-              <div style="border: 10px; margin-top: 20px;" >
-                <a style="background: #999; padding: 10px; color: white; font-family: 'Raleway';" href="/subjects/{{ course.subject.abbreviation }}/courses/{{ course.number }}/add_course_to_student/">Add {{ course.subject.abbreviation }}{{ course.number }} to My Courses</a>
-              </div>
-              <div style="border: 10px; margin-top: 20px;" >
-                <a style="background: #999; padding: 10px; color: white; font-family: 'Raleway';" href="/subjects/{{ course.subject.abbreviation }}/courses/{{ course.number }}/add_course_to_student/">Remove {{ course.subject.abbreviation }}{{ course.number }} from My Courses</a>
-              </div>
               <div style="border: 10px; margin-top: 20px;">
                 <a style="background: #999; padding: 10px; color: white; font-family: 'Raleway';" onclick="window.open('https://www.google.com/#q={{course.subject.abbreviation }}+{{ course.number }}+{{ course.title }}+purdue')">Find Course Page</a>
               </div>
