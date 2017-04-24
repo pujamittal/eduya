@@ -1,0 +1,38 @@
+<!DOCTYPE HTML>
+<head>
+  <title>eduya</title>
+  <meta charset="utf-8" />
+
+  {% load static %}
+  <link rel="stylesheet" type="text/css" href="{% static 'students.css' %}" />
+
+  <link href="https://fonts.googleapis.com/css?family=Julius+Sans+One|Raleway|Montserrat|Work Sans" rel="stylesheet">
+  <!-- <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-material-design/4.0.2/bootstrap-material-design.css" rel="stylesheet"> -->
+</head>
+<body>
+  <div class="vert-center">
+    <div class="pane">
+      <h2>Contribute to {{course.subject.abbreviation }}{{ course.number }} Information Page</h2>
+      <form class="form-group" action="" method="post" id="course_info">
+        {% csrf_token %}
+        <p>Provide course information for other users to use!</p>
+        <input style="color:black" type="text" name="url*" placeholder="Course Info URL" required/>
+        <div style="display: inline-block;">
+        <p style="display: inline-block;">Type of information *</p>
+        <select name="info_type" form="course_info" style="display: inline-block;" required>
+            <option value="" disabled selected>Type of Info</option>
+              <option value="p_exam">Past exam</option>
+              <option value="l_notes">Lecture Notes</option>
+              <option value="c_page">Course Page</option>
+              <option value="e_resource">External Resource</option>
+              <option value="e_resource">Academic Resource</option>
+        </select>
+        </div>
+        <br></br>
+        <input type="submit" value="Submit Information" />
+      </form>
+
+      
+    </div>
+  </div>
+</body>
