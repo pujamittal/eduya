@@ -81,7 +81,7 @@
             <h4 id="review-header">Reviews</h4>
             {% for review in reviews %}
               <p style="margin:0 0 2.5px">Skills Rating: {{ review.skillRating }} Price Rating: {{ review.moneyRating }}</p>
-              <p style="margin:0 0 2.5px; font-weight: bold;">{{ review.notes }}</p>
+              <p style="margin:0 0 2.5px; font-style: italic;">{{ review.notes }}</p>
               <p style="margin:0 0 10px">- {{ review.reviewer_name }}</p>
             {% endfor %}
           </div>
