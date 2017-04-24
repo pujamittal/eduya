@@ -113,3 +113,4 @@ class Review(models.Model):
 class MyCourse(models.Model):
     student = models.ForeignKey(Student, on_delete=models.CASCADE, related_name='myStudents')
     course = models.ForeignKey(Course, on_delete=models.CASCADE, related_name='myCourses')
+    

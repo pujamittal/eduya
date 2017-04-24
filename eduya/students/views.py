@@ -120,16 +120,20 @@ def add_course_to_student(request, subject_id, course_id):
    
 def remove_course_from_student(request, subject_id, course_id):
     subject = Subject.objects.all().get(abbreviation=subject_id)
-    course = Course.objects.all().filter(subject=subject).filter(number=course_id)[0]
-    student = Student.objects.all().filter(email=request.user)[0]
+    MyCourse.objects.all().filter(course=course_id)[1].delete()
+    return HttpResponseRedirect('/my-courses')
+
+#     except Course.DoesNotExist:
+#        return HttpResponseNotFound('<h1>Course not in My Courses</h1>')    
+#    student = Student.objects.all().filter(email=request.user)[0]
     
-    student_exists = len(MyCourse.objects.all().filter(course=course, student=student))
-    if student_exists == 0:
-        s = MyCourse()
-        s.course = course.delete()
-        s.student = student
-        s.save()
-    return redirect('/subjects/%s/courses/%s/' % (subject_id, course_id))
+#    student_exists = len(MyCourse.objects.all().filter(course=course, student=student))
+#     if student_exists == 0:
+#        s = MyCourse()
+#        s.course = course.delete()
+#        s.student = student
+#        s.save()
+#    return redirect('/my_courses/')
 
 def my_courses(request):
     try:
