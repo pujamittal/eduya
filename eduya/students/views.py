@@ -122,8 +122,9 @@ def add_course_to_student(request, subject_id, course_id):
 def remove_course_from_student(request, subject_id, course_id):
     subject = Subject.objects.all().get(abbreviation=subject_id)
     course = Course.objects.all().filter(subject=subject).filter(number=course_id)[0]
-    MyCourse.objects.filter(course=course).delete()
-    MyCourse.objects.get()
+    student = Student.objects.get(email = request.user.email)   
+    MyCourse.objects.all().filter(student=student, course=course)[0].delete()
+#    MyCourse.objects.get()
     return HttpResponseRedirect('/my-courses')
 
 def my_courses(request):
