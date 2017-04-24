@@ -126,7 +126,7 @@ def remove_course_from_student(request, subject_id, course_id):
     student_exists = len(MyCourse.objects.all().filter(course=course, student=student))
     if student_exists == 0:
         s = MyCourse()
-        s.course.delete()
+        s.course = course.delete()
         s.student = student
         s.save()
     return redirect('/subjects/%s/courses/%s/' % (subject_id, course_id))
