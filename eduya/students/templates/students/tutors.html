@@ -17,7 +17,6 @@
 	    <div class="navbar-collapse collapse navbar-responsive-collapse">
 	      <ul class="nav navbar-nav">
 	        <li><a href='{% url "my_courses" %}' style="color: white;">My Courses</a></li>
-	        <li><a href='#' style="color: white;">My Listings</a></li>
 	        <li><a href='{% url "view_tutors" %}' style="color: white;">Tutors</a></li>
 	        <li><a href='{% url "posts" %}' style="color: white;">Posts</a></li>
 	        <li><a href='{% url "all_subjects" %}' style="color: white;">All Subjects</a></li>
@@ -31,27 +30,27 @@
 	<div class="container">
 		<form action="" method="post">
 		    {% csrf_token %}
-		    <button name="skillUp" value="skillUp">Skill Up</button>
+		    <button name="skillUp" value="skillUp">Skill Rating Ascending</button>
 		</form>
 		<form action="" method="post">
 		    {% csrf_token %}
-		    <button name="skillDown" value="skillDown">Skill Down</button>
+		    <button name="skillDown" value="skillDown">Skill Rating Descending</button>
 		</form>
 		<form action="" method="post">
 		    {% csrf_token %}
-		    <button name="moneyUp" value="moneyUp">Money Up</button>
+		    <button name="moneyUp" value="moneyUp">Least Expensive</button>
 		</form>
 		<form action="" method="post">
 		    {% csrf_token %}
-		    <button name="moneyDown" value="moneyDown">Money Down</button>
+		    <button name="moneyDown" value="moneyDown">Most Expensive</button>
 		</form>
 		<form action="" method="post">
 		    {% csrf_token %}
-		    <button name="nameUp" value="nameUp">Name Up</button>
+		    <button name="nameUp" value="nameUp">Tutor Name A-Z</button>
 		</form>
 		<form action="" method="post">
 		    {% csrf_token %}
-		    <button name="nameDown" value="nameDown">Name Down</button>
+		    <button name="nameDown" value="nameDown">Tutor Name Z-A</button>
 		</form>
 
 
@@ -62,8 +61,8 @@
 			<div class="card-heading"><a href="/tutors/{{ tutor.pk }}">{{tutor.studentLink.first_name}} {{tutor.studentLink.last_name}}</a></div>
 			<div class="card-content">
 				{% load humanize %}
-				<p style="color:black">Skills Rating: {{tutor.skillRating|floatformat}} out of 5</p>
-				<p style="color:black">Pricing Rating: {{tutor.moneyRating|floatformat}} out of 3</p>
+				<p style="color:black">Skill: {{tutor.skillRating|floatformat}} / 5</p>
+				<p style="color:black">Price: {{tutor.moneyRating|floatformat}} / 3</p>
 			</div>
 		</div>
 		{% endfor %}
