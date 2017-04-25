@@ -36,7 +36,7 @@ def course(request, subject_id, course_id):
             location = meetings_json[meeting]['Room']['BuildingCode'] + meetings_json[meeting]['Room']['RoomNumber']
             section.meetings = {'DaysOfWeek': meetings_json[meeting]['DaysOfWeek'], 'Location': location}
     context = {'course': course, 'course_sections': course_sections, 'tutors': tutors, 'professors': professors, 'teaching_assistants': teaching_assistants}
-    return render(request, 'courses/add_info.html', context)
+    return render(request, 'courses/course_profile.html', context)
 
 def become_tutor_for_course(request, subject_id, course_id):
     subject = Subject.objects.all().get(abbreviation=subject_id)
