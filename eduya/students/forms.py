@@ -39,7 +39,7 @@ class loginForm(forms.Form):
 class contributeForm(forms.Form):
     typeOfInfo = forms.CharField(label='info_type', widget=forms.TextInput, required=True)
     infoLink = forms.URLField(label='url', required=True);
-    description = forms.CharField(label='notes', widget=forms.TextInput, required=False)
+    description = forms.CharField(label='notes', widget=forms.Textarea, required=False)
 
 """  
 class reviewForm(forms.Form):

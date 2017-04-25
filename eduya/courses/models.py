@@ -75,7 +75,7 @@ class CourseComment(models.Model):
     
 class FileLinker(models.Model):
     typeOfInfo = models.CharField(max_length=20)
-    infoLink = models.TextField()
+    infoLink = models.URLField()
     description = models.TextField(blank=True, null=True, max_length=250)
 
 # class Review(models.Model):

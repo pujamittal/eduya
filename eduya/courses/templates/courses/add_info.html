@@ -13,7 +13,7 @@
   <div class="vert-center">
     <div class="pane">
       <h2>Contribute to {{course.subject.abbreviation }}{{ course.number }} Information Page</h2>
-      <form class="form-group" action="" method="post" id="course_info">
+      <form class="form-group" action="" method="POST" id="course_info">
         {% csrf_token %}
         <p>Provide course information for other users to use!</p>
         <input style="color:black" type="url" name="url" placeholder="Course Info URL" required/>
