@@ -57,6 +57,16 @@ def professors(request):
     context = { 'professors': professors }
     return render(request, 'courses/professors.html', context)
 
+def professor_direct(request, professor_id):
+    professor = Professor.objects.all().get(pk=professor_id)
+    course = ProfessorCourse.objects.all().get(professor=professor_id).course;
+    #subject_id = Course.objects.get(pk=course_id).subject.pk;
+    #subject = Subject.objects.all().get(abbreviation=subject_id)
+    #course = Course.objects.all().filter(subject=subject).filter(number=course_id)[0]
+    
+    context = {'course': course, 'professor': professor }
+    
+    return render(request, 'courses/professor_page.html', context)
 
 def professor(request, subject_id, course_id, professor_id):
     subject = Subject.objects.all().get(abbreviation=subject_id)
