@@ -80,9 +80,14 @@ def professor(request, subject_id, course_id, professor_id):
 def contribute_information(request, subject_id, course_id):
     if request.method == 'POST':
         form = contributeForm(request.POST)
-        typeOfInfo = str(request.POST.get('info_type'))
-        infoLink = str(request.POST.get('url'))
-        description = str(request.POST.get('notes'))
+        subject = Subject.objects.all().get(abbreviation=subject_id)
+        course = Course.objects.all().filter(subject=subject).filter(number=course_id)[0]
+        l = FileLinker()
+        l.course = course
+        l.typeOfInfo = str(request.POST.get('info_type'))
+        l.infoLink = str(request.POST.get('url'))
+        l.description = str(request.POST.get('notes'))
+        l.save()
         return HttpResponseRedirect('/my-courses')
     else:
         return render(request, 'courses/add_info.html')
