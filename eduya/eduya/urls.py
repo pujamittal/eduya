@@ -49,5 +49,6 @@ urlpatterns = [
     url(r'^professors/$', courses_views.professors, name='professors'),
     url(r'^subjects/(?P<subject_id>[A-Z]+)/courses/(?P<course_id>[0-9]+)/become_tutor_for_course/$', courses_views.become_tutor_for_course, name='become_tutor_for_course'),
     url(r'^subjects/(?P<subject_id>[A-Z]+)/courses/(?P<course_id>[0-9]+)/add_course_to_student/$', student_views.add_course_to_student, name='add_course_to_student'),
-    url(r'^subjects/(?P<subject_id>[A-Z]+)/courses/(?P<course_id>[0-9]+)/remove_course_from_student/$', student_views.remove_course_from_student, name='remove_course_from_student')
+    url(r'^subjects/(?P<subject_id>[A-Z]+)/courses/(?P<course_id>[0-9]+)/remove_course_from_student/$', student_views.remove_course_from_student, name='remove_course_from_student'),
+    url(r'^subjects/(?P<subject_id>[A-Z]+)/courses/(?P<course_id>[0-9]+)/contribute_information/$', courses_views.contribute_information, name='contribute_information'),
 ]
