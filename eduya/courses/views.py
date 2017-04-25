@@ -91,4 +91,8 @@ def contribute_information(request, subject_id, course_id):
         return HttpResponseRedirect('/my-courses')
     else:
         return render(request, 'courses/add_info.html')
+        
+def contributed_information(request, subject_id, course_id):
+    return redirect('/subjects/%s/courses/%s/contributed_information' % (subject_id, course_id))
+
     

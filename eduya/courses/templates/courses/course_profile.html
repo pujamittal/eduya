@@ -112,7 +112,7 @@
                 <a style="padding:0 15px 5px 15px; font-family: 'Raleway';" href onclick="window.open('https://www.google.com/#q={{course.subject.abbreviation }}+{{ course.number }}+{{ course.title }}+purdue')">Find Course Page</a>
               </div>
               <div style="border: 10px; margin-top: 0px;">
-                <a style="padding:0 15px 5px 15px; font-family: 'Raleway';" href="#">View User-Submitted Info</a>
+                <a style="padding:0 15px 5px 15px; font-family: 'Raleway';" href="/subjects/{{ course.subject.abbreviation }}/courses/{{ course.number }}/contributed_information/">View User-Submitted Info</a>
               </div>
               <div style="border: 10px; margin-top: 0px;" >
                 <a style="padding:0 15px 5px 15px; font-family: 'Raleway';" href="/subjects/{{ course.subject.abbreviation }}/courses/{{ course.number }}/contribute_information/">Contribute Information to {{ course.subject.abbreviation }}{{ course.number }} </a>
