@@ -1,11 +1,13 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse, Http404, HttpResponseRedirect
 from courses.models import *
-from students.models import TutorCourse, Tutor, Student
+from students.models import TutorCourse, Tutor, Student 
+from django.contrib import messages
 import datetime
 import json
 import ast
 
+from students.forms import contributeForm
 # Create your views here.
 
 def all_subjects(request):
@@ -74,3 +76,14 @@ def professor(request, subject_id, course_id, professor_id):
     context = {'course': course, 'professor': professor }
     
     return render(request, 'courses/professor_page.html', context)
+    
+def contribute_information(request, subject_id, course_id):
+    form = contributeForm(request.POST or None)
+    
+    if form.is_valid():
+        typeOfInfo = form.cleaned_data['email']
+        infoLink = form.cleaned_data['password']
+        description = authenticate(email=email, password=password)
+        messages.success(request, 'Success! Your link was created.')
+        return render(request, 'courses/add_info.html')
+    messages.error(request, 'Error: invalid form.')

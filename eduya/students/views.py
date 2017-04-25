@@ -108,7 +108,6 @@ def reset(request):
 def add_course_to_student(request, subject_id, course_id):
     subject = Subject.objects.all().get(abbreviation=subject_id)
     course = Course.objects.all().filter(subject=subject).filter(number=course_id)[0]
-#   student = Student.objects.all().filter(email=request.user)[0]
     student = Student.objects.get(email = request.user.email)   
     
     student_exists = len(MyCourse.objects.all().filter(course=course, student=student))
@@ -124,7 +123,6 @@ def remove_course_from_student(request, subject_id, course_id):
     course = Course.objects.all().filter(subject=subject).filter(number=course_id)[0]
     student = Student.objects.get(email = request.user.email)   
     MyCourse.objects.all().filter(student=student, course=course)[0].delete()
-#    MyCourse.objects.get()
     return HttpResponseRedirect('/my-courses')
 
 def my_courses(request):
