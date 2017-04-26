@@ -55,4 +55,5 @@ URL endpoints:
 /my-listings/
 /courses/
 /professors/
+/subjects/
 ```
