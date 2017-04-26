@@ -28,6 +28,7 @@ def course(request, subject_id, course_id):
     tutors = TutorCourse.objects.all().filter(course=course)
     professors = ProfessorCourse.objects.all().filter(course=course)
     teaching_assistants = TeachingAssistantCourse.objects.all().filter(course=course)
+    course_comments = CourseComment.objects.all().filter(course=course)
 
     for section in course_sections:
         meetings = []
@@ -35,8 +36,24 @@ def course(request, subject_id, course_id):
         for meeting in meetings_json:
             location = meetings_json[meeting]['Room']['BuildingCode'] + meetings_json[meeting]['Room']['RoomNumber']
             section.meetings = {'DaysOfWeek': meetings_json[meeting]['DaysOfWeek'], 'Location': location}
-    context = {'course': course, 'course_sections': course_sections, 'tutors': tutors, 'professors': professors, 'teaching_assistants': teaching_assistants}
+    context = {'course': course, 'course_sections': course_sections, 'tutors': tutors, 'professors': professors, 'teaching_assistants': teaching_assistants, 'course_comments': course_comments}
     return render(request, 'courses/course_profile.html', context)
+
+
+def course_comment(request, subject_id, course_id):
+    c = CourseComment()
+    
+    subject = Subject.objects.all().get(abbreviation=subject_id)
+    course = Course.objects.all().filter(subject=subject).filter(number=course_id)[0]
+    text = str(request.POST.get('notes'))
+
+    c.course = course
+    c.student = request.user
+    c.text = text
+    c.save()
+    
+    return redirect('/subjects/%s/courses/%s/' % (subject_id, course_id))
+
 
 def become_tutor_for_course(request, subject_id, course_id):
     subject = Subject.objects.all().get(abbreviation=subject_id)
@@ -50,7 +67,6 @@ def become_tutor_for_course(request, subject_id, course_id):
         t.course = course
         t.save()
     return redirect('/subjects/%s/courses/%s/' % (subject_id, course_id))
-
 
 def professors(request):
     professors = Professor.objects.all()

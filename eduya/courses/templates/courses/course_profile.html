@@ -58,6 +58,16 @@
               <div style="border: 10px; margin-top: 20px;" >
                 <a style="background: #999; padding: 10px; color: white; font-family: 'Raleway';" href="/subjects/{{ course.subject.abbreviation }}/courses/{{ course.number }}/remove_course_from_student/">Remove {{ course.subject.abbreviation }}{{ course.number }} from My Courses</a>
               </div>
+            <br>
+            <h3 style="padding:0 0 10px 0; font-family: 'Raleway';">Comments</h3>
+            {% for comment in course_comments %}
+              {{ comment.student.first_name }} {{ comment.student.last_name }} - {{ comment.text }} <br>
+            {% endfor %}
+            <form method="post" action="/subjects/{{course.subject.abbreviation }}/courses/{{ course.number }}/comment/">
+                {% csrf_token %}
+                <textarea  name="notes" id="notes" cols="100" placeholder="Comments" style="width:80%; height:100px; color:black;"></textarea>
+                <input type="submit" value="Submit Comment" style="padding: 5px 15px 5px 15px" />
+            </form>
           </div>
           <div style="float: left; width: 50%;">
             <h3 id="review-header" style="padding:0 0 0 0; font-family: 'Raleway';">Resources</h3>
