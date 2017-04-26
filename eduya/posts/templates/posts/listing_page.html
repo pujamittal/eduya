@@ -29,7 +29,7 @@
 
 	<div class="container">
 	<button style="margin-bottom: 15px;">
-		<a href="/posts/new/" style="color: #fff;">Create a new post</a>
+		<a href="/posts/new/" style="color: #fff;">New Post</a>
 	</button>
 
 	<form action="" method="post" style="display: inline;">
@@ -42,11 +42,11 @@
 	</form>
 	<form action="" method="post" style="display: inline;">
 	    {% csrf_token %}
-	    <button name="moneyUp" value="moneyUp">Lowest Paying</button>
+	    <button name="moneyUp" value="moneyUp">Price Low to High</button>
 	</form>
 	<form action="" method="post" style="display: inline;">
 	    {% csrf_token %}
-	    <button name="moneyDown" value="moneyDown">Highest Paying</button>
+	    <button name="moneyDown" value="moneyDown">Price High to Low</button>
 	</form>
 	<form action="" method="post" style="display: inline;">
 	    {% csrf_token %}
@@ -74,6 +74,7 @@
 				<p>Course: {{ post.course }}</p>
 				<p>Price: ${{ post.price }}</p>
 				<p>Location: {{ post.location }}</p>
+				<p>Posted at: {{post.datetime}}</p>
 				<!-- <p>Additional Notes: {{ post.notes }}</p> -->
 			</div>
 		</div>
