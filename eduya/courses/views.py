@@ -86,13 +86,16 @@ def contribute_information(request, subject_id, course_id):
         l.course = course
         l.typeOfInfo = str(request.POST.get('info_type'))
         l.infoLink = str(request.POST.get('url'))
-        l.description = str(request.POST.get('notes'))
+        l.notes = str(request.POST.get('notes'))
         l.save()
         return HttpResponseRedirect('/my-courses')
     else:
         return render(request, 'courses/add_info.html')
         
 def contributed_information(request, subject_id, course_id):
-    return redirect('/subjects/%s/courses/%s/contributed_information' % (subject_id, course_id))
-
+    subject = Subject.objects.all().get(abbreviation=subject_id)
+    course = Course.objects.all().filter(subject=subject).filter(number=course_id)[0]
+    contrib = FileLinker.objects.all().filter(course=course)
+    context = {'filelink': contrib}
+    return render(request, 'courses/user_urls.html', context)
     
