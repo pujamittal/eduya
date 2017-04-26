@@ -12,7 +12,7 @@
 	        <span class="icon-bar"></span>
 	        <span class="icon-bar"></span>
 	      </button>
-	      <a class="navbar-brand" href="javascript:void(0)" id="logo">EDUYA</a>
+	      <a class="navbar-brand" href='{% url "my_profile" %}' id="logo">EDUYA</a>
 	    </div>
 	    <div class="navbar-collapse collapse navbar-responsive-collapse">
 	      <ul class="nav navbar-nav">
@@ -31,10 +31,10 @@
 	<div class="row" style="margin-top: 15px;">
 		{% for professor in professors %}
 		<div class="col-sm-4 card">
-			<div class="card-heading" style="background-color: #FCB759"><a href="/subjects/{{ course.subject.abbreviation }}/courses/{{ course.number }}/professors/{{ professor.professor.pk }}">{{ professor.name }}</a></div>
+			<div class="card-heading" style="background-color: #FCB759"><a href="/professors/{{ professor.pk }}/">{{ professor.name }}</a></div>
 			<div class="card-content"> 
 				<div style="float: center; width: 75%;">
-					<p style="color:black">Email: {{ professor.email }}}</p>
+					<p style="color:black">Email: {{ professor.email }}</p>
 					</div>
 			</div>
 		</div>

@@ -13,21 +13,22 @@
   <div class="vert-center">
     <div class="pane">
       <h2>Contribute to {{course.subject.abbreviation }}{{ course.number }} Information Page</h2>
-      <form class="form-group" action="" method="post" id="course_info">
+      <form class="form-group" action="" method="POST" id="course_info">
         {% csrf_token %}
         <p>Provide course information for other users to use!</p>
-        <input style="color:black" type="text" name="url*" placeholder="Course Info URL" required/>
+        <input style="color:black" type="url" name="url" placeholder="Course Info URL" required/>
         <div style="display: inline-block;">
-        <p style="display: inline-block;">Type of information *</p>
+        <p style="display: inline-block;">Type of information</p>
         <select name="info_type" form="course_info" style="display: inline-block;" required>
             <option value="" disabled selected>Type of Info</option>
-              <option value="p_exam">Past exam</option>
-              <option value="l_notes">Lecture Notes</option>
-              <option value="c_page">Course Page</option>
-              <option value="e_resource">External Resource</option>
-              <option value="e_resource">Academic Resource</option>
+              <option value="Past Exam">Past Exam</option>
+              <option value="Lecture Notes">Lecture Notes</option>
+              <option value="Course Page">Course Page</option>
+              <option value="External Resource">External Resource</option>
+              <option value="Academic Resource">Academic Resource</option>
         </select>
         </div>
+        <textarea  name="notes" id="notes" cols="100" placeholder="Description of URL" style="width:82.5%; height:75px; color:black;"></textarea>
         <br></br>
         <input type="submit" value="Submit Information" />
       </form>

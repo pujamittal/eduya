@@ -31,28 +31,26 @@
     </div>
 
   <div class="vert-center">
-    <div class="card" style="width: 80%; border: 0; margin-top: -250px;">
+    <div class="card" style="width: 40%; border: 0; margin-top: -250px;">
         <div class="card-heading" style="padding-top: 40px; background-color: #D28AB2">
-          <h3 style="font-family: 'Raleway', sans-serif;">{{professor.name}}</h3>
+          <h3 style="font-family: 'Raleway', sans-serif; float: center; margin-left: auto; margin-right: auto;">{{course.subject.abbreviation }}{{ course.number }} User Contributed Links</h3>
         </div>
         <div class="card-content" style="background-color: white; height: 260%; overflow: auto;">
-          <div style="float: left; width: 50%; height: 100%;">
-            <p>Email: {{ professor.email }}</p>
-            <p>Office: {{ professor.office }}</p>
-            <p>Office Hours: {{ professor.office_hours }}</p>
-            <p>Website: <a href = "{{professor.website }}">{{ professor.website }}</a></p>
-            <!-- <p>RateMyProfessor Rating: TODO</p> -->
-            <div style="border: 10px; margin-top: 20px;">
-                <a style="background: #999; padding: 10px; color: white; font-family: 'Raleway';" onclick="window.open('https://www.ratemyprofessors.com/search.jsp?query=purdue+university+{{professor.name}}')">{{ professor.name }}'s RateMyProfessor Rating</a>
-            </div>
-          </div>
-          <div style="float: left; width: 50%;">
-            <h3 id="review-header" style="padding:0 0 0 0;">Comments</h3>
-            <p style="font-weight:bold">Leave a Comment and View other Users' Comments about this Professor</p>
-            <form>
-                <textarea  name="notes" id="notes" cols="100" placeholder="Comments" style="width:80%; height:100px; color:black;"></textarea>
-                <input type="submit" value="Submit Comment" style="padding: 5px 15px 5px 15px" />
-            </form>
+          <div style="float: center; width: 100%; height: 100%;">
+            <table style = "margin-left: auto;margin-right: auto">
+                  <tr>
+                      <th style="padding:0 15px 0 15px;">Link</th>
+                      <th style="padding:0 15px 0 15px;">Type of Info</th>
+                      <th style="padding:0 15px 0 15px;">Description</th>
+                  </tr>
+                  {% for information in filelink %}
+                  <tr>
+                      <td style="padding:0 15px 5px 15px;"><a href="{{ information.infoLink }}">Link</a></td>
+                      <td style="padding:0 15px 5px 15px;">{{ information.typeOfInfo }}</td>
+                      <td style="padding:0 15px 5px 15px;">{{ information.notes }}</td>
+                  </tr>
+                  {% endfor %}
+              </table>
           </div>
         </div>
     </div>

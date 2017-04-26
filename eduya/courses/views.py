@@ -1,11 +1,13 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse, Http404, HttpResponseRedirect
 from courses.models import *
-from students.models import TutorCourse, Tutor, Student
+from students.models import TutorCourse, Tutor, Student 
+from django.contrib import messages
 import datetime
 import json
 import ast
 
+from students.forms import contributeForm
 # Create your views here.
 
 def all_subjects(request):
@@ -55,6 +57,16 @@ def professors(request):
     context = { 'professors': professors }
     return render(request, 'courses/professors.html', context)
 
+def professor_direct(request, professor_id):
+    professor = Professor.objects.all().get(pk=professor_id)
+    course = ProfessorCourse.objects.all().get(professor=professor_id).course;
+    #subject_id = Course.objects.get(pk=course_id).subject.pk;
+    #subject = Subject.objects.all().get(abbreviation=subject_id)
+    #course = Course.objects.all().filter(subject=subject).filter(number=course_id)[0]
+    
+    context = {'course': course, 'professor': professor }
+    
+    return render(request, 'courses/professor_page.html', context)
 
 def professor(request, subject_id, course_id, professor_id):
     subject = Subject.objects.all().get(abbreviation=subject_id)
@@ -64,3 +76,26 @@ def professor(request, subject_id, course_id, professor_id):
     context = {'course': course, 'professor': professor }
     
     return render(request, 'courses/professor_page.html', context)
+    
+def contribute_information(request, subject_id, course_id):
+    if request.method == 'POST':
+        form = contributeForm(request.POST)
+        subject = Subject.objects.all().get(abbreviation=subject_id)
+        course = Course.objects.all().filter(subject=subject).filter(number=course_id)[0]
+        l = FileLinker()
+        l.course = course
+        l.typeOfInfo = str(request.POST.get('info_type'))
+        l.infoLink = str(request.POST.get('url'))
+        l.notes = str(request.POST.get('notes'))
+        l.save()
+        return HttpResponseRedirect('/my-courses')
+    else:
+        return render(request, 'courses/add_info.html')
+        
+def contributed_information(request, subject_id, course_id):
+    subject = Subject.objects.all().get(abbreviation=subject_id)
+    course = Course.objects.all().filter(subject=subject).filter(number=course_id)[0]
+    contrib = FileLinker.objects.all().filter(course=course)
+    context = {'filelink': contrib}
+    return render(request, 'courses/user_urls.html', context)
+    

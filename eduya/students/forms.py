@@ -35,6 +35,11 @@ class registerForm(forms.Form):
 class loginForm(forms.Form):
     email = forms.CharField(label='email', widget=forms.EmailInput, required=True)
     password = forms.CharField(label='password', widget=forms.PasswordInput, required=True)
+    
+class contributeForm(forms.Form):
+    typeOfInfo = forms.CharField(label='info_type', widget=forms.TextInput, required=True)
+    infoLink = forms.URLField(label='url', required=True);
+    notes = forms.CharField(label='notes', widget=forms.Textarea, required=False)
 
 """  
 class reviewForm(forms.Form):

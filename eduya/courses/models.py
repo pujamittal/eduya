@@ -73,6 +73,11 @@ class CourseComment(models.Model):
     student = models.ForeignKey(settings.AUTH_USER_MODEL)
     text = models.TextField(null=True, max_length=250)    
     
+class FileLinker(models.Model):
+    course = models.ForeignKey(Course, on_delete=models.CASCADE, related_name='linkCourse', null=True)
+    typeOfInfo = models.CharField(max_length=20)
+    infoLink = models.URLField()
+    notes = models.TextField(blank=True, null=True, max_length=250)
 
 # class Review(models.Model):
 #     course_section = models.ForeignKey(CourseSection)
