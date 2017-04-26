@@ -59,12 +59,14 @@ def professors(request):
 
 def professor_direct(request, professor_id):
     professor = Professor.objects.all().get(pk=professor_id)
-    course = ProfessorCourse.objects.all().get(professor=professor_id).course;
+    course = ProfessorCourse.objects.all().get(professor=professor_id).course
+    professor_comments = ProfessorComment.objects.all().filter(professor=professor).reverse()
+
     #subject_id = Course.objects.get(pk=course_id).subject.pk;
     #subject = Subject.objects.all().get(abbreviation=subject_id)
     #course = Course.objects.all().filter(subject=subject).filter(number=course_id)[0]
     
-    context = {'course': course, 'professor': professor }
+    context = {'course': course, 'professor': professor, 'professor_comments': professor_comments}
     
     return render(request, 'courses/professor_page.html', context)
 
@@ -72,11 +74,29 @@ def professor(request, subject_id, course_id, professor_id):
     subject = Subject.objects.all().get(abbreviation=subject_id)
     course = Course.objects.all().filter(subject=subject).filter(number=course_id)[0]
     professor = Professor.objects.all().get(pk=professor_id)
-    
-    context = {'course': course, 'professor': professor }
+    professor_comments = ProfessorComment.objects.all().filter(professor=professor).reverse()
+    context = {'course': course, 'professor': professor, 'professor_comments': professor_comments}
     
     return render(request, 'courses/professor_page.html', context)
     
+
+def professor_direct_comment(request, professor_id):
+    p = ProfessorComment()
+    
+    professor = Professor.objects.all().get(pk=professor_id)
+    student = request.user
+    text = str(request.POST.get('notes'))
+    
+    print professor, student, text
+    
+    p.professor = professor
+    p.student = student
+    p.text = text
+    p.save()
+    
+    return redirect('/professors/%s/' % professor_id)
+    
+
 def contribute_information(request, subject_id, course_id):
     if request.method == 'POST':
         form = contributeForm(request.POST)

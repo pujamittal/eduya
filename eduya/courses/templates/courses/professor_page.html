@@ -48,8 +48,12 @@
           </div>
           <div style="float: left; width: 50%;">
             <h3 id="review-header" style="padding:0 0 0 0;">Comments</h3>
+            {% for comment in professor_comments %}
+                {{ comment.student.first_name }} {{ comment.student.last_name }} - {{ comment.text }} <br>
+            {% endfor %}
             <p style="font-weight:bold">Leave a Comment and View other Users' Comments about this Professor</p>
-            <form>
+            <form method="post" action="/professors/{{ professor.pk }}/comment/">
+                {% csrf_token %}
                 <textarea  name="notes" id="notes" cols="100" placeholder="Comments" style="width:80%; height:100px; color:black;"></textarea>
                 <input type="submit" value="Submit Comment" style="padding: 5px 15px 5px 15px" />
             </form>
